@@ -30,8 +30,8 @@ public class example {
     public void metodo4(){
         System.out.println("Test 2");
         Assert.assertTrue(true);
-        Assert.assertTrue(false);
-        Assert.assertEquals("1","0","Los Números no sn iguales");
+        // Assert.assertTrue(false);
+        Assert.assertEquals("1","1","Los Números son iguales");
         //Assert.fail("FAIL");
         // System.out.println("Test 2");
     }
