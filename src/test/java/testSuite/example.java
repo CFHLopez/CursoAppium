@@ -23,11 +23,15 @@ public class example {
         System.out.println("Test 1");
         softAssert.fail("Fail SOFT");
         System.out.println("Test 1");
+        // se evaluan todos los softAssert
+        softAssert.assertAll();
     }
     @Test(priority = 2,description = "Prueba 2")
     public void metodo4(){
         System.out.println("Test 2");
         Assert.assertTrue(true);
+        Assert.assertTrue(false);
+        Assert.assertEquals("1","0","Los Números no sn iguales");
         //Assert.fail("FAIL");
         // System.out.println("Test 2");
     }
