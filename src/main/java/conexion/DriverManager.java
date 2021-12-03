@@ -8,7 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class DriverManagger {
+public class DriverManager {
     private AppiumDriver driver;
     private URL server = null;
     private DesiredCapabilities cap = new DesiredCapabilities();
