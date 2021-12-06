@@ -11,21 +11,27 @@ import utils.MetodosGenericos;
 import java.util.List;
 
 public class HomePage extends MetodosGenericos {
+
     /**
-     * Inicializamos la pagina
+     * Variables
      */
+
+    private String atributoLogo = "displayed";
     private AppiumDriver driver;
+
+    /**
+     * Constructor
+     */
+
     public HomePage(){
         this.driver = DriverContext.getDriver();
         PageFactory.initElements(new AppiumFieldDecorator(driver),this);
     }
-    /**
-     * Variables
-     */
-    String atributoLogo = "displayed";
+
     /**
      * Objetos
      */
+
     @AndroidFindBy(id = "com.instagram.android:id/logo")
     private MobileElement logo;
     @AndroidFindBy(id = "com.instagram.android:id/language_selector_button")
@@ -40,19 +46,24 @@ public class HomePage extends MetodosGenericos {
     /**
      * Acciones
      */
+
     public String visualizarLogo(){
         return inspeccionarElemento(atributoLogo,logo);
     }
+
     public void darClickIdioma(){
-        System.out.println("Idioma Actual= "+retornarTexto(btnidioma));
+        // System.out.println("Idioma Actual= "+retornarTexto(btnidioma));
         darClick(btnidioma);
     }
+
     public void seleccionarIdioma(String idioma){
         seleccionarElemento(opciones,idioma);
     }
+
     public String retornarTextoSingUp(){
         return retornarTexto(singUp);
     }
+
     public String retornarTextoLogin(){
         return retornarTexto(login);
     }
