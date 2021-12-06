@@ -67,4 +67,8 @@ public class HomePage extends MetodosGenericos {
     public String retornarTextoLogin(){
         return retornarTexto(login);
     }
+
+    public void darClickCrearNuevaCuenta(){
+        darClick(singUp);
+    }
 }

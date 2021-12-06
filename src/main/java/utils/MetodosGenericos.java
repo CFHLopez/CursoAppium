@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static conexion.DriverContext.setUp;
 import static reports.Report.addStep;
 
 public class MetodosGenericos {
@@ -35,10 +36,28 @@ public class MetodosGenericos {
 
     /**
      * Metodos
-     * @return
      */
 
-    public String readPropertiesFiles(String apk){
+    private void esperaIxplicita(){
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        System.out.println("Espera Implicita");
+    }
+
+    private boolean esperarObjeto(MobileElement elemento){
+        try {
+            System.out.println("Esperando elemento: "+elemento+", "+segundos+" segnudos, hasta que aparezca");
+            WebDriverWait wait = new WebDriverWait(DriverContext.getDriver(),segundos);
+            wait.until(ExpectedConditions.visibilityOf(elemento));
+            System.out.println("Se encontro el elemento ("+elemento+"), se retorna true");
+            return true;
+
+        }catch (Exception e){
+            System.out.println("No se encontró el elemento ("+elemento+"), se retorna false");
+            return false;
+        }
+    }
+
+    public String obtenerPath(String apk){
         // buscamos la direccion de la apk
         ClassLoader classLoader = PropertiesUtils.class.getClassLoader();
         // con la siguiente linea nos retorna lo siguiente (en mi caso)
@@ -60,23 +79,8 @@ public class MetodosGenericos {
         return direccion;
     }
 
-    private void esperaIxplicita(){
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        System.out.println("Espera Implicita");
-    }
-
-    private boolean esperarObjeto(MobileElement elemento){
-        try {
-            System.out.println("Esperando elemento: "+elemento+", "+segundos+" segnudos, hasta que aparezca");
-            WebDriverWait wait = new WebDriverWait(DriverContext.getDriver(),segundos);
-            wait.until(ExpectedConditions.visibilityOf(elemento));
-            System.out.println("Se encontro el elemento ("+elemento+"), se retorna true");
-            return true;
-
-        }catch (Exception e){
-            System.out.println("No se encontró el elemento ("+elemento+"), se retorna false");
-            return false;
-        }
+    public void llenarCampo(MobileElement campo, String contenido){
+        campo.sendKeys(contenido);
     }
 
     public String inspeccionarElemento(String atributo, MobileElement elemento){
