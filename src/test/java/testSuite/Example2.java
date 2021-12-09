@@ -15,6 +15,7 @@ public class Example2 {
     private String sistemaOperativo = "Android";
     private String direccion = "C:\\Usevrs\\chris\\Downloads\\Instagram.apk";
     private String udId = "emulator-5554";
+    private String appWaitAct = "";
     private boolean emulador = true;
 
     @BeforeMethod
@@ -24,6 +25,7 @@ public class Example2 {
                 sistemaOperativo,
                 direccion,
                 udId,
+                appWaitAct,
                 emulador
         );
     }

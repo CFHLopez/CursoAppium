@@ -20,6 +20,7 @@ public class TestCase01_CambiarIdiomaEspanol extends MetodosGenericos {
     // private String direccion = "C:\\Users\\chris\\IdeaProjects\\CursoAppium\\out\\production\\resources\\Instagram.apk\\";
     private String direccion = obtenerPath("Instagram.apk");
     private String udId = "emulator-5554";
+    private String appWaitAct = "";
     private boolean emulador = true;
 
     @BeforeSuite
@@ -37,6 +38,7 @@ public class TestCase01_CambiarIdiomaEspanol extends MetodosGenericos {
                 sistemaOperativo,
                 direccion,
                 udId,
+                appWaitAct,
                 emulador
         );
     }

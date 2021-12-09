@@ -32,14 +32,45 @@ public class HomePageWikidex extends MetodosGenericos {
      * Objetos
      */
 
-    @AndroidFindBy(xpath = "//*[@class='android.view.View' and contains(text(),'Bienvenido']")
-    private MobileElement bienvenido;
+    @AndroidFindBy(xpath = "//*[@class='android.view.View']")
+    private List <MobileElement> views;
+    @AndroidFindBy(xpath = "//*[@text='Bienvenido a WikiDex']")
+    private MobileElement mensaje;
+    @AndroidFindBy(id = "net.wikidex.www.wikidex:id/action_search")
+    private MobileElement lupa;
+    @AndroidFindBy(id = "net.wikidex.www.wikidex:id/search_src_text")
+    private MobileElement casillaTexto;
+    @AndroidFindBy(xpath = "//*[@class='android.widget.TextView']")
+    private List<MobileElement> listaResultados;
+    @AndroidFindBy(xpath = "//*[@class='android.widget.TextView' and contains(text(),'Rayquaza')")
+    private MobileElement texto;
 
     /**
      * Acciones
      */
 
-    public String textoBienvenido(){
-        return retornarTexto(bienvenido);
+    public String textoBienvenido(String palabra){
+        return existeContenidoElemento(views,palabra);
+    }
+
+    public String contenidoTexto(){
+        return retornarTexto(mensaje);
+    }
+
+    public void clickBuscar(){
+        darClick(lupa);
+    }
+
+    public void llenarCasilla(String palabra){
+        llenarCampo(casillaTexto,palabra);
+    }
+
+    public void clickElemento(String palabra){
+        quitarTeclado();
+        seleccionarElemento(listaResultados,palabra);
+    }
+
+    public String textoResultado(){
+        return retornarTexto(texto);
     }
 }

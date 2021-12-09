@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.xml.soap.SAAJResult;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -108,18 +109,47 @@ public class MetodosGenericos {
     }
 
     public String retornarTexto(MobileElement elemento){
-        return elemento.getText();
+        esperaIxplicita();
+        // System.out.println(elemento.getText());
+        if (esperarObjeto(elemento)){
+            return elemento.getText();
+        }
+        else {
+            return "elemento no encontrado";
+        }
     }
 
     public void seleccionarElemento(List<MobileElement> lista, String palabra){
         // Recorremos la lista hasta encontrar la palabra requerida
         for (MobileElement elemento: lista){
             if (elemento.getText().contains(palabra)){
+                // System.out.println("elemento: "+elemento.getText());
                 // Hacemos click en el elemento buscado
                 darClick(elemento);
+                esperaIxplicita();
                 // Al encontrar el elemento no necesitamos seguir buscando
                 break;
             }
         }
+    }
+
+    public String existeContenidoElemento(List<MobileElement> lista, String palabra){
+        String respuesta = "false";
+        // Recorremos la lista hasta encontrar la palabra requerida
+        for (MobileElement elemento: lista){
+            System.out.println(elemento.getText());
+            if (elemento.getText().contains(palabra)){
+                // Hacemos click en el elemento buscado
+                respuesta = "true";
+                // Al encontrar el elemento no necesitamos seguir buscando
+                break;
+            }
+        }
+        System.out.println("respuesta: "+respuesta);
+        return respuesta;
+    }
+
+    public void quitarTeclado(){
+        this.driver.hideKeyboard();
     }
 }
