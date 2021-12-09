@@ -13,7 +13,7 @@ import utils.MetodosGenericos;
 import static conexion.DriverContext.setUp;
 import static reports.Report.finalAssert;
 
-public class TestCase02_CrearNuevaCuentaExistente extends MetodosGenericos {
+public class TestCase03_CrearYEliminarCuenta extends MetodosGenericos {
 
     protected HomePage homePage = null;
     protected RegistroPage registroPage = null;
@@ -74,7 +74,7 @@ public class TestCase02_CrearNuevaCuentaExistente extends MetodosGenericos {
     @Test(priority = 4, description = "Llenar campo correo electronico")
     public void ingresarCorreoElectronico(){
         registroPage = new RegistroPage();
-        registroPage.llenarCampoCorreoElectronico("don.xekito@gmail.com");
+        registroPage.llenarCampoCorreoElectronico("pruebaappium123@gmail.com");
         finalAssert();
     }
 
@@ -85,19 +85,11 @@ public class TestCase02_CrearNuevaCuentaExistente extends MetodosGenericos {
         finalAssert();
     }
 
-    @Test(priority = 7, description = "Validar alerta")
+    @Test(priority = 6, description = "Validar alerta")
     public void mensajeAlerta(){
         registroPage = new RegistroPage();
         softAssert.assertTrue(registroPage.mensajeAlertaVisible().contains("true"));
         softAssert.assertTrue(registroPage.contenidoMensajeAlerta().contains("No pudimos completar tu solicitud"));
-        finalAssert();
-    }
-
-    @Test(priority = 6,description = "Validar mensaje advertencia")
-    public void mensajeAdvertencia(){
-        registroPage = new RegistroPage();
-        softAssert.assertTrue(registroPage.mensajeAdvertenciaVisible().contains("true"));
-        softAssert.assertTrue(registroPage.contenidoMensajeAdvertencia().contains("se usa en otra cuenta"));
         finalAssert();
     }
 }

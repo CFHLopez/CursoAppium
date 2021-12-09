@@ -40,6 +40,10 @@ public class RegistroPage extends MetodosGenericos {
     private MobileElement btnSiguiente;
     @AndroidFindBy(id = "com.instagram.android:id/notification_bar")
     private MobileElement mensajeAlerta;
+    @AndroidFindBy(id = "com.instagram.android:id/igds_headline_headline")
+    private MobileElement mensajeAdvertencia;
+    @AndroidFindBy(id = "com.instagram.android:id/dialog_container")
+    private MobileElement msnAdvertencia;
 
     /**
      * Acciones
@@ -51,6 +55,9 @@ public class RegistroPage extends MetodosGenericos {
 
     public void llenarCampoCorreoElectronico(String email){
         llenarCampo(campoCorreo,email);
+    }
+
+    public void darClickSiguiente(){
         darClick(btnSiguiente);
     }
 
@@ -60,5 +67,13 @@ public class RegistroPage extends MetodosGenericos {
 
     public String contenidoMensajeAlerta(){
         return retornarTexto(mensajeAlerta);
+    }
+
+    public String mensajeAdvertenciaVisible(){
+        return inspeccionarElemento(atributoMensaje,msnAdvertencia);
+    }
+
+    public String contenidoMensajeAdvertencia(){
+        return retornarTexto(mensajeAdvertencia);
     }
 }

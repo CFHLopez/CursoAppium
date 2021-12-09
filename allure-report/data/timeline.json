@@ -1,0 +1,199 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "name" : "timeline",
+  "children" : [ {
+    "name" : "XEKO-PC",
+    "children" : [ {
+      "name" : "8680@XEKO-PC.main(1)",
+      "children" : [ {
+        "name" : "Validar visualización de Logo",
+        "uid" : "86cce844335a9a8c",
+        "parentUid" : "3f43792d19ac7d75ac5647e4f9416323",
+        "status" : "passed",
+        "time" : {
+          "start" : 1639057971281,
+          "stop" : 1639057974895,
+          "duration" : 3614
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Validar click en siguiente",
+        "uid" : "54c1e3abd5e38a24",
+        "parentUid" : "3f43792d19ac7d75ac5647e4f9416323",
+        "status" : "passed",
+        "time" : {
+          "start" : 1639057979364,
+          "stop" : 1639057981048,
+          "duration" : 1684
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Validar click en crear nueva cuenta",
+        "uid" : "31976e846162b1f7",
+        "parentUid" : "3f43792d19ac7d75ac5647e4f9416323",
+        "status" : "passed",
+        "time" : {
+          "start" : 1639057974993,
+          "stop" : 1639057975962,
+          "duration" : 969
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Validar mensaje advertencia",
+        "uid" : "c98b5618a5eb4f50",
+        "parentUid" : "3f43792d19ac7d75ac5647e4f9416323",
+        "status" : "passed",
+        "time" : {
+          "start" : 1639057981052,
+          "stop" : 1639057982011,
+          "duration" : 959
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Validar alerta",
+        "uid" : "5d25b0ca72fa12b7",
+        "parentUid" : "3f43792d19ac7d75ac5647e4f9416323",
+        "status" : "broken",
+        "time" : {
+          "start" : 1639057982014,
+          "stop" : 1639057992103,
+          "duration" : 10089
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Llenar campo correo electronico",
+        "uid" : "3e6a83aac76a133f",
+        "parentUid" : "3f43792d19ac7d75ac5647e4f9416323",
+        "status" : "passed",
+        "time" : {
+          "start" : 1639057979223,
+          "stop" : 1639057979360,
+          "duration" : 137
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Validar click en Correo Electrónico",
+        "uid" : "691c227b3f96df36",
+        "parentUid" : "3f43792d19ac7d75ac5647e4f9416323",
+        "status" : "passed",
+        "time" : {
+          "start" : 1639057975966,
+          "stop" : 1639057979220,
+          "duration" : 3254
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "3f43792d19ac7d75ac5647e4f9416323"
+    }, {
+      "name" : "16904@XEKO-PC.main(1)",
+      "children" : [ {
+        "name" : "Validar mensaje advertencia",
+        "uid" : "2c4e26b5de722440",
+        "parentUid" : "eaf12ccedebc2f462eaa6df0815f4a27",
+        "status" : "broken",
+        "time" : {
+          "start" : 1639058420622,
+          "stop" : 1639058430832,
+          "duration" : 10210
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Llenar campo correo electronico",
+        "uid" : "1f80e3876f9acb22",
+        "parentUid" : "eaf12ccedebc2f462eaa6df0815f4a27",
+        "status" : "passed",
+        "time" : {
+          "start" : 1639058416449,
+          "stop" : 1639058418112,
+          "duration" : 1663
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Validar alerta",
+        "uid" : "278aec8c8e26cc4a",
+        "parentUid" : "eaf12ccedebc2f462eaa6df0815f4a27",
+        "status" : "passed",
+        "time" : {
+          "start" : 1639058430835,
+          "stop" : 1639058431687,
+          "duration" : 852
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Validar click en Correo Electrónico",
+        "uid" : "742ca7523743be48",
+        "parentUid" : "eaf12ccedebc2f462eaa6df0815f4a27",
+        "status" : "passed",
+        "time" : {
+          "start" : 1639058414070,
+          "stop" : 1639058416433,
+          "duration" : 2363
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Validar visualización de Logo",
+        "uid" : "c7f63fce0a652fc2",
+        "parentUid" : "eaf12ccedebc2f462eaa6df0815f4a27",
+        "status" : "passed",
+        "time" : {
+          "start" : 1639058409636,
+          "stop" : 1639058413117,
+          "duration" : 3481
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Validar click en siguiente",
+        "uid" : "f1fe532386c6fc5f",
+        "parentUid" : "eaf12ccedebc2f462eaa6df0815f4a27",
+        "status" : "passed",
+        "time" : {
+          "start" : 1639058418116,
+          "stop" : 1639058420557,
+          "duration" : 2441
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "Validar click en crear nueva cuenta",
+        "uid" : "34d00394c3b1305c",
+        "parentUid" : "eaf12ccedebc2f462eaa6df0815f4a27",
+        "status" : "passed",
+        "time" : {
+          "start" : 1639058413217,
+          "stop" : 1639058414067,
+          "duration" : 850
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "eaf12ccedebc2f462eaa6df0815f4a27"
+    } ],
+    "uid" : "ebafa43d07e5bf2f9dee5ffabed82d71"
+  } ]
+}

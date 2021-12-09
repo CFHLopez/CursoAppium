@@ -1,0 +1,100 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "name" : "packages",
+  "children" : [ {
+    "name" : "testSuite.TestCase02_CrearNuevaCuentaExistente",
+    "children" : [ {
+      "name" : "validarVisualizacionLogo",
+      "uid" : "c7f63fce0a652fc2",
+      "parentUid" : "cd5ed6b71aa69a81abb6b5d7c3ad82d4",
+      "status" : "passed",
+      "time" : {
+        "start" : 1639058409636,
+        "stop" : 1639058413117,
+        "duration" : 3481
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "validarClickCrearNuevaCuenta",
+      "uid" : "34d00394c3b1305c",
+      "parentUid" : "cd5ed6b71aa69a81abb6b5d7c3ad82d4",
+      "status" : "passed",
+      "time" : {
+        "start" : 1639058413217,
+        "stop" : 1639058414067,
+        "duration" : 850
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "validarClickCorreoElectronico",
+      "uid" : "742ca7523743be48",
+      "parentUid" : "cd5ed6b71aa69a81abb6b5d7c3ad82d4",
+      "status" : "passed",
+      "time" : {
+        "start" : 1639058414070,
+        "stop" : 1639058416433,
+        "duration" : 2363
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "ingresarCorreoElectronico",
+      "uid" : "1f80e3876f9acb22",
+      "parentUid" : "cd5ed6b71aa69a81abb6b5d7c3ad82d4",
+      "status" : "passed",
+      "time" : {
+        "start" : 1639058416449,
+        "stop" : 1639058418112,
+        "duration" : 1663
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "validarClickSiguente",
+      "uid" : "f1fe532386c6fc5f",
+      "parentUid" : "cd5ed6b71aa69a81abb6b5d7c3ad82d4",
+      "status" : "passed",
+      "time" : {
+        "start" : 1639058418116,
+        "stop" : 1639058420557,
+        "duration" : 2441
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "mensajeAdvertencia",
+      "uid" : "2c4e26b5de722440",
+      "parentUid" : "cd5ed6b71aa69a81abb6b5d7c3ad82d4",
+      "status" : "broken",
+      "time" : {
+        "start" : 1639058420622,
+        "stop" : 1639058430832,
+        "duration" : 10210
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "mensajeAlerta",
+      "uid" : "278aec8c8e26cc4a",
+      "parentUid" : "cd5ed6b71aa69a81abb6b5d7c3ad82d4",
+      "status" : "passed",
+      "time" : {
+        "start" : 1639058430835,
+        "stop" : 1639058431687,
+        "duration" : 852
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "testSuite.TestCase02_CrearNuevaCuentaExistente"
+  } ]
+}

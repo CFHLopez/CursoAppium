@@ -1,0 +1,133 @@
+{
+  "uid" : "f1fe532386c6fc5f",
+  "name" : "Validar click en siguiente",
+  "fullName" : "testSuite.TestCase02_CrearNuevaCuentaExistente.validarClickSiguente",
+  "historyId" : "340ae3d61909ca3634216c84bd46961f",
+  "time" : {
+    "start" : 1639058418116,
+    "stop" : 1639058420557,
+    "duration" : 2441
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "iniciarSeccion",
+    "time" : {
+      "start" : 1639058388754,
+      "stop" : 1639058409567,
+      "duration" : 20813
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Click en elemento: Located by By.chained({By.id: com.instagram.android:id/button_text})",
+      "time" : {
+        "start" : 1639058420034,
+        "stop" : 1639058420556,
+        "duration" : 522
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "988359e23f4e1c75",
+        "name" : "Imagen Adjunta",
+        "source" : "988359e23f4e1c75.png",
+        "type" : "image/png",
+        "size" : 138516
+      } ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : true,
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 1
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 1,
+    "hasContent" : true,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 1
+  },
+  "afterStages" : [ {
+    "name" : "cerrarSeccion",
+    "time" : {
+      "start" : 1639058431697,
+      "stop" : 1639058432290,
+      "duration" : 593
+    },
+    "description" : "",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0
+  } ],
+  "labels" : [ {
+    "name" : "package",
+    "value" : "testSuite.TestCase02_CrearNuevaCuentaExistente"
+  }, {
+    "name" : "testClass",
+    "value" : "testSuite.TestCase02_CrearNuevaCuentaExistente"
+  }, {
+    "name" : "testMethod",
+    "value" : "validarClickSiguente"
+  }, {
+    "name" : "parentSuite",
+    "value" : "Default Suite"
+  }, {
+    "name" : "suite",
+    "value" : "CursoAppium"
+  }, {
+    "name" : "subSuite",
+    "value" : "testSuite.TestCase02_CrearNuevaCuentaExistente"
+  }, {
+    "name" : "host",
+    "value" : "XEKO-PC"
+  }, {
+    "name" : "thread",
+    "value" : "16904@XEKO-PC.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "testng"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "54c1e3abd5e38a24",
+      "status" : "passed",
+      "time" : {
+        "start" : 1639057979364,
+        "stop" : 1639057981048,
+        "duration" : 1684
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "f1fe532386c6fc5f.json",
+  "parameterValues" : [ ]
+}

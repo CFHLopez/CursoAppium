@@ -1,0 +1,96 @@
+{
+  "uid" : "b1a8273437954620fa374b796ffaacdd",
+  "name" : "behaviors",
+  "children" : [ {
+    "name" : "Validar visualización de Logo",
+    "uid" : "c7f63fce0a652fc2",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1639058409636,
+      "stop" : 1639058413117,
+      "duration" : 3481
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "Validar click en crear nueva cuenta",
+    "uid" : "34d00394c3b1305c",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1639058413217,
+      "stop" : 1639058414067,
+      "duration" : 850
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "Validar click en Correo Electrónico",
+    "uid" : "742ca7523743be48",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1639058414070,
+      "stop" : 1639058416433,
+      "duration" : 2363
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "Llenar campo correo electronico",
+    "uid" : "1f80e3876f9acb22",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1639058416449,
+      "stop" : 1639058418112,
+      "duration" : 1663
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "Validar click en siguiente",
+    "uid" : "f1fe532386c6fc5f",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1639058418116,
+      "stop" : 1639058420557,
+      "duration" : 2441
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "Validar mensaje advertencia",
+    "uid" : "2c4e26b5de722440",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "broken",
+    "time" : {
+      "start" : 1639058420622,
+      "stop" : 1639058430832,
+      "duration" : 10210
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  }, {
+    "name" : "Validar alerta",
+    "uid" : "278aec8c8e26cc4a",
+    "parentUid" : "b1a8273437954620fa374b796ffaacdd",
+    "status" : "passed",
+    "time" : {
+      "start" : 1639058430835,
+      "stop" : 1639058431687,
+      "duration" : 852
+    },
+    "flaky" : false,
+    "newFailed" : false,
+    "parameters" : [ ]
+  } ]
+}

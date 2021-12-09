@@ -1,0 +1,71 @@
+[ {
+  "uid" : "1f80e3876f9acb22",
+  "name" : "Llenar campo correo electronico",
+  "time" : {
+    "start" : 1639058416449,
+    "stop" : 1639058418112,
+    "duration" : 1663
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "f1fe532386c6fc5f",
+  "name" : "Validar click en siguiente",
+  "time" : {
+    "start" : 1639058418116,
+    "stop" : 1639058420557,
+    "duration" : 2441
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "2c4e26b5de722440",
+  "name" : "Validar mensaje advertencia",
+  "time" : {
+    "start" : 1639058420622,
+    "stop" : 1639058430832,
+    "duration" : 10210
+  },
+  "status" : "broken",
+  "severity" : "normal"
+}, {
+  "uid" : "278aec8c8e26cc4a",
+  "name" : "Validar alerta",
+  "time" : {
+    "start" : 1639058430835,
+    "stop" : 1639058431687,
+    "duration" : 852
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "c7f63fce0a652fc2",
+  "name" : "Validar visualización de Logo",
+  "time" : {
+    "start" : 1639058409636,
+    "stop" : 1639058413117,
+    "duration" : 3481
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "34d00394c3b1305c",
+  "name" : "Validar click en crear nueva cuenta",
+  "time" : {
+    "start" : 1639058413217,
+    "stop" : 1639058414067,
+    "duration" : 850
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "742ca7523743be48",
+  "name" : "Validar click en Correo Electrónico",
+  "time" : {
+    "start" : 1639058414070,
+    "stop" : 1639058416433,
+    "duration" : 2363
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]
