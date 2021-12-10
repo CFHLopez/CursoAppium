@@ -1,4 +1,4 @@
-package pages;
+package pages.instagramPages;
 
 import conexion.DriverContext;
 import io.appium.java_client.AppiumDriver;

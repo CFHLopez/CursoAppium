@@ -5,7 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-import pages.wikidexPage.HomePageWikidex;
+import pages.wikidexPages.HomePageWikidex;
 import utils.MetodosGenericos;
 
 import static conexion.DriverContext.setUp;

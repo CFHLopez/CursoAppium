@@ -1,4 +1,4 @@
-package pages.wikidexPage;
+package pages.wikidexPages;
 
 import conexion.DriverContext;
 import io.appium.java_client.AppiumDriver;

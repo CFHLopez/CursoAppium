@@ -1,22 +1,19 @@
-package testSuite;
+package testSuite.instagram;
 
 import conexion.DriverContext;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
-import pages.HomePage;
-import pages.RegistroPage;
+import pages.instagramPages.HomePage;
 import utils.MetodosGenericos;
 
 import static conexion.DriverContext.setUp;
 import static reports.Report.finalAssert;
 
-public class TestCase03_CrearYEliminarCuenta extends MetodosGenericos {
+public class TestCase01_CambiarIdiomaEspanol extends MetodosGenericos {
 
     protected HomePage homePage = null;
-    protected RegistroPage registroPage = null;
     private String nombreDispositivo = "emulator-5554";
     private String sistemaOperativo = "Android";
     // private String direccion = "C:\\Users\\chris\\Downloads\\Instagram.apk";
@@ -25,7 +22,6 @@ public class TestCase03_CrearYEliminarCuenta extends MetodosGenericos {
     private String udId = "emulator-5554";
     private String appWaitAct = "";
     private boolean emulador = true;
-    private SoftAssert softAssert = new SoftAssert();
 
     @BeforeSuite
     public void iniciarSeccion(){
@@ -52,46 +48,26 @@ public class TestCase03_CrearYEliminarCuenta extends MetodosGenericos {
         DriverContext.quitDriver();
     }
 
-    @Test(priority = 1,description = "Validar visualización de Logo")
+    @Test (priority = 1,description = "Validar visualización de Logo")
     public void validarVisualizacionLogo(){
         homePage = new HomePage();
         Assert.assertEquals(homePage.visualizarLogo(),"true");
         finalAssert();
     }
 
-    @Test(priority = 2, description = "Validar click en crear nueva cuenta")
-    public void validarClickCrearNuevaCuenta(){
+    @Test (priority = 2, description = "Validar click para el cambio de idioma")
+    public void validarClickIdioma(){
         homePage = new HomePage();
-        homePage.darClickCrearNuevaCuenta();
+        homePage.darClickIdioma();
         finalAssert();
     }
 
-    @Test(priority = 3, description = "Validar click en Correo Electrónico")
-    public void validarClickCorreoElectronico(){
-        registroPage = new RegistroPage();
-        registroPage.darClickCorreoElectronico();
-        finalAssert();
-    }
-
-    @Test(priority = 4, description = "Llenar campo correo electronico")
-    public void ingresarCorreoElectronico(){
-        registroPage = new RegistroPage();
-        registroPage.llenarCampoCorreoElectronico("pruebaappium123@gmail.com");
-        finalAssert();
-    }
-
-    @Test(priority = 5, description = "Validar click en siguiente")
-    public void validarClickSiguente(){
-        registroPage = new RegistroPage();
-        registroPage.darClickSiguiente();
-        finalAssert();
-    }
-
-    @Test(priority = 6, description = "Validar alerta")
-    public void mensajeAlerta(){
-        registroPage = new RegistroPage();
-        softAssert.assertTrue(registroPage.mensajeAlertaVisible().contains("true"));
-        softAssert.assertTrue(registroPage.contenidoMensajeAlerta().contains("No pudimos completar tu solicitud"));
+    @Test (priority = 3, description = "Validar el cambio de idioma")
+    public void validarCambioIdioma(){
+        homePage = new HomePage();
+        homePage.seleccionarIdioma("Español");
+        Assert.assertEquals(homePage.retornarTextoSingUp(),"Crear cuenta nueva");
+        Assert.assertEquals(homePage.retornarTextoLogin(),"Iniciar sesión");
         finalAssert();
     }
 }
