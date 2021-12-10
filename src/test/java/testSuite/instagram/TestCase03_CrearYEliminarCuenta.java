@@ -8,36 +8,34 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.instagramPages.HomePage;
 import pages.instagramPages.RegistroPage;
-import utils.MetodosGenericos;
 
 import static conexion.DriverContext.setUp;
 import static reports.Report.finalAssert;
 
-public class TestCase03_CrearYEliminarCuenta extends MetodosGenericos {
+public class TestCase03_CrearYEliminarCuenta{
 
     protected HomePage homePage = null;
     protected RegistroPage registroPage = null;
+    // DISPOSITIVO VIRTUAL
     private String nombreDispositivo = "emulator-5554";
-    private String sistemaOperativo = "Android";
-    // private String direccion = "C:\\Users\\chris\\Downloads\\Instagram.apk";
-    // private String direccion = "C:\\Users\\chris\\IdeaProjects\\CursoAppium\\out\\production\\resources\\Instagram.apk\\";
-    private String direccion = obtenerPath("Instagram.apk");
     private String udId = "emulator-5554";
-    private String appWaitAct = "";
+    // DISPOSITIVO REAL
+    // private String nombreDispositivo = "ZY327WFR7S";
+    // private String udId = "ZY327WFR7S";
+    private String sistemaOperativo = "Android";
+    // PC TSOFT
+    private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\Instagram.apk";
+    // PC PERSONAL
+    // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\Instagram.apk";
+    private String appWaitAct = "com.instagram.*";
+    // DISPOSITIVO VIRTUAL
+    // TRUE  -> VIRTUAL
+    // FALSE -> REAL
     private boolean emulador = true;
     private SoftAssert softAssert = new SoftAssert();
 
     @BeforeSuite
     public void iniciarSeccion(){
-        // Dispositivo real
-        /*
-        setUp("ZY327WFR7S",
-                "Android",
-                "C:\\Users\\chris\\Downloads\\Instagram.apk",
-                "ZY327WFR7S",
-                false);
-         */
-        // Dispositivo virtual
         setUp(nombreDispositivo,
                 sistemaOperativo,
                 direccion,

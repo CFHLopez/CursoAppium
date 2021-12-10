@@ -5,16 +5,13 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.qameta.allure.model.Status;
-import io.qameta.allure.util.PropertiesUtils;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import javax.xml.soap.SAAJResult;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static conexion.DriverContext.setUp;
 import static reports.Report.addStep;
 
 public class MetodosGenericos {
@@ -56,28 +53,6 @@ public class MetodosGenericos {
             System.out.println("No se encontró el elemento ("+elemento+"), se retorna false");
             return false;
         }
-    }
-
-    public String obtenerPath(String apk){
-        // buscamos la direccion de la apk
-        ClassLoader classLoader = PropertiesUtils.class.getClassLoader();
-        // con la siguiente linea nos retorna lo siguiente (en mi caso)
-        // /C:/Users/chris/IdeaProjects/CursoAppium/out/production/resources/Instagram.apk
-        String path = classLoader.getResource(apk).getPath();
-        // necesitamos cambiar / por \\
-        // eliminamos los / y agregamos los caracteres a un arreglo
-        String [] arreglo = path.split("/");
-        // creamos un arreglo para retornar la direccion arreglada
-        String direccion = new String();
-        // comenzamos desde la posicion 1 dado que 0 es vacio
-        for (int i=1;i<arreglo.length;i++){
-            // agregamos lo que contiene el arreglo
-            direccion = direccion + arreglo[i];
-            // agregamos -> \\
-            direccion = direccion + "\\\\";
-        }
-        // retornamos la direccion modificada
-        return direccion;
     }
 
     public void llenarCampo(MobileElement campo, String contenido){
