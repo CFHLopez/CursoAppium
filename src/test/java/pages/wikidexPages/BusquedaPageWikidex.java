@@ -42,10 +42,10 @@ public class BusquedaPageWikidex extends MetodosGenericos {
 
     public void llenarCasilla(String palabra){
         llenarCampo(casillaTexto,palabra);
-        quitarTeclado();
     }
 
     public int cantidadDeResultados(){
+        quitarTeclado();
         return contarElementos(listaResultados);
     }
 

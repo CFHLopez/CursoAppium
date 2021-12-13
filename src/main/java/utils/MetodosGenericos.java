@@ -124,6 +124,12 @@ public class MetodosGenericos {
         return lista.size();
     }
 
+    public void recorrerLista(List<MobileElement> lista){
+        for (MobileElement elemento: lista){
+            System.out.println("texto: "+elemento.getText());
+        }
+    }
+
 
     public void quitarTeclado(){
         this.driver.hideKeyboard();

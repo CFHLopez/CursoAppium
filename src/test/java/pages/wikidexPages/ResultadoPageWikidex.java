@@ -8,6 +8,8 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.PageFactory;
 import utils.MetodosGenericos;
 
+import java.util.List;
+
 public class ResultadoPageWikidex extends MetodosGenericos {
 
     /**
@@ -32,6 +34,8 @@ public class ResultadoPageWikidex extends MetodosGenericos {
 
     @AndroidFindBy(xpath = "//*[contains(text(),'Ilustración de Rayquaza')]")
     private MobileElement imagen;
+    @AndroidFindBy(xpath = "//*[@class='android.widget.Image']")
+    private List <MobileElement> imagenes;
     @AndroidFindBy(xpath = "//*[@class='android.widget.TextView' and contains(text(),'Rayquaza')")
     private MobileElement texto;
 
@@ -41,6 +45,9 @@ public class ResultadoPageWikidex extends MetodosGenericos {
     public String esperarCargaImagen(){
         esperarElemento(imagen);
         return inspeccionarElemento(atributoImagen,imagen);
+    }
+    public void textoImagenes(){
+        recorrerLista(imagenes);
     }
     public String textoResultado(){
         return retornarTexto(texto);
