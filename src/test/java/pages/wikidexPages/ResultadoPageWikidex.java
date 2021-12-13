@@ -32,7 +32,7 @@ public class ResultadoPageWikidex extends MetodosGenericos {
      * Objetos
      */
 
-    @AndroidFindBy(xpath = "//*[@class='android.webkit.WebView' and contains(text(),'Rayquaza')]")
+    @AndroidFindBy(xpath = "//*[@resource-id='net.wikidex.www.wikidex:id/textTitle']")
     private MobileElement contenedor;
     @AndroidFindBy(xpath = "//*[@class='android.widget.TextView']")
     private List <MobileElement> textosTextView;
@@ -40,9 +40,8 @@ public class ResultadoPageWikidex extends MetodosGenericos {
     /**
      * Acciones
      */
-    public String esperarContenedor(){
-        esperarElemento(contenedor);
-        return inspeccionarElemento(atributoContenedor,contenedor);
+    public String esperarContenedor(String palabra){
+        return esperarPagina(contenedor,palabra);
     }
 
     public String textoResultado(String palabra){

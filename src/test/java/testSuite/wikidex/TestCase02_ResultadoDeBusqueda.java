@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.wikidexPages.BusquedaPageWikidex;
 import pages.wikidexPages.HomePageWikidex;
 import pages.wikidexPages.ResultadoPageWikidex;
@@ -32,7 +33,8 @@ public class TestCase02_ResultadoDeBusqueda {
     // DISPOSITIVO VIRTUAL
     // TRUE  -> VIRTUAL
     // FALSE -> REAL
-    private boolean emulador = true;
+    private boolean emulador = false;
+    private SoftAssert softAssert = new SoftAssert();
 
     @BeforeSuite
     public void iniciarSeccion(){
@@ -68,16 +70,11 @@ public class TestCase02_ResultadoDeBusqueda {
         busquedaPageWikidex.clickPrimerElemento();
     }
 
-    @Test(priority = 5,description = "Validar carga imagen")
-    public void validarImagen(){
+    @Test(priority = 4,description = "Validar pagina resultado visible")
+    public void validarBusqueda(){
         resultadoPageWikidex = new ResultadoPageWikidex();
-        Assert.assertEquals(resultadoPageWikidex.esperarContenedor(),"visible");
-    }
-
-    @Test(priority = 5,description = "Validar resultado")
-    public void validarResultado(){
-        resultadoPageWikidex = new ResultadoPageWikidex();
-        Assert.assertEquals(resultadoPageWikidex.textoResultado("Rayquaza"),"Encontrado");
+        softAssert.assertEquals(resultadoPageWikidex.esperarContenedor("Rayquaza"),"Encontrada");
+        softAssert.assertEquals(resultadoPageWikidex.textoResultado("Rayquaza"),"Encontrado");
         finalAssert();
     }
 }

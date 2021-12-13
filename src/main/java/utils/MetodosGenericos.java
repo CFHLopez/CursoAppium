@@ -142,6 +142,14 @@ public class MetodosGenericos {
         }
     }
 
+    public String esperarPagina(MobileElement elemento, String palabra){
+        while (!elemento.getText().contains(palabra)){
+            System.out.println("pagina: "+ elemento.getText());
+            esperaIxplicita();
+        }
+        return "Encontrada";
+    }
+
 
     public void quitarTeclado(){
         this.driver.hideKeyboard();
