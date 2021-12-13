@@ -36,7 +36,7 @@ public class MetodosGenericos {
      * Metodos
      */
 
-    private void esperaIxplicita(){
+    protected void esperaIxplicita(){
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         System.out.println("Espera Implicita");
     }
@@ -101,9 +101,11 @@ public class MetodosGenericos {
 
     public void seleccionarElemento(List<MobileElement> lista, String palabra){
         // Recorremos la lista hasta encontrar la palabra requerida
+        System.out.println("Recorrer lista hasta encontrar: "+palabra);
+        System.out.println("Cantidad elementos: "+lista.size());
         for (MobileElement elemento: lista){
             if (elemento.getText().contains(palabra)){
-                // System.out.println("elemento: "+elemento.getText());
+                System.out.println("elemento: "+elemento.getText());
                 // Hacemos click en el elemento buscado
                 darClick(elemento);
                 // Al encontrar el elemento no necesitamos seguir buscando
@@ -148,6 +150,13 @@ public class MetodosGenericos {
             esperaIxplicita();
         }
         return "Encontrada";
+    }
+
+    public void esperarPaginaAleatoria(MobileElement elemento){
+        while (elemento.getText().contains("WikiDex")){
+            System.out.println("pagina: "+ elemento.getText());
+            esperaIxplicita();
+        }
     }
 
 

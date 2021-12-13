@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.wikidexPages.BusquedaPageWikidex;
 import pages.wikidexPages.HomePageWikidex;
 import pages.wikidexPages.ResultadoPageWikidex;
@@ -32,6 +33,7 @@ public class TestCase01_BusquedayResultados{
     // TRUE  -> VIRTUAL
     // FALSE -> REAL
     private boolean emulador = true;
+    private SoftAssert softAssert = new SoftAssert();
 
     @BeforeSuite
     public void iniciarSeccion(){
@@ -52,8 +54,8 @@ public class TestCase01_BusquedayResultados{
     @Test(priority = 1,description = "Validar mensaje Bienvenido")
     public void validarMensajeBienvenido(){
         homePageWikidex = new HomePageWikidex();
-        Assert.assertEquals(homePageWikidex.cargaImagen(),"visible");
-        Assert.assertEquals(homePageWikidex.contenidoTexto(),"Bienvenido a WikiDex");
+        softAssert.assertEquals(homePageWikidex.cargaImagen(),"visible");
+        softAssert.assertEquals(homePageWikidex.contenidoTexto(),"Bienvenido a WikiDex");
         finalAssert();
     }
 

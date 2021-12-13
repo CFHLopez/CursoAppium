@@ -1,23 +1,22 @@
 package testSuite.wikidex;
 
 import conexion.DriverContext;
-import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.wikidexPages.BusquedaPageWikidex;
+import pages.wikidexPages.FavoritosPageWikidex;
 import pages.wikidexPages.HomePageWikidex;
 import pages.wikidexPages.ResultadoPageWikidex;
 
 import static conexion.DriverContext.setUp;
 import static reports.Report.finalAssert;
 
-public class TestCase02_ResultadoDeBusqueda {
+public class TestCase03_AgregarQuitarFavoritosModoNocturno {
 
     protected HomePageWikidex homePageWikidex = null;
-    protected BusquedaPageWikidex busquedaPageWikidex = null;
     protected ResultadoPageWikidex resultadoPageWikidex = null;
+    protected FavoritosPageWikidex favoritosPageWikidex = null;
     // DISPOSITIVO VIRTUAL
     // private String nombreDispositivo = "emulator-5554";
     // private String udId = "emulator-5554";
@@ -60,29 +59,50 @@ public class TestCase02_ResultadoDeBusqueda {
         finalAssert();
     }
 
-    @Test(priority = 2, description = "Validar click botón buscar")
-    public void validarBtnBuscar(){
+    @Test(priority = 2, description = "Cambiar a modo nocturno")
+    public void cambiarModoNocturno(){
         homePageWikidex = new HomePageWikidex();
-        homePageWikidex.clickBuscar();
+        homePageWikidex.clickAjustes();
+        homePageWikidex.clickModoNocturno();
     }
 
-    @Test(priority = 3, description = "Llenar casilla de texto")
-    public void llenarCasillaTexto(){
-        busquedaPageWikidex = new BusquedaPageWikidex();
-        busquedaPageWikidex.llenarCasilla("Rayquaza");
+    @Test(priority = 3, description = "Ir a una pagina aleatoria")
+    public void irPaginaAleatoria(){
+        homePageWikidex = new HomePageWikidex();
+        homePageWikidex.clickMenu();
+        homePageWikidex.clickEn("Página aleatoria");
     }
 
-    @Test(priority = 4, description = "Seleccionar Elemento de Resultados")
-    public void selecionarElemento(){
-        busquedaPageWikidex = new BusquedaPageWikidex();
-        busquedaPageWikidex.clickPrimerElemento();
-    }
-
-    @Test(priority = 5, description = "Validar pagina resultado visible")
-    public void validarBusqueda(){
+    @Test(priority = 4, description = "Agregar página a favoritos")
+    public void agregarPaginaFavoritos(){
         resultadoPageWikidex = new ResultadoPageWikidex();
-        softAssert.assertEquals(resultadoPageWikidex.esperarContenedor("Rayquaza"),"Encontrada");
-        softAssert.assertEquals(resultadoPageWikidex.textoResultado("Rayquaza"),"Encontrado");
+        resultadoPageWikidex.clickMasOpciones();
+        resultadoPageWikidex.clickEn("Guardar");
+    }
+
+    @Test(priority = 5, description = "Ver favoritos")
+    public void verFavoritos(){
+        homePageWikidex = new HomePageWikidex();
+        homePageWikidex.clickMenu();
+        homePageWikidex.clickEn("Favoritos");
+        favoritosPageWikidex = new FavoritosPageWikidex();
+        softAssert.assertEquals(favoritosPageWikidex.esperaPagina("Favoritos"),"Encontrada");
+        finalAssert();
+    }
+
+    @Test(priority = 6, description = "Validar cantidad de resultados")
+    public void validarCantidadResultados(){
+        favoritosPageWikidex = new FavoritosPageWikidex();
+        softAssert.assertEquals(favoritosPageWikidex.cantidadPaginasGuardadas(),1);
+        finalAssert();
+    }
+
+    @Test(priority = 7, description = "Validar eliminar favorito")
+    public void eliminarFavorito(){
+        favoritosPageWikidex = new FavoritosPageWikidex();
+        favoritosPageWikidex.clickEliminar();
+        softAssert.assertEquals(favoritosPageWikidex.mensajeVisible(),"visible");
+        softAssert.assertTrue(favoritosPageWikidex.mensaje().contains("No hay favoritos."));
         finalAssert();
     }
 }
