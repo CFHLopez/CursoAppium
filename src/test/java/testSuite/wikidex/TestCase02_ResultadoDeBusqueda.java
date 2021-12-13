@@ -71,14 +71,13 @@ public class TestCase02_ResultadoDeBusqueda {
     @Test(priority = 5,description = "Validar carga imagen")
     public void validarImagen(){
         resultadoPageWikidex = new ResultadoPageWikidex();
-        Assert.assertEquals(resultadoPageWikidex.esperarCargaImagen(),"visible");
+        Assert.assertEquals(resultadoPageWikidex.esperarContenedor(),"visible");
     }
 
     @Test(priority = 5,description = "Validar resultado")
     public void validarResultado(){
         resultadoPageWikidex = new ResultadoPageWikidex();
-        resultadoPageWikidex.textoImagenes();
-        // Assert.assertTrue(resultadoPageWikidex.textoResultado().contains("Rayquaza"));
+        Assert.assertEquals(resultadoPageWikidex.textoResultado("Rayquaza"),"Encontrado");
         finalAssert();
     }
 }

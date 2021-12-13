@@ -17,7 +17,7 @@ public class ResultadoPageWikidex extends MetodosGenericos {
      */
 
     private AppiumDriver driver;
-    private String atributoImagen = "enabled";
+    private String atributoContenedor = "enabled";
 
     /**
      * Constructor
@@ -32,24 +32,20 @@ public class ResultadoPageWikidex extends MetodosGenericos {
      * Objetos
      */
 
-    @AndroidFindBy(xpath = "//*[contains(text(),'Ilustración de Rayquaza')]")
-    private MobileElement imagen;
-    @AndroidFindBy(xpath = "//*[@class='android.widget.Image']")
-    private List <MobileElement> imagenes;
-    @AndroidFindBy(xpath = "//*[@class='android.widget.TextView' and contains(text(),'Rayquaza')")
-    private MobileElement texto;
+    @AndroidFindBy(xpath = "//*[@class='android.webkit.WebView' and contains(text(),'Rayquaza')]")
+    private MobileElement contenedor;
+    @AndroidFindBy(xpath = "//*[@class='android.widget.TextView']")
+    private List <MobileElement> textosTextView;
 
     /**
      * Acciones
      */
-    public String esperarCargaImagen(){
-        esperarElemento(imagen);
-        return inspeccionarElemento(atributoImagen,imagen);
+    public String esperarContenedor(){
+        esperarElemento(contenedor);
+        return inspeccionarElemento(atributoContenedor,contenedor);
     }
-    public void textoImagenes(){
-        recorrerLista(imagenes);
-    }
-    public String textoResultado(){
-        return retornarTexto(texto);
+
+    public String textoResultado(String palabra){
+        return encontrarContenido(textosTextView,palabra);
     }
 }

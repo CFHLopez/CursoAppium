@@ -124,6 +124,18 @@ public class MetodosGenericos {
         return lista.size();
     }
 
+    public String encontrarContenido(List<MobileElement> lista, String palabra){
+        String resultado = "No Encontrado";
+        for (MobileElement elemento: lista){
+            if (elemento.getText().contains(palabra)){
+                resultado = "Encontrado";
+                // Al encontrar el elemento no necesitamos seguir buscando
+                break;
+            }
+        }
+        return resultado;
+    }
+
     public void recorrerLista(List<MobileElement> lista){
         for (MobileElement elemento: lista){
             System.out.println("texto: "+elemento.getText());
