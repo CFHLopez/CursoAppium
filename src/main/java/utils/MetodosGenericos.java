@@ -55,20 +55,25 @@ public class MetodosGenericos {
         }
     }
 
+    public void esperarElemento(MobileElement elemento){
+        WebDriverWait wait = new WebDriverWait(DriverContext.getDriver(),segundos);
+        wait.until(ExpectedConditions.visibilityOf(elemento));
+    }
+
     public void llenarCampo(MobileElement campo, String contenido){
         campo.sendKeys(contenido);
     }
 
     public String inspeccionarElemento(String atributo, MobileElement elemento){
-        // System.out.println("displayed= "+ elemento.getAttribute(atributo));
+        System.out.println("estado elemento: "+elemento.getAttribute(atributo));
         if(elemento.getAttribute(atributo).contains("true")){
             esperaIxplicita();
             addStep("Elemento visible", true, Status.PASSED,false);
-            return elemento.getAttribute(atributo);
+            return "visible";
         }
         else{
             addStep("Elemento oculto",true, Status.FAILED,false);
-            return "false";
+            return "oculto";
         }
     }
 
@@ -108,14 +113,19 @@ public class MetodosGenericos {
         }
     }
 
+    public int contarElementos(List<MobileElement> lista){
+        addStep("Elementos de la lista", true, Status.PASSED,false);
+        return lista.size();
+    }
+
     public String existeContenidoElemento(List<MobileElement> lista, String palabra){
-        String respuesta = "false";
+        String respuesta = "no encontrado";
         // Recorremos la lista hasta encontrar la palabra requerida
         for (MobileElement elemento: lista){
-            System.out.println(elemento.getText());
+            // System.out.println(elemento.getText());
             if (elemento.getText().contains(palabra)){
                 // Hacemos click en el elemento buscado
-                respuesta = "true";
+                respuesta = "existe";
                 // Al encontrar el elemento no necesitamos seguir buscando
                 break;
             }

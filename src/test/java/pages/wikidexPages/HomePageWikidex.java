@@ -16,7 +16,7 @@ public class HomePageWikidex extends MetodosGenericos {
      * Variables
      */
 
-    private String atributoLogo = "displayed";
+    private String atributoLogo = "enabled";
     private AppiumDriver driver;
 
     /**
@@ -32,8 +32,8 @@ public class HomePageWikidex extends MetodosGenericos {
      * Objetos
      */
 
-    @AndroidFindBy(xpath = "//*[@class='android.view.View']")
-    private List <MobileElement> views;
+    @AndroidFindBy(xpath = "//*[@class='android.widget.Image']")
+    private MobileElement imagen;
     @AndroidFindBy(xpath = "//*[@text='Bienvenido a WikiDex']")
     private MobileElement mensaje;
     @AndroidFindBy(id = "net.wikidex.www.wikidex:id/action_search")
@@ -49,8 +49,9 @@ public class HomePageWikidex extends MetodosGenericos {
      * Acciones
      */
 
-    public String textoBienvenido(String palabra){
-        return existeContenidoElemento(views,palabra);
+    public String cargaImagen(){
+        esperarElemento(imagen);
+        return inspeccionarElemento(atributoLogo,imagen);
     }
 
     public String contenidoTexto(){
@@ -63,10 +64,14 @@ public class HomePageWikidex extends MetodosGenericos {
 
     public void llenarCasilla(String palabra){
         llenarCampo(casillaTexto,palabra);
+        quitarTeclado();
+    }
+
+    public int cantidadDeResultados(){
+        return contarElementos(listaResultados);
     }
 
     public void clickElemento(String palabra){
-        quitarTeclado();
         seleccionarElemento(listaResultados,palabra);
     }
 

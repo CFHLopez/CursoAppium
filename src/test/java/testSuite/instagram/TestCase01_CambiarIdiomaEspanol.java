@@ -15,11 +15,11 @@ public class TestCase01_CambiarIdiomaEspanol {
 
     protected HomePage homePage = null;
     // DISPOSITIVO VIRTUAL
-    private String nombreDispositivo = "emulator-5554";
-    private String udId = "emulator-5554";
+    // private String nombreDispositivo = "emulator-5554";
+    // private String udId = "emulator-5554";
     // DISPOSITIVO REAL
-    // private String nombreDispositivo = "ZY327WFR7S";
-    // private String udId = "ZY327WFR7S";
+    private String nombreDispositivo = "ZY327WFR7S";
+    private String udId = "ZY327WFR7S";
     private String sistemaOperativo = "Android";
     // PC TSOFT
     private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\Instagram.apk";

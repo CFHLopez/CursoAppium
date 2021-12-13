@@ -14,11 +14,11 @@ public class TestCase01_BusquedayResultados{
 
     protected HomePageWikidex homePageWikidex = null;
     // DISPOSITIVO VIRTUAL
-    private String nombreDispositivo = "emulator-5554";
-    private String udId = "emulator-5554";
+    // private String nombreDispositivo = "emulator-5554";
+    // private String udId = "emulator-5554";
     // DISPOSITIVO REAL
-    // private String nombreDispositivo = "ZY327WFR7S";
-    // private String udId = "ZY327WFR7S";
+    private String nombreDispositivo = "ZY327WFR7S";
+    private String udId = "ZY327WFR7S";
     private String sistemaOperativo = "Android";
     // PC TSOFT
     private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\Wikidex.apk";
@@ -49,7 +49,7 @@ public class TestCase01_BusquedayResultados{
     @Test(priority = 1,description = "Validar mensaje Bienvenido")
     public void validarMensajeBienvenido(){
         homePageWikidex = new HomePageWikidex();
-        Assert.assertEquals(homePageWikidex.textoBienvenido("Bienvenido"),"true");
+        Assert.assertEquals(homePageWikidex.cargaImagen(),"visible");
         Assert.assertEquals(homePageWikidex.contenidoTexto(),"Bienvenido a WikiDex");
         finalAssert();
     }
@@ -66,6 +66,12 @@ public class TestCase01_BusquedayResultados{
         homePageWikidex.llenarCasilla("Rayquaza");
     }
 
+    @Test(priority = 4,description = "Validar cantidad resultados mayor a 1")
+    public void validarCantidadResultados(){
+        homePageWikidex = new HomePageWikidex();
+        Assert.assertTrue(homePageWikidex.cantidadDeResultados()>1);
+    }
+    /*
     @Test(priority = 4,description = "Seleccionar Elemento de Resultados")
     public void selecionarElemento(){
         homePageWikidex = new HomePageWikidex();
@@ -78,4 +84,6 @@ public class TestCase01_BusquedayResultados{
         Assert.assertTrue(homePageWikidex.textoResultado().contains("Rayquaza"));
         finalAssert();
     }
+
+     */
 }
