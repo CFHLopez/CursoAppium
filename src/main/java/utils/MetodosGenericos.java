@@ -106,10 +106,16 @@ public class MetodosGenericos {
                 // System.out.println("elemento: "+elemento.getText());
                 // Hacemos click en el elemento buscado
                 darClick(elemento);
-                esperaIxplicita();
                 // Al encontrar el elemento no necesitamos seguir buscando
                 break;
             }
+        }
+    }
+
+    public void seleccionarPrimerElemento(List<MobileElement> lista){
+        for (MobileElement elemento: lista){
+            darClick(elemento);
+            break;
         }
     }
 
@@ -118,21 +124,6 @@ public class MetodosGenericos {
         return lista.size();
     }
 
-    public String existeContenidoElemento(List<MobileElement> lista, String palabra){
-        String respuesta = "no encontrado";
-        // Recorremos la lista hasta encontrar la palabra requerida
-        for (MobileElement elemento: lista){
-            // System.out.println(elemento.getText());
-            if (elemento.getText().contains(palabra)){
-                // Hacemos click en el elemento buscado
-                respuesta = "existe";
-                // Al encontrar el elemento no necesitamos seguir buscando
-                break;
-            }
-        }
-        System.out.println("respuesta: "+respuesta);
-        return respuesta;
-    }
 
     public void quitarTeclado(){
         this.driver.hideKeyboard();

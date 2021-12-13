@@ -10,20 +10,19 @@ import utils.MetodosGenericos;
 
 import java.util.List;
 
-public class HomePageWikidex extends MetodosGenericos {
+public class BusquedaPageWikidex extends MetodosGenericos {
 
     /**
      * Variables
      */
 
-    private String atributoLogo = "enabled";
     private AppiumDriver driver;
 
     /**
      * Constructor
      */
 
-    public HomePageWikidex(){
+    public BusquedaPageWikidex(){
         this.driver = DriverContext.getDriver();
         PageFactory.initElements(new AppiumFieldDecorator(driver),this);
     }
@@ -32,31 +31,25 @@ public class HomePageWikidex extends MetodosGenericos {
      * Objetos
      */
 
-    @AndroidFindBy(xpath = "//*[@class='android.widget.Image']")
-    private MobileElement imagen;
-    @AndroidFindBy(xpath = "//*[@text='Bienvenido a WikiDex']")
-    private MobileElement mensaje;
-    @AndroidFindBy(id = "net.wikidex.www.wikidex:id/action_search")
-    private MobileElement lupa;
+    @AndroidFindBy(id = "net.wikidex.www.wikidex:id/search_src_text")
+    private MobileElement casillaTexto;
+    @AndroidFindBy(xpath = "//*[@class='android.widget.TextView']")
+    private List<MobileElement> listaResultados;
 
     /**
      * Acciones
      */
 
-    public String cargaImagen(){
-        esperarElemento(imagen);
-        return inspeccionarElemento(atributoLogo,imagen);
+    public void llenarCasilla(String palabra){
+        llenarCampo(casillaTexto,palabra);
+        quitarTeclado();
     }
 
-    public String contenidoTexto(){
-        return retornarTexto(mensaje);
+    public int cantidadDeResultados(){
+        return contarElementos(listaResultados);
     }
 
-    public void clickBuscar(){
-        darClick(lupa);
+    public void clickPrimerElemento(){
+        seleccionarPrimerElemento(listaResultados);
     }
-
-
-
-
 }

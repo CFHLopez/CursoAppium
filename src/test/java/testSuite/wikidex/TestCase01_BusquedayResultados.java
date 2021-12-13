@@ -5,7 +5,9 @@ import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+import pages.wikidexPages.BusquedaPageWikidex;
 import pages.wikidexPages.HomePageWikidex;
+import pages.wikidexPages.ResultadoPageWikidex;
 
 import static conexion.DriverContext.setUp;
 import static reports.Report.finalAssert;
@@ -13,6 +15,7 @@ import static reports.Report.finalAssert;
 public class TestCase01_BusquedayResultados{
 
     protected HomePageWikidex homePageWikidex = null;
+    protected BusquedaPageWikidex busquedaPageWikidex = null;
     // DISPOSITIVO VIRTUAL
     // private String nombreDispositivo = "emulator-5554";
     // private String udId = "emulator-5554";
@@ -62,28 +65,13 @@ public class TestCase01_BusquedayResultados{
 
     @Test(priority = 3,description = "Llenar casilla de texto")
     public void llenarCasillaTexto(){
-        homePageWikidex = new HomePageWikidex();
-        homePageWikidex.llenarCasilla("Rayquaza");
+        busquedaPageWikidex = new BusquedaPageWikidex();
+        busquedaPageWikidex.llenarCasilla("Rayquaza");
     }
 
     @Test(priority = 4,description = "Validar cantidad resultados mayor a 1")
     public void validarCantidadResultados(){
-        homePageWikidex = new HomePageWikidex();
-        Assert.assertTrue(homePageWikidex.cantidadDeResultados()>1);
+        busquedaPageWikidex = new BusquedaPageWikidex();
+        Assert.assertTrue(busquedaPageWikidex.cantidadDeResultados()>1);
     }
-    /*
-    @Test(priority = 4,description = "Seleccionar Elemento de Resultados")
-    public void selecionarElemento(){
-        homePageWikidex = new HomePageWikidex();
-        homePageWikidex.clickElemento("Rayquaza");
-    }
-
-    @Test(priority = 5,description = "Validar resultado")
-    public void validarResultado(){
-        homePageWikidex = new HomePageWikidex();
-        Assert.assertTrue(homePageWikidex.textoResultado().contains("Rayquaza"));
-        finalAssert();
-    }
-
-     */
 }

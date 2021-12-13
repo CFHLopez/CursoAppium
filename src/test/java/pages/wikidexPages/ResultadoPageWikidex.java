@@ -8,22 +8,20 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.PageFactory;
 import utils.MetodosGenericos;
 
-import java.util.List;
-
-public class HomePageWikidex extends MetodosGenericos {
+public class ResultadoPageWikidex extends MetodosGenericos {
 
     /**
      * Variables
      */
 
-    private String atributoLogo = "enabled";
     private AppiumDriver driver;
+    private String atributoImagen = "enabled";
 
     /**
      * Constructor
      */
 
-    public HomePageWikidex(){
+    public ResultadoPageWikidex(){
         this.driver = DriverContext.getDriver();
         PageFactory.initElements(new AppiumFieldDecorator(driver),this);
     }
@@ -32,31 +30,19 @@ public class HomePageWikidex extends MetodosGenericos {
      * Objetos
      */
 
-    @AndroidFindBy(xpath = "//*[@class='android.widget.Image']")
+    @AndroidFindBy(xpath = "//*[@class='android.widget.Image' and contains(text(),'Rayquaza')]")
     private MobileElement imagen;
-    @AndroidFindBy(xpath = "//*[@text='Bienvenido a WikiDex']")
-    private MobileElement mensaje;
-    @AndroidFindBy(id = "net.wikidex.www.wikidex:id/action_search")
-    private MobileElement lupa;
+    @AndroidFindBy(xpath = "//*[@class='android.widget.TextView' and contains(text(),'Rayquaza')")
+    private MobileElement texto;
 
     /**
      * Acciones
      */
-
-    public String cargaImagen(){
+    public String esperarCargaImagen(){
         esperarElemento(imagen);
-        return inspeccionarElemento(atributoLogo,imagen);
+        return inspeccionarElemento(atributoImagen,imagen);
     }
-
-    public String contenidoTexto(){
-        return retornarTexto(mensaje);
+    public String textoResultado(){
+        return retornarTexto(texto);
     }
-
-    public void clickBuscar(){
-        darClick(lupa);
-    }
-
-
-
-
 }
