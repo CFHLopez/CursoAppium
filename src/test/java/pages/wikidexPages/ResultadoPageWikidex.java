@@ -30,7 +30,7 @@ public class ResultadoPageWikidex extends MetodosGenericos {
      * Objetos
      */
 
-    @AndroidFindBy(xpath = "//*[@class='android.widget.Image' and contains(text(),'Rayquaza')]")
+    @AndroidFindBy(xpath = "//*[contains(text(),'Ilustración de Rayquaza')]")
     private MobileElement imagen;
     @AndroidFindBy(xpath = "//*[@class='android.widget.TextView' and contains(text(),'Rayquaza')")
     private MobileElement texto;
