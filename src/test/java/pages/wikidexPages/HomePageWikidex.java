@@ -38,14 +38,10 @@ public class HomePageWikidex extends MetodosGenericos {
     private MobileElement mensaje;
     @AndroidFindBy(id = "net.wikidex.www.wikidex:id/action_search")
     private MobileElement lupa;
-    @AndroidFindBy(id = "net.wikidex.www.wikidex:id/setting")
-    private MobileElement ajustes;
-    @AndroidFindBy(xpath = "//android.widget.Switch[@resource-id='net.wikidex.www.wikidex:id/nightMode']")
-    private MobileElement modoNocturno;
-    @AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc='Navegar hacia arriba']")
-    private MobileElement menu;
-    @AndroidFindBy(xpath = "//*[@class='android.widget.CheckedTextView']")
-    private List <MobileElement> opcionesMenu;
+    @AndroidFindBy(id = "net.wikidex.www.wikidex:id/search_src_text")
+    private MobileElement casillaTexto;
+    @AndroidFindBy(xpath = "//*[@class='android.widget.TextView']")
+    private List<MobileElement> listaResultados;
 
     /**
      * Acciones
@@ -64,20 +60,16 @@ public class HomePageWikidex extends MetodosGenericos {
         darClick(lupa);
     }
 
-    public void clickAjustes(){
-        darClick(ajustes);
+    public void llenarCasilla(String palabra){
+        llenarCampo(casillaTexto,palabra);
     }
 
-    public void clickModoNocturno(){
-        darClick(modoNocturno);
+    public int cantidadDeResultados(){
+        quitarTeclado();
+        return contarElementos(listaResultados);
     }
 
-    public void clickMenu(){
-        darClick(menu);
-    }
-
-    public void clickEn(String opcion){
-        seleccionarElemento(opcionesMenu,opcion);
-
+    public void clickPrimerElemento(){
+        seleccionarPrimerElemento(listaResultados);
     }
 }

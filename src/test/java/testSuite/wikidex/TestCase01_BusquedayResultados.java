@@ -6,9 +6,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.wikidexPages.BusquedaPageWikidex;
 import pages.wikidexPages.HomePageWikidex;
-import pages.wikidexPages.ResultadoPageWikidex;
 
 import static conexion.DriverContext.setUp;
 import static reports.Report.finalAssert;
@@ -16,7 +14,6 @@ import static reports.Report.finalAssert;
 public class TestCase01_BusquedayResultados{
 
     protected HomePageWikidex homePageWikidex = null;
-    protected BusquedaPageWikidex busquedaPageWikidex = null;
     // DISPOSITIVO VIRTUAL
     // private String nombreDispositivo = "emulator-5554";
     // private String udId = "emulator-5554";
@@ -67,13 +64,14 @@ public class TestCase01_BusquedayResultados{
 
     @Test(priority = 3,description = "Llenar casilla de texto")
     public void llenarCasillaTexto(){
-        busquedaPageWikidex = new BusquedaPageWikidex();
-        busquedaPageWikidex.llenarCasilla("Rayquaza");
+        homePageWikidex = new HomePageWikidex();
+        homePageWikidex.llenarCasilla("Rayquaza");
     }
 
     @Test(priority = 4,description = "Validar cantidad resultados mayor a 1")
     public void validarCantidadResultados(){
-        busquedaPageWikidex = new BusquedaPageWikidex();
-        Assert.assertTrue(busquedaPageWikidex.cantidadDeResultados()>1);
+        homePageWikidex = new HomePageWikidex();
+        Assert.assertTrue(homePageWikidex.cantidadDeResultados()>1);
+        finalAssert();
     }
 }

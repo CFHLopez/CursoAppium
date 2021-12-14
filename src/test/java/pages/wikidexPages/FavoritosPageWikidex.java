@@ -38,16 +38,10 @@ public class FavoritosPageWikidex extends MetodosGenericos {
     private MobileElement btnEliminar;
     @AndroidFindBy(xpath = "//*[@resource-id='net.wikidex.www.wikidex:id/header']")
     private MobileElement noHayFavoritos;
-    @AndroidFindBy(xpath = "//*[@resource-id='net.wikidex.www.wikidex:id/textTitle']")
-    private MobileElement pagina;
 
     /**
      * Acciones
      */
-
-    public String esperaPagina(String palabra){
-        return esperarPagina(pagina,palabra);
-    }
 
     public int cantidadPaginasGuardadas(){
         return contarElementos(paginasGuardadas);

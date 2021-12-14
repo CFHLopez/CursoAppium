@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.wikidexPages.FavoritosPageWikidex;
 import pages.wikidexPages.HomePageWikidex;
+import pages.wikidexPages.MenuPageWikidex;
 import pages.wikidexPages.ResultadoPageWikidex;
 
 import static conexion.DriverContext.setUp;
@@ -15,6 +16,7 @@ import static reports.Report.finalAssert;
 public class TestCase03_AgregarQuitarFavoritosModoNocturno {
 
     protected HomePageWikidex homePageWikidex = null;
+    protected MenuPageWikidex menuPageWikidex = null;
     protected ResultadoPageWikidex resultadoPageWikidex = null;
     protected FavoritosPageWikidex favoritosPageWikidex = null;
     // DISPOSITIVO VIRTUAL
@@ -61,32 +63,31 @@ public class TestCase03_AgregarQuitarFavoritosModoNocturno {
 
     @Test(priority = 2, description = "Cambiar a modo nocturno")
     public void cambiarModoNocturno(){
-        homePageWikidex = new HomePageWikidex();
-        homePageWikidex.clickAjustes();
-        homePageWikidex.clickModoNocturno();
+        menuPageWikidex = new MenuPageWikidex();
+        menuPageWikidex.clickAjustes();
+        menuPageWikidex.clickModoNocturno();
     }
 
     @Test(priority = 3, description = "Ir a una pagina aleatoria")
     public void irPaginaAleatoria(){
-        homePageWikidex = new HomePageWikidex();
-        homePageWikidex.clickMenu();
-        homePageWikidex.clickEn("Página aleatoria");
+        menuPageWikidex = new MenuPageWikidex();
+        menuPageWikidex.clickMenu();
+        menuPageWikidex.clickEn("Página aleatoria");
     }
 
     @Test(priority = 4, description = "Agregar página a favoritos")
     public void agregarPaginaFavoritos(){
-        resultadoPageWikidex = new ResultadoPageWikidex();
-        resultadoPageWikidex.clickMasOpciones();
-        resultadoPageWikidex.clickEn("Guardar");
+        menuPageWikidex = new MenuPageWikidex();
+        menuPageWikidex.clickMasOpciones();
+        menuPageWikidex.elegirOpcion("Guardar");
     }
 
     @Test(priority = 5, description = "Ver favoritos")
     public void verFavoritos(){
-        homePageWikidex = new HomePageWikidex();
-        homePageWikidex.clickMenu();
-        homePageWikidex.clickEn("Favoritos");
-        favoritosPageWikidex = new FavoritosPageWikidex();
-        softAssert.assertEquals(favoritosPageWikidex.esperaPagina("Favoritos"),"Encontrada");
+        menuPageWikidex = new MenuPageWikidex();
+        menuPageWikidex.clickMenu();
+        menuPageWikidex.clickEn("Favoritos");
+        softAssert.assertEquals(menuPageWikidex.esperarPagina("Favoritos"),"Encontrada");
         finalAssert();
     }
 

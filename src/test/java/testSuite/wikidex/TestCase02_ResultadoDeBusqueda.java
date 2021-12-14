@@ -1,12 +1,11 @@
 package testSuite.wikidex;
 
 import conexion.DriverContext;
-import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.wikidexPages.BusquedaPageWikidex;
+import pages.wikidexPages.MenuPageWikidex;
 import pages.wikidexPages.HomePageWikidex;
 import pages.wikidexPages.ResultadoPageWikidex;
 
@@ -16,7 +15,7 @@ import static reports.Report.finalAssert;
 public class TestCase02_ResultadoDeBusqueda {
 
     protected HomePageWikidex homePageWikidex = null;
-    protected BusquedaPageWikidex busquedaPageWikidex = null;
+    protected MenuPageWikidex menuPageWikidex = null;
     protected ResultadoPageWikidex resultadoPageWikidex = null;
     // DISPOSITIVO VIRTUAL
     // private String nombreDispositivo = "emulator-5554";
@@ -68,20 +67,21 @@ public class TestCase02_ResultadoDeBusqueda {
 
     @Test(priority = 3, description = "Llenar casilla de texto")
     public void llenarCasillaTexto(){
-        busquedaPageWikidex = new BusquedaPageWikidex();
-        busquedaPageWikidex.llenarCasilla("Rayquaza");
+        homePageWikidex = new HomePageWikidex();
+        homePageWikidex.llenarCasilla("Rayquaza");
     }
 
     @Test(priority = 4, description = "Seleccionar Elemento de Resultados")
     public void selecionarElemento(){
-        busquedaPageWikidex = new BusquedaPageWikidex();
-        busquedaPageWikidex.clickPrimerElemento();
+        homePageWikidex = new HomePageWikidex();
+        homePageWikidex.clickPrimerElemento();
     }
 
     @Test(priority = 5, description = "Validar pagina resultado visible")
     public void validarBusqueda(){
         resultadoPageWikidex = new ResultadoPageWikidex();
-        softAssert.assertEquals(resultadoPageWikidex.esperarContenedor("Rayquaza"),"Encontrada");
+        menuPageWikidex = new MenuPageWikidex();
+        softAssert.assertEquals(menuPageWikidex.esperarPagina("Rayquaza"),"Encontrada");
         softAssert.assertEquals(resultadoPageWikidex.textoResultado("Rayquaza"),"Encontrado");
         finalAssert();
     }
