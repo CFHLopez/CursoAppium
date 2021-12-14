@@ -65,7 +65,7 @@ public class MetodosGenericos {
     }
 
     public String inspeccionarElemento(String atributo, MobileElement elemento){
-        System.out.println("estado elemento: "+elemento.getAttribute(atributo));
+        System.out.println("estado "+atributo+": "+elemento.getAttribute(atributo));
         if(elemento.getAttribute(atributo).contains("true")){
             esperaIxplicita();
             addStep("Elemento visible", true, Status.PASSED,false);
