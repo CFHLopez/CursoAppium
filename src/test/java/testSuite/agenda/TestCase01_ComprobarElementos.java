@@ -68,4 +68,12 @@ public class TestCase01_ComprobarElementos {
         softAssert.assertEquals(homePageAgenda.iconoAgregarClickeable(),"visible");
         finalAssert();
     }
+
+    @Test(priority = 3, description = "Validar textos en elementos")
+    public void validarTextos(){
+        homePageAgenda = new HomePageAgenda();
+        softAssert.assertEquals(homePageAgenda.textoVisibleSeccion(),"Diario");
+        softAssert.assertEquals(homePageAgenda.textoVisibleGrupo(),"Todo");
+        finalAssert();
+    }
 }

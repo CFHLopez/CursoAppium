@@ -33,7 +33,7 @@ public class HomePageAgenda extends MetodosGenericos {
 
     @AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc='Mi Agenda']")
     private MobileElement iconoMenu;
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Diario']")
+    @AndroidFindBy(xpath = "//android.widget.TextView")
     private MobileElement textoSeccion;
     @AndroidFindBy(xpath = "//*[@content-desc='Buscar']")
     private MobileElement iconoBuscar;
@@ -60,8 +60,16 @@ public class HomePageAgenda extends MetodosGenericos {
        return inspeccionarElemento(atributoEnabled,textoSeccion);
    }
 
+   public String textoVisibleSeccion(){
+       return retornarTexto(textoSeccion);
+   }
+
    public String textoGrupoVisible(){
        return inspeccionarElemento(atributoEnabled,txtGrupo);
+   }
+
+   public String textoVisibleGrupo(){
+       return retornarTexto(txtGrupo);
    }
 
    public String iconoBuscarVisible(){
