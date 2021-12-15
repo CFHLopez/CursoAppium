@@ -24,9 +24,10 @@ public class TestCase01_ComprobarElementos {
     // PC PERSONAL
     // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\My Personal Agenda_v6.4.1com.apk";
     private String appWaitAct = "com.tambucho.miagenda.*";
-    // DISPOSITIVO VIRTUAL
-    // TRUE  -> VIRTUAL
-    // FALSE -> REAL
+    /** DISPOSITIVO
+     * TRUE     ->      VIRTUAL
+     * FALSE    ->      REAL
+     */
     private boolean emulador = true;
     private SoftAssert softAssert = new SoftAssert();
     protected HomePageAgenda homePageAgenda = null;

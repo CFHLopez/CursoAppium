@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -55,16 +56,16 @@ public class MetodosGenericos {
         }
     }
 
-    public void esperarElemento(MobileElement elemento){
+    protected void esperarElemento(MobileElement elemento){
         WebDriverWait wait = new WebDriverWait(DriverContext.getDriver(),segundos);
         wait.until(ExpectedConditions.visibilityOf(elemento));
     }
 
-    public void llenarCampo(MobileElement campo, String contenido){
+    protected void llenarCampo(MobileElement campo, String contenido){
         campo.sendKeys(contenido);
     }
 
-    public String inspeccionarElemento(String atributo, MobileElement elemento){
+    protected String inspeccionarElemento(String atributo, MobileElement elemento){
         System.out.println("estado "+atributo+": "+elemento.getAttribute(atributo));
         if(elemento.getAttribute(atributo).contains("true")){
             esperaIxplicita();
@@ -77,7 +78,7 @@ public class MetodosGenericos {
         }
     }
 
-    public void darClick(MobileElement elemento){
+    protected void darClick(MobileElement elemento){
         if(esperarObjeto(elemento)){
             elemento.click();
             esperaIxplicita();
@@ -88,7 +89,7 @@ public class MetodosGenericos {
         }
     }
 
-    public String retornarTexto(MobileElement elemento){
+    protected String retornarTexto(MobileElement elemento){
         esperaIxplicita();
         // System.out.println(elemento.getText());
         if (esperarObjeto(elemento)){
@@ -99,7 +100,7 @@ public class MetodosGenericos {
         }
     }
 
-    public void seleccionarElemento(List<MobileElement> lista, String palabra){
+    protected void seleccionarElemento(List<MobileElement> lista, String palabra){
         // Recorremos la lista hasta encontrar la palabra requerida
         System.out.println("Recorrer lista hasta encontrar: "+palabra);
         System.out.println("Cantidad elementos: "+lista.size());
@@ -114,19 +115,19 @@ public class MetodosGenericos {
         }
     }
 
-    public void seleccionarPrimerElemento(List<MobileElement> lista){
+    protected void seleccionarPrimerElemento(List<MobileElement> lista){
         for (MobileElement elemento: lista){
             darClick(elemento);
             break;
         }
     }
 
-    public int contarElementos(List<MobileElement> lista){
+    protected int contarElementos(List<MobileElement> lista){
         addStep("Elementos de la lista", true, Status.PASSED,false);
         return lista.size();
     }
 
-    public String encontrarContenido(List<MobileElement> lista, String palabra){
+    protected String encontrarContenido(List<MobileElement> lista, String palabra){
         String resultado = "No Encontrado";
         for (MobileElement elemento: lista){
             if (elemento.getText().contains(palabra)){
@@ -138,13 +139,13 @@ public class MetodosGenericos {
         return resultado;
     }
 
-    public void recorrerLista(List<MobileElement> lista){
+    protected void recorrerLista(List<MobileElement> lista){
         for (MobileElement elemento: lista){
             System.out.println("texto: "+elemento.getText());
         }
     }
 
-    public String esperarPagina(MobileElement elemento, String palabra){
+    protected String esperarPagina(MobileElement elemento, String palabra){
         while (!elemento.getText().contains(palabra)){
             System.out.println("pagina: "+ elemento.getText());
             esperaIxplicita();
@@ -152,15 +153,20 @@ public class MetodosGenericos {
         return "Encontrada";
     }
 
-    public void esperarPaginaAleatoria(MobileElement elemento){
+    protected void esperarPaginaAleatoria(MobileElement elemento){
         while (elemento.getText().contains("WikiDex")){
             System.out.println("pagina: "+ elemento.getText());
             esperaIxplicita();
         }
     }
 
-
-    public void quitarTeclado(){
+    protected void quitarTeclado(){
         this.driver.hideKeyboard();
+    }
+
+    protected String retornarDiaActual(){
+        Calendar calendario = Calendar.getInstance();
+        String dia = Integer.toString(calendario.get(Calendar.DATE));
+        return dia;
     }
 }

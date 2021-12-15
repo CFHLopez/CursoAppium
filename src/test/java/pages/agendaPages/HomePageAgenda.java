@@ -99,4 +99,16 @@ public class HomePageAgenda extends MetodosGenericos {
    public String iconoAgregarClickeable(){
        return inspeccionarElemento(atributoClickable,iconoAdd);
    }
+
+   public void darClickAgregar(){
+       darClick(iconoAdd);
+   }
+
+    public void darClickMenu(){
+        darClick(iconoMenu);
+    }
+
+    public void menuDarClickEn(String campo){
+       seleccionarElemento(listaMenu,campo);
+    }
 }
