@@ -8,6 +8,8 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.PageFactory;
 import utils.MetodosGenericos;
 
+import java.util.List;
+
 public class HomePageAgenda extends MetodosGenericos {
 
     /**
@@ -43,6 +45,8 @@ public class HomePageAgenda extends MetodosGenericos {
     private MobileElement txtGrupo;
     @AndroidFindBy(xpath = "//*[@resource-id='com.tambucho.miagenda.trial:id/FabAdd']")
     private MobileElement iconoAdd;
+    @AndroidFindBy(xpath = "//*[@resource-id='com.tambucho.miagenda.trial:id/TxtTitulo']")
+    private List <MobileElement> listaMenu;
 
     /**
      * Acciones
