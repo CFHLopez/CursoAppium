@@ -33,6 +33,8 @@ public class DiarioPageAgenda extends MetodosGenericos {
      * Objetos
      */
 
+    @AndroidFindBy(xpath = "//*[@resource-id='com.tambucho.miagenda.trial:id/FabFiltro']")
+    private MobileElement iconoFiltro;
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='com.tambucho.miagenda.trial:id/TxtFecha']")
     private MobileElement fechaCreada;
     @AndroidFindBy(xpath = "//android.view.View[@checked='true']")
@@ -57,6 +59,14 @@ public class DiarioPageAgenda extends MetodosGenericos {
     /**
      * Acciones
      */
+
+    public String iconoFiltroVisible(){
+        return inspeccionarElemento(atributoEnabled,iconoFiltro);
+    }
+
+    public String iconoFiltroClickeable(){
+        return inspeccionarElemento(atributoClickable,iconoFiltro);
+    }
 
     public void darClickFechaCreada(){
         darClick(fechaCreada);

@@ -39,8 +39,6 @@ public class HomePageAgenda extends MetodosGenericos {
     private MobileElement textoSeccion;
     @AndroidFindBy(xpath = "//*[@content-desc='Buscar']")
     private MobileElement iconoBuscar;
-    @AndroidFindBy(xpath = "//*[@resource-id='com.tambucho.miagenda.trial:id/FabFiltro']")
-    private MobileElement iconoFiltro;
     @AndroidFindBy(xpath = "//*[@resource-id='com.tambucho.miagenda.trial:id/TxtGrupo']")
     private MobileElement txtGrupo;
     @AndroidFindBy(xpath = "//*[@resource-id='com.tambucho.miagenda.trial:id/FabAdd']")
@@ -82,14 +80,6 @@ public class HomePageAgenda extends MetodosGenericos {
 
    public String iconoBuscarClickeable(){
        return inspeccionarElemento(atributoClickable,iconoBuscar);
-   }
-
-   public String iconoFiltroVisible(){
-       return inspeccionarElemento(atributoEnabled,iconoFiltro);
-   }
-
-   public String iconoFiltroClickeable(){
-       return inspeccionarElemento(atributoClickable,iconoFiltro);
    }
 
    public String iconoAgregarVisible(){
