@@ -51,6 +51,12 @@ public class DiarioPageAgenda extends MetodosGenericos {
     private MobileElement txtMes;
     @AndroidFindBy(xpath = "//*[@resource-id='com.tambucho.miagenda.trial:id/TxtAno']")
     private MobileElement txtAno;
+    @AndroidFindBy(xpath = "//*[@content-desc='Exportar a Pdf']")
+    private MobileElement iconoPDF;
+    @AndroidFindBy(xpath = "//*[@content-desc='Color de Fondo']")
+    private MobileElement iconoColor;
+    @AndroidFindBy(xpath = "//*[@resource-id='com.tambucho.miagenda.trial:id/FabEdit']")
+    private MobileElement btnEditar;
     @AndroidFindBy(xpath = "//*[@resource-id='com.tambucho.miagenda.trial:id/LayoutColor']")
     private List<MobileElement> listaDocsDiario;
 
@@ -108,5 +114,29 @@ public class DiarioPageAgenda extends MetodosGenericos {
 
     public String textoDoc(){
         return retornarTexto(txtTexto);
+    }
+
+    public String iconoPDFVisible(){
+        return inspeccionarElemento(atributoEnabled,iconoPDF);
+    }
+
+    public String iconoPDFClickeable(){
+        return inspeccionarElemento(atributoClickable,iconoPDF);
+    }
+
+    public String iconoColorVisible(){
+        return inspeccionarElemento(atributoEnabled,iconoColor);
+    }
+
+    public String iconoColorClickeable(){
+        return inspeccionarElemento(atributoClickable,iconoColor);
+    }
+
+    public String btnEditarVisible(){
+        return inspeccionarElemento(atributoEnabled,btnEditar);
+    }
+
+    public String btnEditarClickeable(){
+        return inspeccionarElemento(atributoClickable,btnEditar);
     }
 }

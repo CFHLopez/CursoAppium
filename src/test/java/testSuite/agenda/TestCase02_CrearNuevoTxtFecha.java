@@ -86,7 +86,19 @@ public class TestCase02_CrearNuevoTxtFecha {
         diarioPageAgenda.darClickOk();
     }
 
-    @Test(priority = 5, description = "Ir a home Diario")
+    @Test(priority = 5, description = "Validar nuevos botones visibles")
+    public void validarNuevosBotonesVisibles(){
+        diarioPageAgenda = new DiarioPageAgenda();
+        softAssert.assertEquals(diarioPageAgenda.iconoPDFVisible(), atributoOk);
+        softAssert.assertEquals(diarioPageAgenda.iconoColorVisible(), atributoOk);
+        softAssert.assertEquals(diarioPageAgenda.btnEditarVisible(), atributoOk);
+        softAssert.assertEquals(diarioPageAgenda.iconoPDFClickeable(), atributoOk);
+        softAssert.assertEquals(diarioPageAgenda.iconoColorClickeable(), atributoOk);
+        softAssert.assertEquals(diarioPageAgenda.btnEditarClickeable(), atributoOk);
+        finalAssert();
+    }
+
+    @Test(priority = 6, description = "Ir a home Diario")
     public void irHomeDiario() {
         homePageAgenda = new HomePageAgenda();
         softAssert.assertEquals(homePageAgenda.iconoMenuVisible(), atributoOk);
@@ -96,7 +108,7 @@ public class TestCase02_CrearNuevoTxtFecha {
         finalAssert();
     }
 
-    @Test(priority = 6, description = "Validar datos creados")
+    @Test(priority = 7, description = "Validar datos creados")
     public void validarDatosCreados(){
         diarioPageAgenda = new DiarioPageAgenda();
         softAssert.assertEquals(diarioPageAgenda.cantidadDocs(),1);
