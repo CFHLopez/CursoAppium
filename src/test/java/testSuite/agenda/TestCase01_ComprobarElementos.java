@@ -5,6 +5,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import pages.agendaPages.DiarioPageAgenda;
 import pages.agendaPages.HomePageAgenda;
 
 import static conexion.DriverContext.setUp;
@@ -31,6 +32,7 @@ public class TestCase01_ComprobarElementos {
     private boolean emulador = true;
     private SoftAssert softAssert = new SoftAssert();
     protected HomePageAgenda homePageAgenda = null;
+    protected DiarioPageAgenda diarioPageAgenda = null;
 
     @BeforeSuite
     public void iniciarSeccion(){
@@ -51,10 +53,11 @@ public class TestCase01_ComprobarElementos {
     @Test(priority = 1, description = "Validar elementos visibles")
     public void validarElementosVisibles(){
         homePageAgenda = new HomePageAgenda();
+        diarioPageAgenda = new DiarioPageAgenda();
         softAssert.assertEquals(homePageAgenda.iconoMenuVisible(),"visible");
         softAssert.assertEquals(homePageAgenda.textoSeccionVisible(),"visible");
         softAssert.assertEquals(homePageAgenda.iconoBuscarVisible(),"visible");
-        softAssert.assertEquals(homePageAgenda.iconoFiltroVisible(),"visible");
+        softAssert.assertEquals(diarioPageAgenda.iconoFiltroVisible(),"visible");
         softAssert.assertEquals(homePageAgenda.textoGrupoVisible(),"visible");
         softAssert.assertEquals(homePageAgenda.iconoAgregarVisible(),"visible");
         finalAssert();
@@ -63,9 +66,10 @@ public class TestCase01_ComprobarElementos {
     @Test(priority = 2, description = "Validar elementos clickeables")
     public void validarElementosClickeables(){
         homePageAgenda = new HomePageAgenda();
+        diarioPageAgenda = new DiarioPageAgenda();
         softAssert.assertEquals(homePageAgenda.iconoMenuClickeable(),"visible");
         softAssert.assertEquals(homePageAgenda.iconoBuscarClickeable(),"visible");
-        softAssert.assertEquals(homePageAgenda.iconoFiltroClickeable(),"visible");
+        softAssert.assertEquals(diarioPageAgenda.iconoFiltroClickeable(),"visible");
         softAssert.assertEquals(homePageAgenda.iconoAgregarClickeable(),"visible");
         finalAssert();
     }
