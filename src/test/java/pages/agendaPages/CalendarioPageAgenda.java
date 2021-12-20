@@ -1,0 +1,76 @@
+package pages.agendaPages;
+
+import conexion.DriverContext;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.support.PageFactory;
+import utils.MetodosGenericos;
+
+import java.util.List;
+
+public class CalendarioPageAgenda extends MetodosGenericos {
+
+    /**
+     * Variables
+     */
+
+    private AppiumDriver driver;
+    private String atributoEnabled = "enabled";
+    private String atributoClickable = "clickable";
+
+    /**
+     * Constructor
+     */
+
+    public CalendarioPageAgenda(){
+        this.driver = DriverContext.getDriver();
+        PageFactory.initElements(new AppiumFieldDecorator(driver),this);
+    }
+
+    /**
+     * Objetos
+     */
+
+    @AndroidFindBy(xpath = "//*[@resource-id='android:id/date_picker_header_year']")
+    private MobileElement txtAno;
+    @AndroidFindBy(xpath = "//android.view.View[@checked='true']")
+    private MobileElement diaFecha;
+    @AndroidFindBy(xpath = "//*[@resource-id='android:id/date_picker_header_date']")
+    private MobileElement txtFecha;
+    @AndroidFindBy(xpath = "//*[@resource-id='android:id/prev']")
+    private MobileElement btnPrev;
+    @AndroidFindBy(xpath = "//*[@class='android.view.View']")
+    private List <MobileElement> listaDiasMes;
+    @AndroidFindBy(xpath = "//*[@resource-id='android:id/text1']")
+    private List <MobileElement> listaAnos;
+
+    /**
+     * Acciones
+     */
+
+    public String fechaDocumento(){
+        return retornarTexto(diaFecha);
+    }
+
+    public String txtAnoVisible(){
+        return inspeccionarElemento(atributoEnabled,txtAno);
+    }
+
+    public String txtAnoClickeable(){
+        return inspeccionarElemento(atributoClickable,txtAno);
+    }
+
+    public void darClickTxtAno(){
+        darClick(txtAno);
+    }
+
+    public void selecionarJulio(){
+        seleccionarMesJulio(listaDiasMes,btnPrev,txtFecha);
+    }
+
+    public void seleccionarAno(String anoSelecionado){
+        seleccionarElemento(listaAnos, anoSelecionado);
+    }
+}

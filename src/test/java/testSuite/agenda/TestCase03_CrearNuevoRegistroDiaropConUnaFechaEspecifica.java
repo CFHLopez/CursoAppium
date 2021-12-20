@@ -12,7 +12,7 @@ import pages.agendaPages.HomePageAgenda;
 import static conexion.DriverContext.setUp;
 import static reports.Report.finalAssert;
 
-public class TestCase02_CrearNuevoTxtFecha {
+public class TestCase03_CrearNuevoRegistroDiaropConUnaFechaEspecifica {
 
     // DISPOSITIVO VIRTUAL
     // private String nombreDispositivo = "emulator-5554";
@@ -62,46 +62,34 @@ public class TestCase02_CrearNuevoTxtFecha {
         finalAssert();
     }
 
-    @Test(priority = 2, description = "Validar que el dia coincida con el actual")
-    public void validarDiaDocumento(){
+    @Test(priority = 2, description = "Cambiar fecha Creada")
+    public void cambiarFechaCreada(){
         diarioPageAgenda = new DiarioPageAgenda();
         calendarioPageAgenda = new CalendarioPageAgenda();
         diarioPageAgenda.darClickFechaCreada();
-        softAssert.assertEquals(calendarioPageAgenda.fechaDocumento(),diarioPageAgenda.diaActual());
+        calendarioPageAgenda.selecionarJulio();
+        calendarioPageAgenda.darClickTxtAno();
+        calendarioPageAgenda.seleccionarAno("2022");
         diarioPageAgenda.darClickOk();
-        finalAssert();
     }
 
-    @Test(priority = 3, description = "Validar click agregar texto")
-    public void validarClickAgregarTexto(){
+    @Test(priority = 3, description = "Agregar Texto")
+    public void agregarTexto(){
         diarioPageAgenda = new DiarioPageAgenda();
-        softAssert.assertEquals(diarioPageAgenda.agregarTextoVisible(),atributoOk);
-        softAssert.assertEquals(diarioPageAgenda.agregarTextoClickeable(),atributoOk);
         diarioPageAgenda.darClickAgregarTexto();
-        finalAssert();
-    }
-
-    @Test(priority = 4, description = "Ingresar texto")
-    public void ingresarTexto(){
-        diarioPageAgenda = new DiarioPageAgenda();
-        diarioPageAgenda.escribirTexto("Nuevo txt creado");
+        diarioPageAgenda.escribirTexto("Se selecciona fecha 15 de julio 2022");
         diarioPageAgenda.darClickOk();
         diarioPageAgenda.darClickOk();
     }
 
-    @Test(priority = 5, description = "Validar nuevos botones visibles")
-    public void validarNuevosBotonesVisibles(){
+    @Test(priority = 4, description = "Cambiar color")
+    public void cambiarColor(){
         diarioPageAgenda = new DiarioPageAgenda();
-        softAssert.assertEquals(diarioPageAgenda.iconoPDFVisible(), atributoOk);
-        softAssert.assertEquals(diarioPageAgenda.iconoColorVisible(), atributoOk);
-        softAssert.assertEquals(diarioPageAgenda.btnEditarVisible(), atributoOk);
-        softAssert.assertEquals(diarioPageAgenda.iconoPDFClickeable(), atributoOk);
-        softAssert.assertEquals(diarioPageAgenda.iconoColorClickeable(), atributoOk);
-        softAssert.assertEquals(diarioPageAgenda.btnEditarClickeable(), atributoOk);
-        finalAssert();
+        diarioPageAgenda.darClickIconoColor();
+        diarioPageAgenda.seleccionarColorAleatorio();
     }
 
-    @Test(priority = 6, description = "Ir a home Diario")
+    @Test(priority = 5, description = "Ir a home Diario")
     public void irHomeDiario() {
         homePageAgenda = new HomePageAgenda();
         softAssert.assertEquals(homePageAgenda.iconoMenuVisible(), atributoOk);
@@ -115,10 +103,10 @@ public class TestCase02_CrearNuevoTxtFecha {
     public void validarDatosCreados(){
         diarioPageAgenda = new DiarioPageAgenda();
         softAssert.assertEquals(diarioPageAgenda.cantidadDocs(),1);
-        softAssert.assertEquals(diarioPageAgenda.textoDoc(),"Nuevo txt creado");
+        softAssert.assertEquals(diarioPageAgenda.textoDoc(),"Se selecciona fecha 15 de julio 2022");
         softAssert.assertTrue(diarioPageAgenda.diaDoc().contains("15"));
-        softAssert.assertTrue(diarioPageAgenda.mesDoc().contains("Dic"));
-        softAssert.assertEquals(diarioPageAgenda.anoDoc(),"2021");
+        softAssert.assertTrue(diarioPageAgenda.mesDoc().contains("Jul"));
+        softAssert.assertEquals(diarioPageAgenda.anoDoc(),"2022");
         finalAssert();
     }
 }

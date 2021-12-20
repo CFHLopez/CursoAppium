@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import static reports.Report.addStep;
@@ -115,6 +117,27 @@ public class MetodosGenericos {
         }
     }
 
+    protected void seleccionarAleatorio(List<MobileElement> lista){
+        System.out.println("Cantidad elementos: "+lista.size());
+        int numeroAleatorio = generarNumeroAleatorio(1,lista.size());
+        System.out.println("Numero aleatorio: "+numeroAleatorio);
+        int num = 0;
+        for (MobileElement elemento: lista){
+            if (num == numeroAleatorio){
+                darClick(elemento);
+                break;
+            }
+            num++;
+        }
+    }
+
+    protected void seleccionarMesJulio(List<MobileElement> lista, MobileElement btn, MobileElement fecha){
+        while (!fecha.getText().contains("jul")){
+            btn.click();
+            seleccionarElemento(lista,"15");
+        }
+    }
+
     protected void seleccionarPrimerElemento(List<MobileElement> lista){
         for (MobileElement elemento: lista){
             darClick(elemento);
@@ -169,4 +192,10 @@ public class MetodosGenericos {
         String dia = Integer.toString(calendario.get(Calendar.DATE));
         return dia;
     }
+
+    private int generarNumeroAleatorio(int limMin, int limMax){
+        int numero = (int)(Math.random()*(limMax-limMin+1)+limMin);
+        return numero;
+    }
+
 }

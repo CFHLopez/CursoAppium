@@ -37,8 +37,6 @@ public class DiarioPageAgenda extends MetodosGenericos {
     private MobileElement iconoFiltro;
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='com.tambucho.miagenda.trial:id/TxtFecha']")
     private MobileElement fechaCreada;
-    @AndroidFindBy(xpath = "//android.view.View[@checked='true']")
-    private MobileElement fechaDoc;
     @AndroidFindBy(xpath = "//*[@resource-id='com.tambucho.miagenda.trial:id/FabOk']")
     private MobileElement btnOk;
     @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='com.tambucho.miagenda.trial:id/NuevoTexto']")
@@ -61,6 +59,8 @@ public class DiarioPageAgenda extends MetodosGenericos {
     private MobileElement btnEditar;
     @AndroidFindBy(xpath = "//*[@resource-id='com.tambucho.miagenda.trial:id/LayoutColor']")
     private List<MobileElement> listaDocsDiario;
+    @AndroidFindBy(xpath = "//*[@class='android.widget.LinearLayout']")
+    private List<MobileElement> listaColores;
 
     /**
      * Acciones
@@ -76,10 +76,6 @@ public class DiarioPageAgenda extends MetodosGenericos {
 
     public void darClickFechaCreada(){
         darClick(fechaCreada);
-    }
-
-    public String fechaDocumento(){
-        return retornarTexto(fechaDoc);
     }
 
     public String diaActual(){
@@ -148,5 +144,13 @@ public class DiarioPageAgenda extends MetodosGenericos {
 
     public String btnEditarClickeable(){
         return inspeccionarElemento(atributoClickable,btnEditar);
+    }
+
+    public void darClickIconoColor(){
+        darClick(iconoColor);
+    }
+
+    public void seleccionarColorAleatorio(){
+        seleccionarAleatorio(listaColores);
     }
 }
