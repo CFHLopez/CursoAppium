@@ -68,9 +68,12 @@ public class TestCase03_CrearNuevoRegistroDiaropConUnaFechaEspecifica {
         calendarioPageAgenda = new CalendarioPageAgenda();
         diarioPageAgenda.darClickFechaCreada();
         calendarioPageAgenda.selecionarJulio();
+        softAssert.assertEquals(calendarioPageAgenda.txtAnoVisible(), atributoOk);
+        softAssert.assertEquals(calendarioPageAgenda.txtAnoClickeable(), atributoOk);
         calendarioPageAgenda.darClickTxtAno();
         calendarioPageAgenda.seleccionarAno("2022");
         diarioPageAgenda.darClickOk();
+        finalAssert();
     }
 
     @Test(priority = 3, description = "Agregar Texto")

@@ -119,9 +119,18 @@ public class MetodosGenericos {
 
     protected void seleccionarAleatorio(List<MobileElement> lista){
         System.out.println("Cantidad elementos: "+lista.size());
+        // SE GENERA UN NUMERO AL AZAR ENTRE 1 Y EL LARGO DE LA LISTA
         int numeroAleatorio = generarNumeroAleatorio(1,lista.size());
         System.out.println("Numero aleatorio: "+numeroAleatorio);
         int num = 0;
+        /**
+         * EN EL SIGUIENTE CICLO
+         * SE BUSCA EL ELEMENTO UBICADO EN LA
+         * POSICIÓN DEL NUMERO CREADO AL AZAR
+         * OJO: SE IGNORA LA POSICIÓN 0 DEBIDO A QUE:
+         * LA POSICIÓN 0 EN MY AGENDA PARA CAMBIAR COLOR
+         * ESTE VIENE POR DEFECTO EN BLANCO
+         */
         for (MobileElement elemento: lista){
             if (num == numeroAleatorio){
                 darClick(elemento);

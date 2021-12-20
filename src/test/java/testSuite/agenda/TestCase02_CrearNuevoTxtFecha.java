@@ -116,6 +116,10 @@ public class TestCase02_CrearNuevoTxtFecha {
         diarioPageAgenda = new DiarioPageAgenda();
         softAssert.assertEquals(diarioPageAgenda.cantidadDocs(),1);
         softAssert.assertEquals(diarioPageAgenda.textoDoc(),"Nuevo txt creado");
+        /**
+         * LOS DATOS SON VARIABLES DEPENDIENDO EL DIA DE LA EJECUCIÓN
+         * FECHA DE LA ULTIMA EJECUCIÓN 15 DE DICIEMBRE 2021
+         */
         softAssert.assertTrue(diarioPageAgenda.diaDoc().contains("15"));
         softAssert.assertTrue(diarioPageAgenda.mesDoc().contains("Dic"));
         softAssert.assertEquals(diarioPageAgenda.anoDoc(),"2021");
