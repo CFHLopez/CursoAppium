@@ -29,8 +29,13 @@ public class ExampleTest {
         driver = new AndroidDriver(server,cap);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
          */
-        setUp("ZY327WFR7S","Android","C:\\Users\\chris\\Downloads\\Instagram.apk","ZY327WFR7S","",false);
+        setUp("ZY327WFR7S",
+                "C:\\Users\\chris\\Downloads\\Instagram.apk",
+                "ZY327WFR7S",
+                "",
+                false);
     }
+
     @Test
     public void testPrueba(){
         System.out.println("Ejecución del test de prueba");

@@ -14,7 +14,7 @@ public class DriverManager {
     private DesiredCapabilities cap = new DesiredCapabilities();
 
     // Funcion iniciarSeccion
-    protected void iniciarSeccion(String nombreDispositivo, String SO, String dirApk, String udId, String appWaitAct, boolean emulador) {
+    protected void iniciarSeccion(String nombreDispositivo, String dirApk, String udId, String appWaitAct, boolean emulador) {
         try {
             server = new URL("http://127.0.0.1:4723/wd/hub");
         } catch (MalformedURLException error) {
@@ -22,9 +22,10 @@ public class DriverManager {
         }
         // INSTANCIA DE CAPABILITIES
         cap.setCapability("deviceName", nombreDispositivo);
-        cap.setCapability("platformName", SO);
+        cap.setCapability("platformName", "Android");
         cap.setCapability("app", dirApk);
         cap.setCapability("appWaitActivity", appWaitAct);
+
         if (!emulador) {
             cap.setCapability("udid", udId);
         }

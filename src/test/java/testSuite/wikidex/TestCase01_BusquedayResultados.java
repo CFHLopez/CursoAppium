@@ -13,30 +13,34 @@ import static reports.Report.finalAssert;
 
 public class TestCase01_BusquedayResultados{
 
-    protected HomePageWikidex homePageWikidex = null;
     // DISPOSITIVO VIRTUAL
     // private String nombreDispositivo = "emulator-5554";
     // private String udId = "emulator-5554";
     // DISPOSITIVO REAL
     private String nombreDispositivo = "ZY327WFR7S";
     private String udId = "ZY327WFR7S";
-    private String sistemaOperativo = "Android";
-    // PC TSOFT
-    private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\Wikidex.apk";
-    // PC PERSONAL
-    // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\Wikidex.apk";
+    private String nombreApk = "Wikidex.apk";
+    // DIRECCION PC TSOFT
+    private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\";
+    // DIRECCION PC PERSONAL
+    // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\";
     private String appWaitAct = "net.wikidex.www.wikidex.*";
-    // DISPOSITIVO VIRTUAL
-    // TRUE  -> VIRTUAL
-    // FALSE -> REAL
+    /** DISPOSITIVO
+     * TRUE     ->      VIRTUAL
+     * FALSE    ->      REAL
+     */
     private boolean emulador = true;
     private SoftAssert softAssert = new SoftAssert();
+    private String atributoOk = "visible";
+    /**
+     * PAGES
+     */
+    protected HomePageWikidex homePageWikidex = null;
 
     @BeforeSuite
     public void iniciarSeccion(){
         setUp(nombreDispositivo,
-                sistemaOperativo,
-                direccion,
+                direccion+nombreApk,
                 udId,
                 appWaitAct,
                 emulador
@@ -51,7 +55,7 @@ public class TestCase01_BusquedayResultados{
     @Test(priority = 1,description = "Validar mensaje Bienvenido")
     public void validarMensajeBienvenido(){
         homePageWikidex = new HomePageWikidex();
-        softAssert.assertEquals(homePageWikidex.cargaImagen(),"visible");
+        softAssert.assertEquals(homePageWikidex.cargaImagen(),atributoOk);
         softAssert.assertEquals(homePageWikidex.contenidoTexto(),"Bienvenido a WikiDex");
         finalAssert();
     }
@@ -71,7 +75,7 @@ public class TestCase01_BusquedayResultados{
     @Test(priority = 4,description = "Validar cantidad resultados mayor a 1")
     public void validarCantidadResultados(){
         homePageWikidex = new HomePageWikidex();
-        Assert.assertTrue(homePageWikidex.cantidadDeResultados()>1);
+        softAssert.assertTrue(homePageWikidex.cantidadDeResultados()>1);
         finalAssert();
     }
 }

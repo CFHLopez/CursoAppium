@@ -15,33 +15,36 @@ import static reports.Report.finalAssert;
 
 public class TestCase03_AgregarQuitarFavoritosModoNocturno {
 
-    protected HomePageWikidex homePageWikidex = null;
-    protected MenuPageWikidex menuPageWikidex = null;
-    protected ResultadoPageWikidex resultadoPageWikidex = null;
-    protected FavoritosPageWikidex favoritosPageWikidex = null;
     // DISPOSITIVO VIRTUAL
     // private String nombreDispositivo = "emulator-5554";
     // private String udId = "emulator-5554";
     // DISPOSITIVO REAL
     private String nombreDispositivo = "ZY327WFR7S";
     private String udId = "ZY327WFR7S";
-    private String sistemaOperativo = "Android";
-    // PC TSOFT
-    private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\Wikidex.apk";
-    // PC PERSONAL
-    // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\Wikidex.apk";
+    private String nombreApk = "Wikidex.apk";
+    // DIRECCION PC TSOFT
+    private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\";
+    // DIRECCION PC PERSONAL
+    // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\";
     private String appWaitAct = "net.wikidex.www.wikidex.*";
-    // DISPOSITIVO VIRTUAL
-    // TRUE  -> VIRTUAL
-    // FALSE -> REAL
-    private boolean emulador = false;
+    /** DISPOSITIVO
+     * TRUE     ->      VIRTUAL
+     * FALSE    ->      REAL
+     */
+    private boolean emulador = true;
     private SoftAssert softAssert = new SoftAssert();
+    private String atributoOk = "visible";
+    /**
+     * PAGES
+     */
+    protected HomePageWikidex homePageWikidex = null;
+    protected MenuPageWikidex menuPageWikidex = null;
+    protected FavoritosPageWikidex favoritosPageWikidex = null;
 
     @BeforeSuite
     public void iniciarSeccion(){
         setUp(nombreDispositivo,
-                sistemaOperativo,
-                direccion,
+                direccion+nombreApk,
                 udId,
                 appWaitAct,
                 emulador
@@ -56,7 +59,7 @@ public class TestCase03_AgregarQuitarFavoritosModoNocturno {
     @Test(priority = 1, description = "Validar mensaje Bienvenido")
     public void validarMensajeBienvenido(){
         homePageWikidex = new HomePageWikidex();
-        softAssert.assertEquals(homePageWikidex.cargaImagen(),"visible");
+        softAssert.assertEquals(homePageWikidex.cargaImagen(),atributoOk);
         softAssert.assertEquals(homePageWikidex.contenidoTexto(),"Bienvenido a WikiDex");
         finalAssert();
     }
@@ -102,7 +105,7 @@ public class TestCase03_AgregarQuitarFavoritosModoNocturno {
     public void eliminarFavorito(){
         favoritosPageWikidex = new FavoritosPageWikidex();
         favoritosPageWikidex.clickEliminar();
-        softAssert.assertEquals(favoritosPageWikidex.mensajeVisible(),"visible");
+        softAssert.assertEquals(favoritosPageWikidex.mensajeVisible(),atributoOk);
         softAssert.assertTrue(favoritosPageWikidex.mensaje().contains("No hay favoritos."));
         finalAssert();
     }

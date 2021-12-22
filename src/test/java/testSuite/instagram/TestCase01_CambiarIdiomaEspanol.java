@@ -13,30 +13,34 @@ import static reports.Report.finalAssert;
 
 public class TestCase01_CambiarIdiomaEspanol {
 
-    protected HomePage homePage = null;
     // DISPOSITIVO VIRTUAL
     // private String nombreDispositivo = "emulator-5554";
     // private String udId = "emulator-5554";
     // DISPOSITIVO REAL
     private String nombreDispositivo = "ZY327WFR7S";
     private String udId = "ZY327WFR7S";
-    private String sistemaOperativo = "Android";
-    // PC TSOFT
-    private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\Instagram.apk";
-    // PC PERSONAL
-    // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\Instagram.apk";
+    private String nombreApk = "Instagram.apk";
+    // DIRECCION PC TSOFT
+    private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\";
+    // DIRECCION PC PERSONAL
+    // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\";
     private String appWaitAct = "com.instagram.*";
-    // DISPOSITIVO VIRTUAL
-    // TRUE  -> VIRTUAL
-    // FALSE -> REAL
+    /** DISPOSITIVO
+     * TRUE     ->      VIRTUAL
+     * FALSE    ->      REAL
+     */
     private boolean emulador = true;
     private SoftAssert softAssert = new SoftAssert();
+    private String atributoOk = "visible";
+    /**
+     * PAGES
+     */
+    protected HomePage homePage = null;
 
     @BeforeSuite
     public void iniciarSeccion(){
         setUp(nombreDispositivo,
-                sistemaOperativo,
-                direccion,
+                direccion+nombreApk,
                 udId,
                 appWaitAct,
                 emulador
@@ -51,7 +55,7 @@ public class TestCase01_CambiarIdiomaEspanol {
     @Test (priority = 1,description = "Validar visualización de Logo")
     public void validarVisualizacionLogo(){
         homePage = new HomePage();
-        Assert.assertEquals(homePage.visualizarLogo(),"true");
+        softAssert.assertEquals(homePage.visualizarLogo(),atributoOk);
         finalAssert();
     }
 
@@ -66,8 +70,8 @@ public class TestCase01_CambiarIdiomaEspanol {
     public void validarCambioIdioma(){
         homePage = new HomePage();
         homePage.seleccionarIdioma("Español");
-        Assert.assertEquals(homePage.retornarTextoSingUp(),"Crear cuenta nueva");
-        Assert.assertEquals(homePage.retornarTextoLogin(),"Iniciar sesión");
+        softAssert.assertEquals(homePage.retornarTextoSingUp(),"Crear cuenta nueva");
+        softAssert.assertEquals(homePage.retornarTextoLogin(),"Iniciar sesión");
         finalAssert();
     }
 }

@@ -178,11 +178,24 @@ public class MetodosGenericos {
     }
 
     protected String esperarPagina(MobileElement elemento, String palabra){
+        // POSIBLE MODIFICACIÓN PARA EVITAR UN CICLO INFINITO
+        /*
         while (!elemento.getText().contains(palabra)){
             System.out.println("pagina: "+ elemento.getText());
             esperaIxplicita();
         }
-        return "Encontrada";
+         */
+        // CAMBIAMOS POR UN CICLO FOR DE 5 CICLOS
+        String resultado = "No Encontrada";
+        for (int i=0;i<5;i++){
+            System.out.println("pagina: "+ elemento.getText());
+            esperaIxplicita();
+            if (elemento.getText().contains(palabra)){
+                resultado = "Encontrada";
+                break;
+            }
+        }
+        return resultado;
     }
 
     protected void esperarPaginaAleatoria(MobileElement elemento){

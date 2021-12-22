@@ -14,31 +14,35 @@ import static reports.Report.finalAssert;
 
 public class TestCase02_CrearNuevaCuentaExistente{
 
-    protected HomePage homePage = null;
-    protected RegistroPage registroPage = null;
     // DISPOSITIVO VIRTUAL
-    private String nombreDispositivo = "emulator-5554";
-    private String udId = "emulator-5554";
+    // private String nombreDispositivo = "emulator-5554";
+    // private String udId = "emulator-5554";
     // DISPOSITIVO REAL
-    // private String nombreDispositivo = "ZY327WFR7S";
-    // private String udId = "ZY327WFR7S";
-    private String sistemaOperativo = "Android";
-    // PC TSOFT
-    private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\Instagram.apk";
-    // PC PERSONAL
-    // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\Instagram.apk";
+    private String nombreDispositivo = "ZY327WFR7S";
+    private String udId = "ZY327WFR7S";
+    private String nombreApk = "Instagram.apk";
+    // DIRECCION PC TSOFT
+    private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\";
+    // DIRECCION PC PERSONAL
+    // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\";
     private String appWaitAct = "com.instagram.*";
-    // DISPOSITIVO VIRTUAL
-    // TRUE  -> VIRTUAL
-    // FALSE -> REAL
+    /** DISPOSITIVO
+     * TRUE     ->      VIRTUAL
+     * FALSE    ->      REAL
+     */
     private boolean emulador = true;
     private SoftAssert softAssert = new SoftAssert();
+    private String atributoOk = "visible";
+    /**
+     * PAGES
+     */
+    protected HomePage homePage = null;
+    protected RegistroPage registroPage = null;
 
     @BeforeSuite
     public void iniciarSeccion(){
         setUp(nombreDispositivo,
-                sistemaOperativo,
-                direccion,
+                direccion+nombreApk,
                 udId,
                 appWaitAct,
                 emulador
@@ -53,7 +57,7 @@ public class TestCase02_CrearNuevaCuentaExistente{
     @Test(priority = 1,description = "Validar visualización de Logo")
     public void validarVisualizacionLogo(){
         homePage = new HomePage();
-        Assert.assertEquals(homePage.visualizarLogo(),"true");
+        Assert.assertEquals(homePage.visualizarLogo(),atributoOk);
         finalAssert();
     }
 
@@ -61,34 +65,30 @@ public class TestCase02_CrearNuevaCuentaExistente{
     public void validarClickCrearNuevaCuenta(){
         homePage = new HomePage();
         homePage.darClickCrearNuevaCuenta();
-        finalAssert();
     }
 
     @Test(priority = 3, description = "Validar click en Correo Electrónico")
     public void validarClickCorreoElectronico(){
         registroPage = new RegistroPage();
         registroPage.darClickCorreoElectronico();
-        finalAssert();
     }
 
     @Test(priority = 4, description = "Llenar campo correo electronico")
     public void ingresarCorreoElectronico(){
         registroPage = new RegistroPage();
         registroPage.llenarCampoCorreoElectronico("don.xekito@gmail.com");
-        finalAssert();
     }
 
     @Test(priority = 5, description = "Validar click en siguiente")
     public void validarClickSiguente(){
         registroPage = new RegistroPage();
         registroPage.darClickSiguiente();
-        finalAssert();
     }
 
     @Test(priority = 7, description = "Validar alerta")
     public void mensajeAlerta(){
         registroPage = new RegistroPage();
-        softAssert.assertTrue(registroPage.mensajeAlertaVisible().contains("true"));
+        softAssert.assertEquals(registroPage.mensajeAlertaVisible(),atributoOk);
         softAssert.assertTrue(registroPage.contenidoMensajeAlerta().contains("No pudimos completar tu solicitud"));
         finalAssert();
     }
@@ -96,7 +96,7 @@ public class TestCase02_CrearNuevaCuentaExistente{
     @Test(priority = 6,description = "Validar mensaje advertencia")
     public void mensajeAdvertencia(){
         registroPage = new RegistroPage();
-        softAssert.assertTrue(registroPage.mensajeAdvertenciaVisible().contains("true"));
+        softAssert.assertEquals(registroPage.mensajeAdvertenciaVisible(),atributoOk);
         softAssert.assertTrue(registroPage.contenidoMensajeAdvertencia().contains("se usa en otra cuenta"));
         finalAssert();
     }

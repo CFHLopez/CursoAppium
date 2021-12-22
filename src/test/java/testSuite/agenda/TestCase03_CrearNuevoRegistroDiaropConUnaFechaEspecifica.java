@@ -20,11 +20,12 @@ public class TestCase03_CrearNuevoRegistroDiaropConUnaFechaEspecifica {
     // DISPOSITIVO REAL
     private String nombreDispositivo = "ZY327WFR7S";
     private String udId = "ZY327WFR7S";
-    private String sistemaOperativo = "Android";
-    // PC TSOFT
-    private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\My Personal Agenda_v6.4.1com.apk";
-    // PC PERSONAL
-    // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\My Personal Agenda_v6.4.1com.apk";
+    // NOMBRE APK
+    private String nombreApk = "My Personal Agenda_v6.4.1com.apk";
+    // DIRECCION PC TSOFT
+    private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\";
+    // DIRECCION PC PERSONAL
+    // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\";
     private String appWaitAct = "com.tambucho.miagenda.*";
     /** DISPOSITIVO
      * TRUE     ->      VIRTUAL
@@ -33,6 +34,9 @@ public class TestCase03_CrearNuevoRegistroDiaropConUnaFechaEspecifica {
     private boolean emulador = true;
     private SoftAssert softAssert = new SoftAssert();
     private String atributoOk = "visible";
+    /**
+     * PAGES
+     */
     protected HomePageAgenda homePageAgenda = null;
     protected DiarioPageAgenda diarioPageAgenda = null;
     protected CalendarioPageAgenda calendarioPageAgenda = null;
@@ -40,8 +44,7 @@ public class TestCase03_CrearNuevoRegistroDiaropConUnaFechaEspecifica {
     @BeforeSuite
     public void iniciarSeccion(){
         setUp(nombreDispositivo,
-                sistemaOperativo,
-                direccion,
+                direccion+nombreApk,
                 udId,
                 appWaitAct,
                 emulador

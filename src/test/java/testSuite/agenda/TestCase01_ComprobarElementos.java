@@ -19,11 +19,12 @@ public class TestCase01_ComprobarElementos {
     // DISPOSITIVO REAL
     private String nombreDispositivo = "ZY327WFR7S";
     private String udId = "ZY327WFR7S";
-    private String sistemaOperativo = "Android";
-    // PC TSOFT
-    private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\My Personal Agenda_v6.4.1com.apk";
-    // PC PERSONAL
-    // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\My Personal Agenda_v6.4.1com.apk";
+    // NOMBRE APK
+    private String nombreApk = "My Personal Agenda_v6.4.1com.apk";
+    // DIRECCION PC TSOFT
+    private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\";
+    // DIRECCION PC PERSONAL
+    // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\";
     private String appWaitAct = "com.tambucho.miagenda.*";
     /** DISPOSITIVO
      * TRUE     ->      VIRTUAL
@@ -31,14 +32,17 @@ public class TestCase01_ComprobarElementos {
      */
     private boolean emulador = true;
     private SoftAssert softAssert = new SoftAssert();
+    private String atributoOk = "visible";
+    /**
+     * PAGES
+     */
     protected HomePageAgenda homePageAgenda = null;
     protected DiarioPageAgenda diarioPageAgenda = null;
 
     @BeforeSuite
     public void iniciarSeccion(){
         setUp(nombreDispositivo,
-                sistemaOperativo,
-                direccion,
+                direccion+nombreApk,
                 udId,
                 appWaitAct,
                 emulador
@@ -54,12 +58,12 @@ public class TestCase01_ComprobarElementos {
     public void validarElementosVisibles(){
         homePageAgenda = new HomePageAgenda();
         diarioPageAgenda = new DiarioPageAgenda();
-        softAssert.assertEquals(homePageAgenda.iconoMenuVisible(),"visible");
-        softAssert.assertEquals(homePageAgenda.textoSeccionVisible(),"visible");
-        softAssert.assertEquals(homePageAgenda.iconoBuscarVisible(),"visible");
-        softAssert.assertEquals(diarioPageAgenda.iconoFiltroVisible(),"visible");
-        softAssert.assertEquals(homePageAgenda.textoGrupoVisible(),"visible");
-        softAssert.assertEquals(homePageAgenda.iconoAgregarVisible(),"visible");
+        softAssert.assertEquals(homePageAgenda.iconoMenuVisible(),atributoOk);
+        softAssert.assertEquals(homePageAgenda.textoSeccionVisible(),atributoOk);
+        softAssert.assertEquals(homePageAgenda.iconoBuscarVisible(),atributoOk);
+        softAssert.assertEquals(diarioPageAgenda.iconoFiltroVisible(),atributoOk);
+        softAssert.assertEquals(homePageAgenda.textoGrupoVisible(),atributoOk);
+        softAssert.assertEquals(homePageAgenda.iconoAgregarVisible(),atributoOk);
         finalAssert();
     }
 
@@ -67,10 +71,10 @@ public class TestCase01_ComprobarElementos {
     public void validarElementosClickeables(){
         homePageAgenda = new HomePageAgenda();
         diarioPageAgenda = new DiarioPageAgenda();
-        softAssert.assertEquals(homePageAgenda.iconoMenuClickeable(),"visible");
-        softAssert.assertEquals(homePageAgenda.iconoBuscarClickeable(),"visible");
-        softAssert.assertEquals(diarioPageAgenda.iconoFiltroClickeable(),"visible");
-        softAssert.assertEquals(homePageAgenda.iconoAgregarClickeable(),"visible");
+        softAssert.assertEquals(homePageAgenda.iconoMenuClickeable(),atributoOk);
+        softAssert.assertEquals(homePageAgenda.iconoBuscarClickeable(),atributoOk);
+        softAssert.assertEquals(diarioPageAgenda.iconoFiltroClickeable(),atributoOk);
+        softAssert.assertEquals(homePageAgenda.iconoAgregarClickeable(),atributoOk);
         finalAssert();
     }
 
