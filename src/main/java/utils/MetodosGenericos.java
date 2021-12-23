@@ -39,8 +39,8 @@ public class MetodosGenericos {
      * Metodos
      */
 
-    protected void esperaIxplicita(){
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    private void esperaImplicita(){
+        driver.manage().timeouts().implicitlyWait(segundos, TimeUnit.SECONDS);
         System.out.println("Espera Implicita");
     }
 
@@ -68,9 +68,9 @@ public class MetodosGenericos {
     }
 
     protected String inspeccionarElemento(String atributo, MobileElement elemento){
+        esperaImplicita();
         System.out.println("estado "+atributo+": "+elemento.getAttribute(atributo));
         if(elemento.getAttribute(atributo).contains("true")){
-            esperaIxplicita();
             addStep("Elemento visible", true, Status.PASSED,false);
             return "visible";
         }
@@ -83,16 +83,16 @@ public class MetodosGenericos {
     protected void darClick(MobileElement elemento){
         if(esperarObjeto(elemento)){
             elemento.click();
-            esperaIxplicita();
             addStep("Click en elemento: "+elemento, true, Status.PASSED,false);
         }
         else{
             addStep("Click en elemento: "+elemento,true, Status.FAILED,false);
         }
+        esperaImplicita();
     }
 
     protected String retornarTexto(MobileElement elemento){
-        esperaIxplicita();
+        esperaImplicita();
         // System.out.println(elemento.getText());
         if (esperarObjeto(elemento)){
             return elemento.getText();
@@ -103,6 +103,7 @@ public class MetodosGenericos {
     }
 
     protected void seleccionarElemento(List<MobileElement> lista, String palabra){
+        esperaImplicita();
         // Recorremos la lista hasta encontrar la palabra requerida
         System.out.println("Recorrer lista hasta encontrar: "+palabra);
         System.out.println("Cantidad elementos: "+lista.size());
@@ -118,6 +119,7 @@ public class MetodosGenericos {
     }
 
     protected void seleccionarAleatorio(List<MobileElement> lista){
+        esperaImplicita();
         System.out.println("Cantidad elementos: "+lista.size());
         // SE GENERA UN NUMERO AL AZAR ENTRE 1 Y EL LARGO DE LA LISTA
         int numeroAleatorio = generarNumeroAleatorio(1,lista.size());
@@ -141,6 +143,7 @@ public class MetodosGenericos {
     }
 
     protected void seleccionarMesJulio(List<MobileElement> lista, MobileElement btn, MobileElement fecha){
+        esperaImplicita();
         while (!fecha.getText().contains("jul")){
             btn.click();
             seleccionarElemento(lista,"15");
@@ -148,6 +151,7 @@ public class MetodosGenericos {
     }
 
     protected void seleccionarPrimerElemento(List<MobileElement> lista){
+        esperaImplicita();
         for (MobileElement elemento: lista){
             darClick(elemento);
             break;
@@ -155,11 +159,13 @@ public class MetodosGenericos {
     }
 
     protected int contarElementos(List<MobileElement> lista){
+        esperaImplicita();
         addStep("Elementos de la lista", true, Status.PASSED,false);
         return lista.size();
     }
 
     protected String encontrarContenido(List<MobileElement> lista, String palabra){
+        esperaImplicita();
         String resultado = "No Encontrado";
         for (MobileElement elemento: lista){
             if (elemento.getText().contains(palabra)){
@@ -172,24 +178,26 @@ public class MetodosGenericos {
     }
 
     protected void recorrerLista(List<MobileElement> lista){
+        esperaImplicita();
         for (MobileElement elemento: lista){
             System.out.println("texto: "+elemento.getText());
         }
     }
 
     protected String esperarPagina(MobileElement elemento, String palabra){
+        esperaImplicita();
         // POSIBLE MODIFICACIÓN PARA EVITAR UN CICLO INFINITO
         /*
         while (!elemento.getText().contains(palabra)){
             System.out.println("pagina: "+ elemento.getText());
-            esperaIxplicita();
+            esperaImplicita();
         }
          */
         // CAMBIAMOS POR UN CICLO FOR DE 5 CICLOS
         String resultado = "No Encontrada";
         for (int i=0;i<5;i++){
             System.out.println("pagina: "+ elemento.getText());
-            esperaIxplicita();
+            esperaImplicita();
             if (elemento.getText().contains(palabra)){
                 resultado = "Encontrada";
                 break;
@@ -199,9 +207,10 @@ public class MetodosGenericos {
     }
 
     protected void esperarPaginaAleatoria(MobileElement elemento){
+        esperaImplicita();
         while (elemento.getText().contains("WikiDex")){
             System.out.println("pagina: "+ elemento.getText());
-            esperaIxplicita();
+            esperaImplicita();
         }
     }
 
@@ -210,6 +219,7 @@ public class MetodosGenericos {
     }
 
     protected String retornarDiaActual(){
+        esperaImplicita();
         Calendar calendario = Calendar.getInstance();
         String dia = Integer.toString(calendario.get(Calendar.DATE));
         return dia;
