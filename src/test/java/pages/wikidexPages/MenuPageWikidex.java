@@ -71,7 +71,6 @@ public class MenuPageWikidex extends MetodosGenericos {
         // se da click 2 veces en el panel debido a que se debe quitar el panel de menu
         darClick(masOpciones);
         darClick(masOpciones);
-        esperaIxplicita();
     }
 
     public void elegirOpcion(String opcion){

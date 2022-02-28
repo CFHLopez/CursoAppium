@@ -16,14 +16,14 @@ import static reports.Report.finalAssert;
 public class TestCase03_AgregarQuitarFavoritosModoNocturno {
 
     // DISPOSITIVO VIRTUAL
-    // private String nombreDispositivo = "emulator-5554";
-    // private String udId = "emulator-5554";
+    private String nombreDispositivo = "emulator-5554";
+    private String udId = "emulator-5554";
     // DISPOSITIVO REAL
-    private String nombreDispositivo = "ZY327WFR7S";
-    private String udId = "ZY327WFR7S";
+    // private String nombreDispositivo = "ZY327WFR7S";
+    // private String udId = "ZY327WFR7S";
     private String nombreApk = "Wikidex.apk";
     // DIRECCION PC TSOFT
-    private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\";
+    private String direccion = "C:\\Users\\excloch\\Documents\\Apk\\";
     // DIRECCION PC PERSONAL
     // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\";
     private String appWaitAct = "net.wikidex.www.wikidex.*";
