@@ -50,12 +50,20 @@ public class MenuPageWikidex extends MetodosGenericos {
      * Acciones
      */
 
+    public boolean ajustesVisible(){
+        return esperaPorElementoVisible(ajustes);
+    }
+
     public void clickAjustes(){
         darClick(ajustes);
     }
 
     public void clickModoNocturno(){
         darClick(modoNocturno);
+    }
+
+    public boolean menuVisible(){
+        return esperaPorElementoVisible(menu);
     }
 
     public void clickMenu(){

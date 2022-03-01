@@ -24,7 +24,7 @@ public class MetodosGenericos {
      */
 
     private AppiumDriver driver;
-    private int segundos = 10;
+    public static int segundos = 10;
 
     /**
      * Constructor
@@ -75,10 +75,10 @@ public class MetodosGenericos {
 
     private boolean esperarObjeto(MobileElement elemento){
         try {
-            System.out.println("Esperando elemento: "+elemento+", "+segundos+" segnudos, hasta que aparezca");
+            System.out.println("Esperando elemento: "+elemento.toString()+", "+segundos+" segnudos, hasta que aparezca");
             WebDriverWait wait = new WebDriverWait(DriverContext.getDriver(),segundos);
             wait.until(ExpectedConditions.visibilityOf(elemento));
-            System.out.println("Se encontro el elemento ("+elemento+"), se retorna true");
+            System.out.println("Se encontro el elemento ("+elemento.toString()+"), se retorna true");
             return true;
 
         }catch (Exception e){
@@ -87,7 +87,7 @@ public class MetodosGenericos {
         }
     }
 
-    protected void esperarElemento(MobileElement elemento){
+    public static void esperarElemento(MobileElement elemento){
         WebDriverWait wait = new WebDriverWait(DriverContext.getDriver(),segundos);
         wait.until(ExpectedConditions.visibilityOf(elemento));
     }
@@ -118,7 +118,6 @@ public class MetodosGenericos {
         else{
             addStep("Click en elemento: "+elemento,true, Status.FAILED,false);
         }
-        esperaImplicita();
     }
 
     protected String retornarTexto(MobileElement elemento){
@@ -194,15 +193,12 @@ public class MetodosGenericos {
     }
 
     protected int contarElementos(List<MobileElement> lista){
-        // esperaImplicita();
         esperarSegundos(5);
         addStep("Elementos de la lista", true, Status.PASSED,false);
         return lista.size();
     }
 
     protected String encontrarContenido(List<MobileElement> lista, String palabra){
-        // esperaImplicita();
-        esperarSegundos(5);
         String resultado = "No Encontrado";
         for (MobileElement elemento: lista){
             if (elemento.getText().contains(palabra)){
@@ -273,4 +269,15 @@ public class MetodosGenericos {
         return numero;
     }
 
+    public static boolean esperaPorElementoVisible(MobileElement mobileElement){
+        System.out.println("[esperaPorElementoVisible] " + segundos + "s - " + mobileElement.toString());
+        try {
+            esperarElemento(mobileElement);
+            System.out.println("[esperaPorElementoVisible] [success] Elemento encontrado: " + mobileElement.toString());
+            return true;
+        }catch (Exception e) {
+            System.err.println("[esperaPorElementoVisible] [" + e.getClass() +"] Elemento no encontrado: " + mobileElement.toString());
+            return false;
+        }
+    }
 }

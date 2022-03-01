@@ -16,7 +16,7 @@ public class HomePageWikidex extends MetodosGenericos {
      * Variables
      */
 
-    private String atributoLogo = "enabled";
+    private String atributoEnabled = "enabled";
     private AppiumDriver driver;
 
     /**
@@ -47,17 +47,28 @@ public class HomePageWikidex extends MetodosGenericos {
      * Acciones
      */
 
-    public String cargaImagen(){
-        esperarElemento(imagen);
-        return inspeccionarElemento(atributoLogo,imagen);
+    public boolean cargaImagen(){
+        return esperaPorElementoVisible(imagen);
+    }
+
+    public boolean textoVisible(){
+        return esperaPorElementoVisible(mensaje);
     }
 
     public String contenidoTexto(){
         return retornarTexto(mensaje);
     }
 
+    public boolean botonBuscarVisible(){
+        return esperaPorElementoVisible(lupa);
+    }
+
     public void clickBuscar(){
         darClick(lupa);
+    }
+
+    public boolean casillaTextoVisible(){
+        return esperaPorElementoVisible(casillaTexto);
     }
 
     public void llenarCasilla(String palabra){

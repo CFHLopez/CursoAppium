@@ -42,4 +42,6 @@ public class ResultadoPageWikidex extends MetodosGenericos {
         return encontrarContenido(textosTextView,palabra);
     }
 
+
+
 }

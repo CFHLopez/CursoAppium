@@ -7,6 +7,7 @@ public class DriverContext {
 
     // Funcion setUp
     // inicia la ejecusión
+
     public static void setUp(String nombreDispositivo, String dirApk, String udId, String appWaitAct, boolean emulador){
         driverManager.iniciarSeccion(nombreDispositivo,dirApk,udId, appWaitAct,emulador);
     }

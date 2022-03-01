@@ -19,6 +19,7 @@ dependencies {
     // https://mvnrepository.com/artifact/io.qameta.allure/allure-testng
     implementation group: 'io.qameta.allure', name: 'allure-testng', version: '2.13.8'
     implementation 'org.jetbrains:annotations:20.1.0'
+    implementation 'io.cucumber:cucumber-java:7.2.3'
 }
 
 
