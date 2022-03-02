@@ -47,8 +47,8 @@ public class HomePage extends MetodosGenericos {
      * Acciones
      */
 
-    public String visualizarLogo(){
-        return inspeccionarElemento(atributoLogo,logo);
+    public boolean visualizarLogo(){
+        return inspeccionarAtributo(atributoLogo,logo);
     }
 
     public void darClickIdioma(){

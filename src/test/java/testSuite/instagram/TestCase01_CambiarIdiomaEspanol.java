@@ -21,20 +21,23 @@ public class TestCase01_CambiarIdiomaEspanol {
     private String udId = "ZY327WFR7S";
     private String nombreApk = "Instagram.apk";
     // DIRECCION PC TSOFT
-    private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\";
+    private String direccion = "C:\\Users\\excloch\\Documents\\Apk\\";
     // DIRECCION PC PERSONAL
     // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\";
     private String appWaitAct = "com.instagram.*";
+
     /** DISPOSITIVO
      * TRUE     ->      VIRTUAL
      * FALSE    ->      REAL
      */
+
     private boolean emulador = true;
     private SoftAssert softAssert = new SoftAssert();
-    private String atributoOk = "visible";
+
     /**
      * PAGES
      */
+
     protected HomePage homePage = null;
 
     @BeforeSuite
@@ -55,7 +58,7 @@ public class TestCase01_CambiarIdiomaEspanol {
     @Test (priority = 1,description = "Validar visualización de Logo")
     public void validarVisualizacionLogo(){
         homePage = new HomePage();
-        softAssert.assertEquals(homePage.visualizarLogo(),atributoOk);
+        softAssert.assertTrue(homePage.visualizarLogo());
         finalAssert();
     }
 

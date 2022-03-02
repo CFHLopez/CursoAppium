@@ -96,17 +96,18 @@ public class MetodosGenericos {
         campo.sendKeys(contenido);
     }
 
-    protected String inspeccionarElemento(String atributo, MobileElement elemento){
-        // esperaImplicita();
+    protected boolean inspeccionarAtributo(String atributo, MobileElement element){
         esperarSegundos(5);
-        System.out.println("estado "+atributo+": "+elemento.getAttribute(atributo));
-        if(elemento.getAttribute(atributo).contains("true")){
+        System.out.println("Elemento a revisar: "+ element.toString());
+        System.out.println("Atributo a revisar; "+ atributo + " , estado: "+element.getAttribute(atributo));
+        // si el atributo esta activo
+        if(element.getAttribute(atributo).contains("true")){
             addStep("Elemento visible", true, Status.PASSED,false);
-            return "visible";
+            return Boolean.parseBoolean(element.getAttribute(atributo));
         }
         else{
             addStep("Elemento oculto",true, Status.FAILED,false);
-            return "oculto";
+            return Boolean.parseBoolean(element.getAttribute(atributo));
         }
     }
 
@@ -114,6 +115,8 @@ public class MetodosGenericos {
         if(esperarObjeto(elemento)){
             elemento.click();
             addStep("Click en elemento: "+elemento, true, Status.PASSED,false);
+            esperarSegundos(10);
+            System.out.println("Cargando nueva vista");
         }
         else{
             addStep("Click en elemento: "+elemento,true, Status.FAILED,false);
@@ -121,9 +124,7 @@ public class MetodosGenericos {
     }
 
     protected String retornarTexto(MobileElement elemento){
-        // esperaImplicita();
         esperarSegundos(5);
-        // System.out.println(elemento.getText());
         if (esperarObjeto(elemento)){
             return elemento.getText();
         }
@@ -135,12 +136,12 @@ public class MetodosGenericos {
     protected void seleccionarElemento(List<MobileElement> lista, String palabra){
         // esperaImplicita();
         esperarSegundos(5);
-        // Recorremos la lista hasta encontrar la palabra requerida
-        System.out.println("Recorrer lista hasta encontrar: "+palabra);
-        System.out.println("Cantidad elementos: "+lista.size());
+        // Recorremos la lista hasta encontrar la opción requerida
+        System.out.println("Cantidad de opciones: "+lista.size());
+        System.out.println("Recorrer opciones hasta encontrar: "+palabra);
         for (MobileElement elemento: lista){
             if (elemento.getText().contains(palabra)){
-                System.out.println("elemento: "+elemento.getText());
+                // System.out.println("Opción: "+elemento.getText());
                 // Hacemos click en el elemento buscado
                 darClick(elemento);
                 // Al encontrar el elemento no necesitamos seguir buscando

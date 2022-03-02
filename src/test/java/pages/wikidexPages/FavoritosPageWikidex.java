@@ -47,6 +47,10 @@ public class FavoritosPageWikidex extends MetodosGenericos {
         return contarElementos(paginasGuardadas);
     }
 
+    public boolean iconoEliminarVisible(){
+        return esperaPorElementoVisible(btnEliminar);
+    }
+
     public void clickEliminar(){
         darClick(btnEliminar);
     }
@@ -55,7 +59,7 @@ public class FavoritosPageWikidex extends MetodosGenericos {
         return retornarTexto(noHayFavoritos);
     }
 
-    public String mensajeVisible(){
-        return inspeccionarElemento(atributoPaginaGuardada,noHayFavoritos);
+    public boolean mensajeVisible(){
+        return inspeccionarAtributo(atributoPaginaGuardada,noHayFavoritos);
     }
 }

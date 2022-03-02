@@ -66,12 +66,12 @@ public class DiarioPageAgenda extends MetodosGenericos {
      * Acciones
      */
 
-    public String iconoFiltroVisible(){
-        return inspeccionarElemento(atributoEnabled,iconoFiltro);
+    public boolean iconoFiltroVisible(){
+        return inspeccionarAtributo(atributoEnabled,iconoFiltro);
     }
 
-    public String iconoFiltroClickeable(){
-        return inspeccionarElemento(atributoClickable,iconoFiltro);
+    public boolean iconoFiltroClickeable(){
+        return inspeccionarAtributo(atributoClickable,iconoFiltro);
     }
 
     public void darClickFechaCreada(){
@@ -86,12 +86,12 @@ public class DiarioPageAgenda extends MetodosGenericos {
         darClick(btnOk);
     }
 
-    public String agregarTextoVisible(){
-        return inspeccionarElemento(atributoEnabled,agregarTexto);
+    public boolean agregarTextoVisible(){
+        return inspeccionarAtributo(atributoEnabled,agregarTexto);
     }
 
-    public String agregarTextoClickeable(){
-        return inspeccionarElemento(atributoClickable,agregarTexto);
+    public boolean agregarTextoClickeable(){
+        return inspeccionarAtributo(atributoClickable,agregarTexto);
     }
 
     public void darClickAgregarTexto(){
@@ -122,28 +122,28 @@ public class DiarioPageAgenda extends MetodosGenericos {
         return retornarTexto(txtTexto);
     }
 
-    public String iconoPDFVisible(){
-        return inspeccionarElemento(atributoEnabled,iconoPDF);
+    public boolean iconoPDFVisible(){
+        return inspeccionarAtributo(atributoEnabled,iconoPDF);
     }
 
-    public String iconoPDFClickeable(){
-        return inspeccionarElemento(atributoClickable,iconoPDF);
+    public boolean iconoPDFClickeable(){
+        return inspeccionarAtributo(atributoClickable,iconoPDF);
     }
 
-    public String iconoColorVisible(){
-        return inspeccionarElemento(atributoEnabled,iconoColor);
+    public boolean iconoColorVisible(){
+        return inspeccionarAtributo(atributoEnabled,iconoColor);
     }
 
-    public String iconoColorClickeable(){
-        return inspeccionarElemento(atributoClickable,iconoColor);
+    public boolean iconoColorClickeable(){
+        return inspeccionarAtributo(atributoClickable,iconoColor);
     }
 
-    public String btnEditarVisible(){
-        return inspeccionarElemento(atributoEnabled,btnEditar);
+    public boolean btnEditarVisible(){
+        return inspeccionarAtributo(atributoEnabled,btnEditar);
     }
 
-    public String btnEditarClickeable(){
-        return inspeccionarElemento(atributoClickable,btnEditar);
+    public boolean btnEditarClickeable(){
+        return inspeccionarAtributo(atributoClickable,btnEditar);
     }
 
     public void darClickIconoColor(){

@@ -50,44 +50,44 @@ public class HomePageAgenda extends MetodosGenericos {
      * Acciones
      */
 
-   public String iconoMenuVisible(){
-       return inspeccionarElemento(atributoEnabled,iconoMenu);
+   public boolean iconoMenuVisible(){
+       return inspeccionarAtributo(atributoEnabled,iconoMenu);
    }
 
-   public String iconoMenuClickeable(){
-       return inspeccionarElemento(atributoClickable,iconoMenu);
+   public boolean iconoMenuClickeable(){
+       return inspeccionarAtributo(atributoClickable,iconoMenu);
    }
 
-   public String textoSeccionVisible(){
-       return inspeccionarElemento(atributoEnabled,textoSeccion);
+   public boolean textoSeccionVisible(){
+       return inspeccionarAtributo(atributoEnabled,textoSeccion);
    }
 
    public String textoVisibleSeccion(){
        return retornarTexto(textoSeccion);
    }
 
-   public String textoGrupoVisible(){
-       return inspeccionarElemento(atributoEnabled,txtGrupo);
+   public boolean textoGrupoVisible(){
+       return inspeccionarAtributo(atributoEnabled,txtGrupo);
    }
 
    public String textoVisibleGrupo(){
        return retornarTexto(txtGrupo);
    }
 
-   public String iconoBuscarVisible(){
-       return inspeccionarElemento(atributoEnabled,iconoBuscar);
+   public boolean iconoBuscarVisible(){
+       return inspeccionarAtributo(atributoEnabled,iconoBuscar);
    }
 
-   public String iconoBuscarClickeable(){
-       return inspeccionarElemento(atributoClickable,iconoBuscar);
+   public boolean iconoBuscarClickeable(){
+       return inspeccionarAtributo(atributoClickable,iconoBuscar);
    }
 
-   public String iconoAgregarVisible(){
-       return inspeccionarElemento(atributoEnabled,iconoAdd);
+   public boolean iconoAgregarVisible(){
+       return inspeccionarAtributo(atributoEnabled,iconoAdd);
    }
 
-   public String iconoAgregarClickeable(){
-       return inspeccionarElemento(atributoClickable,iconoAdd);
+   public boolean iconoAgregarClickeable(){
+       return inspeccionarAtributo(atributoClickable,iconoAdd);
    }
 
    public void darClickAgregar(){

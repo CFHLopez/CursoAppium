@@ -23,20 +23,23 @@ public class TestCase02_CrearNuevoTxtFecha {
     // NOMBRE APK
     private String nombreApk = "My Personal Agenda_v6.4.1com.apk";
     // DIRECCION PC TSOFT
-    private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\";
+    private String direccion = "C:\\Users\\excloch\\Documents\\Apk\\";
     // DIRECCION PC PERSONAL
     // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\";
     private String appWaitAct = "com.tambucho.miagenda.*";
+
     /** DISPOSITIVO
      * TRUE     ->      VIRTUAL
      * FALSE    ->      REAL
      */
+
     private boolean emulador = true;
     private SoftAssert softAssert = new SoftAssert();
-    private String atributoOk = "visible";
+
     /**
      * PAGES
      */
+
     protected HomePageAgenda homePageAgenda = null;
     protected DiarioPageAgenda diarioPageAgenda = null;
     protected CalendarioPageAgenda calendarioPageAgenda = null;
@@ -59,8 +62,8 @@ public class TestCase02_CrearNuevoTxtFecha {
     @Test(priority = 1, description = "Validar dar click en agregar")
     public void validarDarClickAgregar(){
         homePageAgenda = new HomePageAgenda();
-        softAssert.assertEquals(homePageAgenda.iconoAgregarVisible(),atributoOk);
-        softAssert.assertEquals(homePageAgenda.iconoAgregarClickeable(),atributoOk);
+        softAssert.assertTrue(homePageAgenda.iconoAgregarVisible());
+        softAssert.assertTrue(homePageAgenda.iconoAgregarClickeable());
         homePageAgenda.darClickAgregar();
         finalAssert();
     }
@@ -78,8 +81,8 @@ public class TestCase02_CrearNuevoTxtFecha {
     @Test(priority = 3, description = "Validar click agregar texto")
     public void validarClickAgregarTexto(){
         diarioPageAgenda = new DiarioPageAgenda();
-        softAssert.assertEquals(diarioPageAgenda.agregarTextoVisible(),atributoOk);
-        softAssert.assertEquals(diarioPageAgenda.agregarTextoClickeable(),atributoOk);
+        softAssert.assertTrue(diarioPageAgenda.agregarTextoVisible());
+        softAssert.assertTrue(diarioPageAgenda.agregarTextoClickeable());
         diarioPageAgenda.darClickAgregarTexto();
         finalAssert();
     }
@@ -95,20 +98,20 @@ public class TestCase02_CrearNuevoTxtFecha {
     @Test(priority = 5, description = "Validar nuevos botones visibles")
     public void validarNuevosBotonesVisibles(){
         diarioPageAgenda = new DiarioPageAgenda();
-        softAssert.assertEquals(diarioPageAgenda.iconoPDFVisible(), atributoOk);
-        softAssert.assertEquals(diarioPageAgenda.iconoColorVisible(), atributoOk);
-        softAssert.assertEquals(diarioPageAgenda.btnEditarVisible(), atributoOk);
-        softAssert.assertEquals(diarioPageAgenda.iconoPDFClickeable(), atributoOk);
-        softAssert.assertEquals(diarioPageAgenda.iconoColorClickeable(), atributoOk);
-        softAssert.assertEquals(diarioPageAgenda.btnEditarClickeable(), atributoOk);
+        softAssert.assertTrue(diarioPageAgenda.iconoPDFVisible());
+        softAssert.assertTrue(diarioPageAgenda.iconoColorVisible());
+        softAssert.assertTrue(diarioPageAgenda.btnEditarVisible());
+        softAssert.assertTrue(diarioPageAgenda.iconoPDFClickeable());
+        softAssert.assertTrue(diarioPageAgenda.iconoColorClickeable());
+        softAssert.assertTrue(diarioPageAgenda.btnEditarClickeable());
         finalAssert();
     }
 
     @Test(priority = 6, description = "Ir a home Diario")
     public void irHomeDiario() {
         homePageAgenda = new HomePageAgenda();
-        softAssert.assertEquals(homePageAgenda.iconoMenuVisible(), atributoOk);
-        softAssert.assertEquals(homePageAgenda.iconoMenuClickeable(), atributoOk);
+        softAssert.assertTrue(homePageAgenda.iconoMenuVisible());
+        softAssert.assertTrue(homePageAgenda.iconoMenuClickeable());
         homePageAgenda.darClickMenu();
         homePageAgenda.menuDarClickEn("Diario");
         finalAssert();
@@ -119,10 +122,12 @@ public class TestCase02_CrearNuevoTxtFecha {
         diarioPageAgenda = new DiarioPageAgenda();
         softAssert.assertEquals(diarioPageAgenda.cantidadDocs(),1);
         softAssert.assertEquals(diarioPageAgenda.textoDoc(),"Nuevo txt creado");
+
         /**
          * LOS DATOS SON VARIABLES DEPENDIENDO EL DIA DE LA EJECUCIÓN
          * FECHA DE LA ULTIMA EJECUCIÓN 22 DE DICIEMBRE 2021
          */
+
         softAssert.assertTrue(diarioPageAgenda.diaDoc().contains("22"));
         softAssert.assertTrue(diarioPageAgenda.mesDoc().contains("Dic"));
         softAssert.assertEquals(diarioPageAgenda.anoDoc(),"2021");

@@ -25,16 +25,19 @@ public class TestCase01_BusquedayResultados{
     // DIRECCION PC PERSONAL
     // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\";
     private String appWaitAct = "net.wikidex.www.wikidex.*";
+
     /** DISPOSITIVO
      * TRUE     ->      VIRTUAL
      * FALSE    ->      REAL
      */
+
     private boolean emulador = true;
     private SoftAssert softAssert = new SoftAssert();
-    private String atributoOk = "visible";
+
     /**
      * PAGES
      */
+
     protected HomePageWikidex homePageWikidex = null;
 
     @BeforeSuite
@@ -55,7 +58,7 @@ public class TestCase01_BusquedayResultados{
     @Test(priority = 1,description = "Validar mensaje Bienvenido")
     public void validarMensajeBienvenido(){
         homePageWikidex = new HomePageWikidex();
-        softAssert.assertEquals(homePageWikidex.cargaImagen(),atributoOk);
+        softAssert.assertTrue(homePageWikidex.cargaImagen());
         softAssert.assertEquals(homePageWikidex.contenidoTexto(),"Bienvenido a WikiDex");
         finalAssert();
     }

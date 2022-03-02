@@ -22,20 +22,23 @@ public class TestCase01_ComprobarElementos {
     // NOMBRE APK
     private String nombreApk = "My Personal Agenda_v6.4.1com.apk";
     // DIRECCION PC TSOFT
-    private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\";
+    private String direccion = "C:\\Users\\excloch\\Documents\\Apk\\";
     // DIRECCION PC PERSONAL
     // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\";
     private String appWaitAct = "com.tambucho.miagenda.*";
+
     /** DISPOSITIVO
      * TRUE     ->      VIRTUAL
      * FALSE    ->      REAL
      */
+
     private boolean emulador = true;
     private SoftAssert softAssert = new SoftAssert();
-    private String atributoOk = "visible";
+
     /**
      * PAGES
      */
+
     protected HomePageAgenda homePageAgenda = null;
     protected DiarioPageAgenda diarioPageAgenda = null;
 
@@ -58,12 +61,12 @@ public class TestCase01_ComprobarElementos {
     public void validarElementosVisibles(){
         homePageAgenda = new HomePageAgenda();
         diarioPageAgenda = new DiarioPageAgenda();
-        softAssert.assertEquals(homePageAgenda.iconoMenuVisible(),atributoOk);
-        softAssert.assertEquals(homePageAgenda.textoSeccionVisible(),atributoOk);
-        softAssert.assertEquals(homePageAgenda.iconoBuscarVisible(),atributoOk);
-        softAssert.assertEquals(diarioPageAgenda.iconoFiltroVisible(),atributoOk);
-        softAssert.assertEquals(homePageAgenda.textoGrupoVisible(),atributoOk);
-        softAssert.assertEquals(homePageAgenda.iconoAgregarVisible(),atributoOk);
+        softAssert.assertTrue(homePageAgenda.iconoMenuVisible());
+        softAssert.assertTrue(homePageAgenda.textoSeccionVisible());
+        softAssert.assertTrue(homePageAgenda.iconoBuscarVisible());
+        softAssert.assertTrue(diarioPageAgenda.iconoFiltroVisible());
+        softAssert.assertTrue(homePageAgenda.textoGrupoVisible());
+        softAssert.assertTrue(homePageAgenda.iconoAgregarVisible());
         finalAssert();
     }
 
@@ -71,10 +74,10 @@ public class TestCase01_ComprobarElementos {
     public void validarElementosClickeables(){
         homePageAgenda = new HomePageAgenda();
         diarioPageAgenda = new DiarioPageAgenda();
-        softAssert.assertEquals(homePageAgenda.iconoMenuClickeable(),atributoOk);
-        softAssert.assertEquals(homePageAgenda.iconoBuscarClickeable(),atributoOk);
-        softAssert.assertEquals(diarioPageAgenda.iconoFiltroClickeable(),atributoOk);
-        softAssert.assertEquals(homePageAgenda.iconoAgregarClickeable(),atributoOk);
+        softAssert.assertTrue(homePageAgenda.iconoMenuClickeable());
+        softAssert.assertTrue(homePageAgenda.iconoBuscarClickeable());
+        softAssert.assertTrue(diarioPageAgenda.iconoFiltroClickeable());
+        softAssert.assertTrue(homePageAgenda.iconoAgregarClickeable());
         finalAssert();
     }
 

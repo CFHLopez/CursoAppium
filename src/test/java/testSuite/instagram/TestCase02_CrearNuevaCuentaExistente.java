@@ -22,17 +22,19 @@ public class TestCase02_CrearNuevaCuentaExistente{
     private String udId = "ZY327WFR7S";
     private String nombreApk = "Instagram.apk";
     // DIRECCION PC TSOFT
-    private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\";
+    private String direccion = "C:\\Users\\excloch\\Documents\\Apk\\";
     // DIRECCION PC PERSONAL
     // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\";
     private String appWaitAct = "com.instagram.*";
+
     /** DISPOSITIVO
      * TRUE     ->      VIRTUAL
      * FALSE    ->      REAL
      */
+
     private boolean emulador = true;
     private SoftAssert softAssert = new SoftAssert();
-    private String atributoOk = "visible";
+
     /**
      * PAGES
      */
@@ -57,7 +59,7 @@ public class TestCase02_CrearNuevaCuentaExistente{
     @Test(priority = 1,description = "Validar visualización de Logo")
     public void validarVisualizacionLogo(){
         homePage = new HomePage();
-        Assert.assertEquals(homePage.visualizarLogo(),atributoOk);
+        Assert.assertTrue(homePage.visualizarLogo());
         finalAssert();
     }
 
@@ -88,7 +90,7 @@ public class TestCase02_CrearNuevaCuentaExistente{
     @Test(priority = 7, description = "Validar alerta")
     public void mensajeAlerta(){
         registroPage = new RegistroPage();
-        softAssert.assertEquals(registroPage.mensajeAlertaVisible(),atributoOk);
+        softAssert.assertTrue(registroPage.mensajeAlertaVisible());
         softAssert.assertTrue(registroPage.contenidoMensajeAlerta().contains("No pudimos completar tu solicitud"));
         finalAssert();
     }
@@ -96,7 +98,7 @@ public class TestCase02_CrearNuevaCuentaExistente{
     @Test(priority = 6,description = "Validar mensaje advertencia")
     public void mensajeAdvertencia(){
         registroPage = new RegistroPage();
-        softAssert.assertEquals(registroPage.mensajeAdvertenciaVisible(),atributoOk);
+        softAssert.assertTrue(registroPage.mensajeAdvertenciaVisible());
         softAssert.assertTrue(registroPage.contenidoMensajeAdvertencia().contains("se usa en otra cuenta"));
         finalAssert();
     }

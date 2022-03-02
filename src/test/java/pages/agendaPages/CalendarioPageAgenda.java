@@ -54,12 +54,12 @@ public class CalendarioPageAgenda extends MetodosGenericos {
         return retornarTexto(diaFecha);
     }
 
-    public String txtAnoVisible(){
-        return inspeccionarElemento(atributoEnabled,txtAno);
+    public boolean txtAnoVisible(){
+        return inspeccionarAtributo(atributoEnabled,txtAno);
     }
 
-    public String txtAnoClickeable(){
-        return inspeccionarElemento(atributoClickable,txtAno);
+    public boolean txtAnoClickeable(){
+        return inspeccionarAtributo(atributoClickable,txtAno);
     }
 
     public void darClickTxtAno(){

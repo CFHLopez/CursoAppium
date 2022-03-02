@@ -17,6 +17,7 @@ public class MenuPageWikidex extends MetodosGenericos {
      */
 
     private AppiumDriver driver;
+    private String atributoChecked = "checked";
 
     /**
      * Constructor
@@ -58,6 +59,14 @@ public class MenuPageWikidex extends MetodosGenericos {
         darClick(ajustes);
     }
 
+    public boolean opcionModoNocturnoVisible(){
+        return esperaPorElementoVisible(modoNocturno);
+    }
+
+    public boolean estadoModoNocturno(){
+        return inspeccionarAtributo(atributoChecked,modoNocturno);
+    }
+
     public void clickModoNocturno(){
         darClick(modoNocturno);
     }
@@ -74,10 +83,11 @@ public class MenuPageWikidex extends MetodosGenericos {
         seleccionarElemento(opcionesMenu,opcion);
     }
 
+    public boolean masOpcionesVisible(){
+        return esperaPorElementoVisible(masOpciones);
+    }
+
     public void clickMasOpciones(){
-        esperarPaginaAleatoria(pagina);
-        // se da click 2 veces en el panel debido a que se debe quitar el panel de menu
-        darClick(masOpciones);
         darClick(masOpciones);
     }
 
@@ -87,5 +97,9 @@ public class MenuPageWikidex extends MetodosGenericos {
 
     public String esperarPagina(String palabra){
         return esperarPagina(pagina,palabra);
+    }
+
+    public String nombrePaginaActual(){
+        return retornarTexto(pagina);
     }
 }

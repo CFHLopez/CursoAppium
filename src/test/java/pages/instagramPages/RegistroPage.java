@@ -61,16 +61,16 @@ public class RegistroPage extends MetodosGenericos {
         darClick(btnSiguiente);
     }
 
-    public String mensajeAlertaVisible(){
-        return inspeccionarElemento(atributoMensaje,mensajeAlerta);
+    public boolean mensajeAlertaVisible(){
+        return inspeccionarAtributo(atributoMensaje,mensajeAlerta);
     }
 
     public String contenidoMensajeAlerta(){
         return retornarTexto(mensajeAlerta);
     }
 
-    public String mensajeAdvertenciaVisible(){
-        return inspeccionarElemento(atributoMensaje,msnAdvertencia);
+    public boolean mensajeAdvertenciaVisible(){
+        return inspeccionarAtributo(atributoMensaje,msnAdvertencia);
     }
 
     public String contenidoMensajeAdvertencia(){

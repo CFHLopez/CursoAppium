@@ -23,20 +23,23 @@ public class TestCase03_CrearNuevoRegistroDiaropConUnaFechaEspecifica {
     // NOMBRE APK
     private String nombreApk = "My Personal Agenda_v6.4.1com.apk";
     // DIRECCION PC TSOFT
-    private String direccion = "C:\\Users\\Christian.Lopez\\OneDrive - TSOFT\\Documentos\\Apks\\";
+    private String direccion = "C:\\Users\\excloch\\Documents\\Apk\\";
     // DIRECCION PC PERSONAL
     // private String direccion = "C:\\Users\\chris\\Documents\\Apks\\";
     private String appWaitAct = "com.tambucho.miagenda.*";
+
     /** DISPOSITIVO
      * TRUE     ->      VIRTUAL
      * FALSE    ->      REAL
      */
+
     private boolean emulador = true;
     private SoftAssert softAssert = new SoftAssert();
-    private String atributoOk = "visible";
+
     /**
      * PAGES
      */
+
     protected HomePageAgenda homePageAgenda = null;
     protected DiarioPageAgenda diarioPageAgenda = null;
     protected CalendarioPageAgenda calendarioPageAgenda = null;
@@ -59,8 +62,8 @@ public class TestCase03_CrearNuevoRegistroDiaropConUnaFechaEspecifica {
     @Test(priority = 1, description = "Validar dar click en agregar")
     public void validarDarClickAgregar(){
         homePageAgenda = new HomePageAgenda();
-        softAssert.assertEquals(homePageAgenda.iconoAgregarVisible(),atributoOk);
-        softAssert.assertEquals(homePageAgenda.iconoAgregarClickeable(),atributoOk);
+        softAssert.assertTrue(homePageAgenda.iconoAgregarVisible());
+        softAssert.assertTrue(homePageAgenda.iconoAgregarClickeable());
         homePageAgenda.darClickAgregar();
         finalAssert();
     }
@@ -71,8 +74,8 @@ public class TestCase03_CrearNuevoRegistroDiaropConUnaFechaEspecifica {
         calendarioPageAgenda = new CalendarioPageAgenda();
         diarioPageAgenda.darClickFechaCreada();
         calendarioPageAgenda.selecionarJulio();
-        softAssert.assertEquals(calendarioPageAgenda.txtAnoVisible(), atributoOk);
-        softAssert.assertEquals(calendarioPageAgenda.txtAnoClickeable(), atributoOk);
+        softAssert.assertTrue(calendarioPageAgenda.txtAnoVisible());
+        softAssert.assertTrue(calendarioPageAgenda.txtAnoClickeable());
         calendarioPageAgenda.darClickTxtAno();
         calendarioPageAgenda.seleccionarAno("2022");
         diarioPageAgenda.darClickOk();
@@ -98,8 +101,8 @@ public class TestCase03_CrearNuevoRegistroDiaropConUnaFechaEspecifica {
     @Test(priority = 5, description = "Ir a home Diario")
     public void irHomeDiario() {
         homePageAgenda = new HomePageAgenda();
-        softAssert.assertEquals(homePageAgenda.iconoMenuVisible(), atributoOk);
-        softAssert.assertEquals(homePageAgenda.iconoMenuClickeable(), atributoOk);
+        softAssert.assertTrue(homePageAgenda.iconoMenuVisible());
+        softAssert.assertTrue(homePageAgenda.iconoMenuClickeable());
         homePageAgenda.darClickMenu();
         homePageAgenda.menuDarClickEn("Diario");
         finalAssert();

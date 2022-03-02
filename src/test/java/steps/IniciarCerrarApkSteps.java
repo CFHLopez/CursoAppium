@@ -17,7 +17,7 @@ public class IniciarCerrarApkSteps {
                 Boolean.parseBoolean(arg2));
     }
 
-    @And("cerrar la aplicación")
+    @And("Cerrar la aplicación")
     public void cerrarLaAplicacion() {
         System.out.println("Cerrar APK");
         DriverContext.quitDriver();

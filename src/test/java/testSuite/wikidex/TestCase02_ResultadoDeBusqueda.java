@@ -32,7 +32,6 @@ public class TestCase02_ResultadoDeBusqueda {
      */
     private boolean emulador = true;
     private SoftAssert softAssert = new SoftAssert();
-    private String atributoOk = "visible";
     private String nombrePokemon = "Pikachu";
     /**
      * PAGES
@@ -59,7 +58,7 @@ public class TestCase02_ResultadoDeBusqueda {
     @Test(priority = 1, description = "Validar mensaje Bienvenido")
     public void validarMensajeBienvenido(){
         homePageWikidex = new HomePageWikidex();
-        softAssert.assertEquals(homePageWikidex.cargaImagen(),atributoOk);
+        softAssert.assertTrue(homePageWikidex.cargaImagen());
         softAssert.assertEquals(homePageWikidex.contenidoTexto(),"Bienvenido a WikiDex");
         finalAssert();
     }
