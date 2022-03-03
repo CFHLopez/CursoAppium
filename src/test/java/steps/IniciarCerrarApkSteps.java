@@ -8,12 +8,12 @@ import static conexion.DriverContext.setUp;
 
 public class IniciarCerrarApkSteps {
 
-    @Given("Inicio en aplicacion {string} desde dispositivo nombre {string}, virtual {string}")
-    public void inicioEnAplicacionDesdeDispositivoNombreVirtual(String arg0, String arg1, String arg2) {
+    @Given("Inicio en aplicacion {string} desde dispositivo nombre {string}, virtual {string} y wait activity {string}")
+    public void inicioEnAplicacionDesdeDispositivoNombreVirtual(String arg0, String arg1, String arg2, String arg3) {
         setUp(arg1,
                 "C:\\Users\\excloch\\Documents\\Apk\\"+arg0,
                 arg1,
-                "net.wikidex.www.wikidex.*",
+                arg3,
                 Boolean.parseBoolean(arg2));
     }
 

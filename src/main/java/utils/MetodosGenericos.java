@@ -258,7 +258,6 @@ public class MetodosGenericos {
     }
 
     protected String retornarDiaActual(){
-        // esperaImplicita();
         esperarSegundos(5);
         Calendar calendario = Calendar.getInstance();
         String dia = Integer.toString(calendario.get(Calendar.DATE));
@@ -279,6 +278,39 @@ public class MetodosGenericos {
         }catch (Exception e) {
             System.err.println("[esperaPorElementoVisible] [" + e.getClass() +"] Elemento no encontrado: " + mobileElement.toString());
             return false;
+        }
+    }
+
+    public String retornarMesApkMyPersonalAgenda(MobileElement mobileElement){
+        String txtFecha = retornarTexto(mobileElement);
+        String [] txtSeparado = txtFecha.split(" ");
+        switch (txtSeparado[2]){
+            case "ene.":
+                return "Enero";
+            case "feb.":
+                return "Febrero";
+            case "mar.":
+                return "Marzo";
+            case "abr.":
+                return "Abril";
+            case "may.":
+                return "Mayo";
+            case "jun.":
+                return "Junio";
+            case "jul.":
+                return "Julio";
+            case "ago.":
+                return "Agosto";
+            case "sep.":
+                return "Septiembre";
+            case "oct.":
+                return "Octubre";
+            case "nov.":
+                return "Noviembre";
+            case "dic.":
+                return "Diciembre";
+            default:
+                return "Texto erroneo";
         }
     }
 }

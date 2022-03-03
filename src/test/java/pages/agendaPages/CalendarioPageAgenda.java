@@ -54,6 +54,14 @@ public class CalendarioPageAgenda extends MetodosGenericos {
         return retornarTexto(diaFecha);
     }
 
+    public String anoRegistroCreado(){
+        return retornarTexto(txtAno);
+    }
+
+    public String mesRegistroCreado(){
+        return retornarMesApkMyPersonalAgenda(txtFecha);
+    }
+
     public boolean txtAnoVisible(){
         return inspeccionarAtributo(atributoEnabled,txtAno);
     }

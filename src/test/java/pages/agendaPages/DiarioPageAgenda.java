@@ -74,6 +74,18 @@ public class DiarioPageAgenda extends MetodosGenericos {
         return inspeccionarAtributo(atributoClickable,iconoFiltro);
     }
 
+    public void darClickIconoFiltro(){
+        darClick(iconoFiltro);
+    }
+
+    public boolean registroCreadoVisible(){
+        return inspeccionarAtributo(atributoEnabled,fechaCreada);
+    }
+
+    public boolean registroCreadoClickeable(){
+        return  inspeccionarAtributo(atributoClickable,fechaCreada);
+    }
+
     public void darClickFechaCreada(){
         darClick(fechaCreada);
     }
@@ -96,6 +108,10 @@ public class DiarioPageAgenda extends MetodosGenericos {
 
     public void darClickAgregarTexto(){
         darClick(agregarTexto);
+    }
+
+    public String contenidoCuadroTexto(){
+        return retornarTexto(cuadroTexto);
     }
 
     public void escribirTexto(String texto){

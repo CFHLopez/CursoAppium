@@ -43,6 +43,8 @@ public class HomePageAgenda extends MetodosGenericos {
     private MobileElement txtGrupo;
     @AndroidFindBy(xpath = "//*[@resource-id='com.tambucho.miagenda.trial:id/FabAdd']")
     private MobileElement iconoAdd;
+    @AndroidFindBy(xpath = "//*[@resource-id='com.tambucho.miagenda.trial:id/TitDialog']")
+    private MobileElement textoVentana;
     @AndroidFindBy(xpath = "//*[@resource-id='com.tambucho.miagenda.trial:id/TxtTitulo']")
     private List <MobileElement> listaMenu;
 
@@ -64,6 +66,14 @@ public class HomePageAgenda extends MetodosGenericos {
 
    public String textoVisibleSeccion(){
        return retornarTexto(textoSeccion);
+   }
+
+   public boolean textoVentanaVisible(){
+       return inspeccionarAtributo(atributoEnabled,textoVentana);
+   }
+
+   public String textoVisibleVentana(){
+       return retornarTexto(textoVentana);
    }
 
    public boolean textoGrupoVisible(){
@@ -94,11 +104,17 @@ public class HomePageAgenda extends MetodosGenericos {
        darClick(iconoAdd);
    }
 
-    public void darClickMenu(){
-        darClick(iconoMenu);
-    }
+   public void darClickBuscar(){
+       darClick(iconoBuscar);
+   }
 
-    public void menuDarClickEn(String campo){
-       seleccionarElemento(listaMenu,campo);
-    }
+   public void menuDarClickEn(String campo){
+        seleccionarElemento(listaMenu,campo);
+   }
+
+   public void cerrarVentana(){
+       driver.navigate().back();
+   }
+
+   public void darClickMenu(){darClick(iconoMenu);}
 }
