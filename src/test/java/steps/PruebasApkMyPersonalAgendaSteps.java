@@ -176,4 +176,22 @@ public class PruebasApkMyPersonalAgendaSteps {
         System.out.println("Selecciono la opción "+arg0+" del menu");
         homePageAgenda.menuDarClickEn(arg0);
     }
+
+    @And("Modifico la fecha visualizada por {string} de {string} de {string}")
+    public void modificoLaFechaVisualizadaPorDeDe(String arg0, String arg1, String arg2) {
+        System.out.println("Modifico la fecha visualizada por "+arg0+" de "+arg1+" de "+arg2);
+        calendarioPageAgenda.seleccionarFechaEspecifica(arg0,arg1,arg2);
+    }
+
+    @When("Selecciono el icono de agregar color")
+    public void seleccionoElIconoDeAgregarColor() {
+        System.out.println("Selecciono el icono de agregar color");
+        diarioPageAgenda.darClickIconoColor();
+    }
+
+    @And("Selecciono un color al azar")
+    public void seleccionoUnColorAlAzar() {
+        System.out.println("Selecciono un color al azar");
+        diarioPageAgenda.seleccionarColorAleatorio();
+    }
 }

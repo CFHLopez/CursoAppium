@@ -78,6 +78,14 @@ public class CalendarioPageAgenda extends MetodosGenericos {
         seleccionarMesJulio(listaDiasMes,btnPrev,txtFecha);
     }
 
+    public void seleccionarFechaEspecifica(String dia, String mes, String ano){
+        System.out.println("Cambio de dia y mes");
+        seleccionarMesDia(listaDiasMes,btnPrev,txtFecha,dia,mes);
+        System.out.println("Cambio de Año");
+        darClick(txtAno);
+        seleccionarElemento(listaAnos, ano);
+    }
+
     public void seleccionarAno(String anoSelecionado){
         seleccionarElemento(listaAnos, anoSelecionado);
     }

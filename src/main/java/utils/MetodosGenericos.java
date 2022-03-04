@@ -115,7 +115,7 @@ public class MetodosGenericos {
         if(esperarObjeto(elemento)){
             elemento.click();
             addStep("Click en elemento: "+elemento, true, Status.PASSED,false);
-            esperarSegundos(10);
+            esperarSegundos(5);
             System.out.println("Cargando nueva vista");
         }
         else{
@@ -134,8 +134,6 @@ public class MetodosGenericos {
     }
 
     protected void seleccionarElemento(List<MobileElement> lista, String palabra){
-        // esperaImplicita();
-        esperarSegundos(5);
         // Recorremos la lista hasta encontrar la opción requerida
         System.out.println("Cantidad de opciones: "+lista.size());
         System.out.println("Recorrer opciones hasta encontrar: "+palabra);
@@ -181,6 +179,14 @@ public class MetodosGenericos {
         while (!fecha.getText().contains("jul")){
             btn.click();
             seleccionarElemento(lista,"15");
+        }
+    }
+
+    protected void seleccionarMesDia(List<MobileElement> mobileElementList, MobileElement btn, MobileElement fecha,String dia, String mes){
+        while (!retornarMesApkMyPersonalAgenda(fecha).contains(mes)){
+            System.out.println("Fecha Agenda: "+retornarMesApkMyPersonalAgenda(fecha)+" != "+mes);
+            btn.click();
+            seleccionarElemento(mobileElementList,dia);
         }
     }
 
@@ -284,6 +290,7 @@ public class MetodosGenericos {
     public String retornarMesApkMyPersonalAgenda(MobileElement mobileElement){
         String txtFecha = retornarTexto(mobileElement);
         String [] txtSeparado = txtFecha.split(" ");
+        System.out.println("Mes: "+txtSeparado[2]);
         switch (txtSeparado[2]){
             case "ene.":
                 return "Enero";
