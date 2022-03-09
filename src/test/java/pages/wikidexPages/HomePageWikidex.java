@@ -16,8 +16,8 @@ public class HomePageWikidex extends MetodosGenericos {
      * Variables
      */
 
-    private String atributoEnabled = "enabled";
     private AppiumDriver driver;
+    private String atributoVisible = "enabled";
 
     /**
      * Constructor
@@ -48,11 +48,11 @@ public class HomePageWikidex extends MetodosGenericos {
      */
 
     public boolean cargaImagen(){
-        return esperaPorElementoVisible(imagen);
+        return inspeccionarAtributo(imagen, atributoVisible);
     }
 
     public boolean textoVisible(){
-        return esperaPorElementoVisible(mensaje);
+        return inspeccionarAtributo(mensaje, atributoVisible);
     }
 
     public String contenidoTexto(){
@@ -60,19 +60,19 @@ public class HomePageWikidex extends MetodosGenericos {
     }
 
     public boolean botonBuscarVisible(){
-        return esperaPorElementoVisible(lupa);
+        return inspeccionarAtributo(lupa, atributoVisible);
     }
 
     public void clickBuscar(){
-        darClick(lupa);
+        darClick(lupa,10);
     }
 
     public boolean casillaTextoVisible(){
-        return esperaPorElementoVisible(casillaTexto);
+        return inspeccionarAtributo(casillaTexto, atributoVisible);
     }
 
     public void llenarCasilla(String palabra){
-        llenarCampo(casillaTexto,palabra);
+        ingresarTexto(casillaTexto,palabra);
     }
 
     public int cantidadDeResultados(){

@@ -16,8 +16,8 @@ public class FavoritosPageWikidex extends MetodosGenericos {
      * Variables
      */
 
-    private String atributoPaginaGuardada = "enabled";
     private AppiumDriver driver;
+    private String atributoVisible = "enabled";
 
     /**
      * Constructor
@@ -48,11 +48,11 @@ public class FavoritosPageWikidex extends MetodosGenericos {
     }
 
     public boolean iconoEliminarVisible(){
-        return esperaPorElementoVisible(btnEliminar);
+        return inspeccionarAtributo(btnEliminar, atributoVisible);
     }
 
     public void clickEliminar(){
-        darClick(btnEliminar);
+        darClick(btnEliminar,10);
     }
 
     public String mensaje(){
@@ -60,6 +60,6 @@ public class FavoritosPageWikidex extends MetodosGenericos {
     }
 
     public boolean mensajeVisible(){
-        return inspeccionarAtributo(atributoPaginaGuardada,noHayFavoritos);
+        return inspeccionarAtributo(noHayFavoritos, atributoVisible);
     }
 }

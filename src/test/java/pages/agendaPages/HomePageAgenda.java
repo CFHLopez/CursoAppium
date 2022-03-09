@@ -17,7 +17,7 @@ public class HomePageAgenda extends MetodosGenericos {
      */
 
     private AppiumDriver driver;
-    private String atributoEnabled = "enabled";
+    private String atributoVisible = "enabled";
     private String atributoClickable = "clickable";
 
     /**
@@ -53,15 +53,15 @@ public class HomePageAgenda extends MetodosGenericos {
      */
 
    public boolean iconoMenuVisible(){
-       return inspeccionarAtributo(atributoEnabled,iconoMenu);
+       return inspeccionarAtributo(iconoMenu, atributoVisible);
    }
 
    public boolean iconoMenuClickeable(){
-       return inspeccionarAtributo(atributoClickable,iconoMenu);
+       return inspeccionarAtributo(iconoMenu, atributoClickable);
    }
 
    public boolean textoSeccionVisible(){
-       return inspeccionarAtributo(atributoEnabled,textoSeccion);
+       return inspeccionarAtributo(textoSeccion, atributoVisible);
    }
 
    public String textoVisibleSeccion(){
@@ -69,7 +69,7 @@ public class HomePageAgenda extends MetodosGenericos {
    }
 
    public boolean textoVentanaVisible(){
-       return inspeccionarAtributo(atributoEnabled,textoVentana);
+       return inspeccionarAtributo(textoSeccion, atributoVisible);
    }
 
    public String textoVisibleVentana(){
@@ -77,7 +77,7 @@ public class HomePageAgenda extends MetodosGenericos {
    }
 
    public boolean textoGrupoVisible(){
-       return inspeccionarAtributo(atributoEnabled,txtGrupo);
+       return inspeccionarAtributo(txtGrupo, atributoVisible);
    }
 
    public String textoVisibleGrupo(){
@@ -85,36 +85,36 @@ public class HomePageAgenda extends MetodosGenericos {
    }
 
    public boolean iconoBuscarVisible(){
-       return inspeccionarAtributo(atributoEnabled,iconoBuscar);
+       return inspeccionarAtributo(iconoBuscar, atributoVisible);
    }
 
    public boolean iconoBuscarClickeable(){
-       return inspeccionarAtributo(atributoClickable,iconoBuscar);
+       return inspeccionarAtributo(iconoBuscar, atributoClickable);
    }
 
    public boolean iconoAgregarVisible(){
-       return inspeccionarAtributo(atributoEnabled,iconoAdd);
+       return inspeccionarAtributo(iconoAdd, atributoVisible);
    }
 
    public boolean iconoAgregarClickeable(){
-       return inspeccionarAtributo(atributoClickable,iconoAdd);
+       return inspeccionarAtributo(iconoAdd, atributoClickable);
    }
 
    public void darClickAgregar(){
-       darClick(iconoAdd);
+       darClick(iconoAdd,5);
    }
 
    public void darClickBuscar(){
-       darClick(iconoBuscar);
+       darClick(iconoBuscar,5);
    }
 
    public void menuDarClickEn(String campo){
-        seleccionarElemento(listaMenu,campo);
+        seleccionarElemento(listaMenu, "MENU DISPONIBLE",campo);
    }
 
    public void cerrarVentana(){
-       driver.navigate().back();
+       volver();
    }
 
-   public void darClickMenu(){darClick(iconoMenu);}
+   public void darClickMenu(){darClick(iconoMenu,5);}
 }

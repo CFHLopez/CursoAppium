@@ -90,7 +90,7 @@ public class TestCase03_AgregarQuitarFavoritosModoNocturno {
         menuPageWikidex = new MenuPageWikidex();
         menuPageWikidex.clickMenu();
         menuPageWikidex.clickEn("Favoritos");
-        softAssert.assertEquals(menuPageWikidex.esperarPagina("Favoritos"),"Encontrada");
+        softAssert.assertTrue(menuPageWikidex.esperarPagina("Favoritos"),"No Encontrada");
         finalAssert();
     }
 

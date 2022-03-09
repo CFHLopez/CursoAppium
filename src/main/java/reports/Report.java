@@ -34,7 +34,7 @@ public class Report {
         if(fatal){
             Assert.fail(descripcion);
         }
-        System.out.println("\n[Report]  "+descripcion);
+        System.out.println("\n[Reporte]  "+descripcion);
     }
 
     private static void reportScreenshot(){

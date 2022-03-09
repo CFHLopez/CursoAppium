@@ -48,16 +48,16 @@ public class HomePage extends MetodosGenericos {
      */
 
     public boolean visualizarLogo(){
-        return inspeccionarAtributo(atributoLogo,logo);
+        return inspeccionarAtributo(logo, atributoLogo);
     }
 
     public void darClickIdioma(){
         // System.out.println("Idioma Actual= "+retornarTexto(btnidioma));
-        darClick(btnidioma);
+        darClick(btnidioma,5);
     }
 
     public void seleccionarIdioma(String idioma){
-        seleccionarElemento(opciones,idioma);
+        seleccionarElemento(opciones, "IDIOMAS DISPONIBLES",idioma);
     }
 
     public String retornarTextoSingUp(){
@@ -69,6 +69,6 @@ public class HomePage extends MetodosGenericos {
     }
 
     public void darClickCrearNuevaCuenta(){
-        darClick(singUp);
+        darClick(singUp,5);
     }
 }

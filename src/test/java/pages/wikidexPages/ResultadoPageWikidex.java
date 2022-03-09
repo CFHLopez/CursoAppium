@@ -39,7 +39,7 @@ public class ResultadoPageWikidex extends MetodosGenericos {
      */
 
     public String textoResultado(String palabra){
-        return encontrarContenido(textosTextView,palabra);
+        return encontrarContenido(textosTextView, palabra);
     }
 
 

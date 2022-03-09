@@ -50,19 +50,19 @@ public class RegistroPage extends MetodosGenericos {
      */
 
     public void darClickCorreoElectronico(){
-        darClick(correo);
+        darClick(correo,5);
     }
 
     public void llenarCampoCorreoElectronico(String email){
-        llenarCampo(campoCorreo,email);
+        ingresarTexto(campoCorreo, email);
     }
 
     public void darClickSiguiente(){
-        darClick(btnSiguiente);
+        darClick(btnSiguiente,5);
     }
 
     public boolean mensajeAlertaVisible(){
-        return inspeccionarAtributo(atributoMensaje,mensajeAlerta);
+        return inspeccionarAtributo(mensajeAlerta, atributoMensaje);
     }
 
     public String contenidoMensajeAlerta(){
@@ -70,7 +70,7 @@ public class RegistroPage extends MetodosGenericos {
     }
 
     public boolean mensajeAdvertenciaVisible(){
-        return inspeccionarAtributo(atributoMensaje,msnAdvertencia);
+        return inspeccionarAtributo(msnAdvertencia, atributoMensaje);
     }
 
     public String contenidoMensajeAdvertencia(){

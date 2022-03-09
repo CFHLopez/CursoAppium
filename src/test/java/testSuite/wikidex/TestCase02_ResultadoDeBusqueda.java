@@ -85,8 +85,8 @@ public class TestCase02_ResultadoDeBusqueda {
     public void validarBusqueda(){
         resultadoPageWikidex = new ResultadoPageWikidex();
         menuPageWikidex = new MenuPageWikidex();
-        softAssert.assertEquals(menuPageWikidex.esperarPagina(nombrePokemon),"Encontrada");
-        softAssert.assertEquals(resultadoPageWikidex.textoResultado(nombrePokemon),"Encontrado");
+        softAssert.assertTrue(menuPageWikidex.esperarPagina(nombrePokemon),"No Encontrada");
+        softAssert.assertEquals(resultadoPageWikidex.textoResultado(nombrePokemon),"No Encontrado");
         finalAssert();
     }
 }

@@ -17,7 +17,7 @@ public class DiarioPageAgenda extends MetodosGenericos {
      */
 
     private AppiumDriver driver;
-    private String atributoEnabled = "enabled";
+    private String atributoVisible = "enabled";
     private String atributoClickable = "clickable";
 
     /**
@@ -67,27 +67,27 @@ public class DiarioPageAgenda extends MetodosGenericos {
      */
 
     public boolean iconoFiltroVisible(){
-        return inspeccionarAtributo(atributoEnabled,iconoFiltro);
+        return inspeccionarAtributo(iconoFiltro, atributoVisible);
     }
 
     public boolean iconoFiltroClickeable(){
-        return inspeccionarAtributo(atributoClickable,iconoFiltro);
+        return inspeccionarAtributo(iconoFiltro, atributoClickable);
     }
 
     public void darClickIconoFiltro(){
-        darClick(iconoFiltro);
+        darClick(iconoFiltro, 5);
     }
 
     public boolean registroCreadoVisible(){
-        return inspeccionarAtributo(atributoEnabled,fechaCreada);
+        return inspeccionarAtributo(fechaCreada, atributoVisible);
     }
 
     public boolean registroCreadoClickeable(){
-        return  inspeccionarAtributo(atributoClickable,fechaCreada);
+        return  inspeccionarAtributo(fechaCreada, atributoClickable);
     }
 
     public void darClickFechaCreada(){
-        darClick(fechaCreada);
+        darClick(fechaCreada, 5);
     }
 
     public String diaActual(){
@@ -95,19 +95,19 @@ public class DiarioPageAgenda extends MetodosGenericos {
     }
 
     public void darClickOk(){
-        darClick(btnOk);
+        darClick(btnOk, 5);
     }
 
     public boolean agregarTextoVisible(){
-        return inspeccionarAtributo(atributoEnabled,agregarTexto);
+        return inspeccionarAtributo(agregarTexto, atributoVisible);
     }
 
     public boolean agregarTextoClickeable(){
-        return inspeccionarAtributo(atributoClickable,agregarTexto);
+        return inspeccionarAtributo(agregarTexto, atributoClickable);
     }
 
     public void darClickAgregarTexto(){
-        darClick(agregarTexto);
+        darClick(agregarTexto, 5);
     }
 
     public String contenidoCuadroTexto(){
@@ -115,7 +115,7 @@ public class DiarioPageAgenda extends MetodosGenericos {
     }
 
     public void escribirTexto(String texto){
-        llenarCampo(cuadroTexto,texto);
+        ingresarTexto(cuadroTexto,texto);
     }
 
     public int cantidadDocs(){
@@ -139,31 +139,31 @@ public class DiarioPageAgenda extends MetodosGenericos {
     }
 
     public boolean iconoPDFVisible(){
-        return inspeccionarAtributo(atributoEnabled,iconoPDF);
+        return inspeccionarAtributo(iconoPDF, atributoVisible);
     }
 
     public boolean iconoPDFClickeable(){
-        return inspeccionarAtributo(atributoClickable,iconoPDF);
+        return inspeccionarAtributo(iconoPDF, atributoClickable);
     }
 
     public boolean iconoColorVisible(){
-        return inspeccionarAtributo(atributoEnabled,iconoColor);
+        return inspeccionarAtributo(iconoColor, atributoVisible);
     }
 
     public boolean iconoColorClickeable(){
-        return inspeccionarAtributo(atributoClickable,iconoColor);
+        return inspeccionarAtributo(iconoColor, atributoClickable);
     }
 
     public boolean btnEditarVisible(){
-        return inspeccionarAtributo(atributoEnabled,btnEditar);
+        return inspeccionarAtributo(btnEditar, atributoVisible);
     }
 
     public boolean btnEditarClickeable(){
-        return inspeccionarAtributo(atributoClickable,btnEditar);
+        return inspeccionarAtributo(btnEditar, atributoClickable);
     }
 
     public void darClickIconoColor(){
-        darClick(iconoColor);
+        darClick(iconoColor, 10);
     }
 
     public void seleccionarColorAleatorio(){

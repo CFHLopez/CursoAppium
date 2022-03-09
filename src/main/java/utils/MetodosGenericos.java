@@ -24,7 +24,8 @@ public class MetodosGenericos {
      */
 
     private AppiumDriver driver;
-    public static int segundos = 10;
+    private String atributoVisible = "enabled";
+    private String atributoClickable = "clickable";
 
     /**
      * Constructor
@@ -39,9 +40,22 @@ public class MetodosGenericos {
      * Metodos
      */
 
-    //funcion copiada proyecto corredora
-    public static void esperar(int segundos) {
-        System.out.println("Inicia la espera de " + segundos + " segundos;");
+    // FUNCION DE ESPERAR SEGUNDOS PARTE 1
+    public static boolean esperarSegundos(int seconds, String mensaje) {
+        try {
+            esperar(seconds, mensaje);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
+    // FUNCION DE ESPERAR SEGUNDOS PARTE 2
+    public static void esperar(int segundos, String mensaje) {
+        System.out.println("\nREVISANDO: "+mensaje);
+        System.out.println("INICIA LA ESPERA DE " + segundos + " SEGUNDOS.");
         long start = System.nanoTime();
         long end = 0L;
         long microseconds = 0L;
@@ -53,109 +67,75 @@ public class MetodosGenericos {
             tiempoTranscurrido = TimeUnit.SECONDS.convert(microseconds, TimeUnit.NANOSECONDS);
         } while(tiempoTranscurrido < (long)segundos);
 
-        System.out.println("Fin de la espera de " + segundos + " segundos;");
+        System.out.println("FIN DE LA ESPERA DE " + segundos + " SEGUNDOS.");
     }
 
-    //funcion copiada proyecto corredora
-    public static boolean esperarSegundos(int seconds) {
-        try {
-            MetodosGenericos.esperar(seconds);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
-        return false;
-    }
-
-    private void esperaImplicita(){
-        driver.manage().timeouts().implicitlyWait(segundos, TimeUnit.SECONDS);
-        System.out.println("Espera Implicita");
-    }
-
-    private boolean esperarObjeto(MobileElement elemento){
-        try {
-            System.out.println("Esperando elemento: "+elemento.toString()+", "+segundos+" segnudos, hasta que aparezca");
-            WebDriverWait wait = new WebDriverWait(DriverContext.getDriver(),segundos);
-            wait.until(ExpectedConditions.visibilityOf(elemento));
-            System.out.println("Se encontro el elemento ("+elemento.toString()+"), se retorna true");
-            return true;
-
-        }catch (Exception e){
-            System.out.println("No se encontró el elemento ("+elemento+"), se retorna false");
-            return false;
-        }
-    }
-
-    public static void esperarElemento(MobileElement elemento){
-        WebDriverWait wait = new WebDriverWait(DriverContext.getDriver(),segundos);
-        wait.until(ExpectedConditions.visibilityOf(elemento));
-    }
-
-    protected void llenarCampo(MobileElement campo, String contenido){
-        campo.sendKeys(contenido);
-    }
-
-    protected boolean inspeccionarAtributo(String atributo, MobileElement element){
-        esperarSegundos(5);
-        System.out.println("Elemento a revisar: "+ element.toString());
-        System.out.println("Atributo a revisar; "+ atributo + " , estado: "+element.getAttribute(atributo));
-        // si el atributo esta activo
-        if(element.getAttribute(atributo).contains("true")){
-            addStep("Elemento visible", true, Status.PASSED,false);
-            return Boolean.parseBoolean(element.getAttribute(atributo));
-        }
-        else{
-            addStep("Elemento oculto",true, Status.FAILED,false);
-            return Boolean.parseBoolean(element.getAttribute(atributo));
-        }
-    }
-
-    protected void darClick(MobileElement elemento){
-        if(esperarObjeto(elemento)){
-            elemento.click();
-            addStep("Click en elemento: "+elemento, true, Status.PASSED,false);
-            esperarSegundos(5);
-            System.out.println("Cargando nueva vista");
-        }
-        else{
-            addStep("Click en elemento: "+elemento,true, Status.FAILED,false);
-        }
-    }
-
-    protected String retornarTexto(MobileElement elemento){
-        esperarSegundos(5);
-        if (esperarObjeto(elemento)){
-            return elemento.getText();
+    // FUNCION INGRESAR TEXTO A UN CUADRO DE TEXTO
+    protected void ingresarTexto(MobileElement element, String texto){
+        if (inspeccionarAtributo(element,atributoVisible)){
+            System.out.println("INGRESAMOS TEXTO ( "+texto+" ) AL ELEMENTO:"+ element.toString());
+            element.sendKeys(texto);
         }
         else {
-            return "elemento no encontrado";
+            System.out.println("CAMPO DE TEXTO NO VISIBLE");
         }
     }
 
-    protected void seleccionarElemento(List<MobileElement> lista, String palabra){
-        // Recorremos la lista hasta encontrar la opción requerida
-        System.out.println("Cantidad de opciones: "+lista.size());
-        System.out.println("Recorrer opciones hasta encontrar: "+palabra);
-        for (MobileElement elemento: lista){
-            if (elemento.getText().contains(palabra)){
-                // System.out.println("Opción: "+elemento.getText());
-                // Hacemos click en el elemento buscado
-                darClick(elemento);
-                // Al encontrar el elemento no necesitamos seguir buscando
+    // INSPECCIONAR ATRIBUTO DE UN ELEMENTO
+    protected boolean inspeccionarAtributo(MobileElement element, String atributo){
+        esperarSegundos(5, "ELEMENTO "+ element.toString() +", ATRIBUTO: "+atributo);
+        // si el atributo esta activo
+        if(element.getAttribute(atributo).contains("true")){
+            addStep("ESTADO ATRIBUTO: "+element.getAttribute(atributo), true, Status.PASSED,false);
+            return Boolean.parseBoolean(element.getAttribute(atributo));
+        }
+        else{
+            addStep("ESTADO ATRIBUTO: "+element.getAttribute(atributo),true, Status.FAILED,false);
+            return Boolean.parseBoolean(element.getAttribute(atributo));
+        }
+    }
+
+    protected void darClick(MobileElement element, int segundos){
+        if(inspeccionarAtributo(element,atributoVisible)){
+            element.click();
+            addStep("CLICK EN ELEMENTO: "+element.toString(), true, Status.PASSED,false);
+            esperarSegundos(segundos, "CARGANDO NUEVA VISTA");
+        }
+        else{
+            addStep("NO SE PUDO DAR CLICK EN ELEMENTO: "+element.toString(),true, Status.FAILED,false);
+        }
+    }
+
+    protected String retornarTexto(MobileElement element){
+        if (inspeccionarAtributo(element,atributoVisible)){
+            return element.getText();
+        }
+        else {
+            return "TEXTO NO ENCONTRADO";
+        }
+    }
+
+    protected void seleccionarElemento(List<MobileElement> elementList, String nombreLista, String textoBuscado){
+        // RECORREMOS LA LISTA HASTA ENCONTRAR LA OPCIÓN REQUERIDA
+        System.out.println("BUSCANDO: "+textoBuscado+", EN LA LISTA DE NOMBRE: "+nombreLista);
+        // System.out.println("CANTIDAD DE ELEMENTOS DE LA LISTA: "+elementList.size());
+        for (MobileElement element: elementList){
+            if (element.getText().contains(textoBuscado)){
+                // System.out.println("OPCIÓN: "+elemento.getText());
+                // HACEMOS CLICK EN EL ELEMENTO ENCONTRADO
+                darClick(element, 10);
+                // AL ENCONTRAR EL ELEMENTO SALIMOS DEL CICLO
                 break;
             }
         }
     }
 
-    protected void seleccionarAleatorio(List<MobileElement> lista){
-        esperarSegundos(5);
-        //esperaImplicita();
-        System.out.println("Cantidad elementos: "+lista.size());
+    protected void seleccionarAleatorio(List<MobileElement> elementList){
+        // System.out.println("CANTIDAD DE ELEMENTOS DE LA LISTA: "+elementList.size());
         // SE GENERA UN NUMERO AL AZAR ENTRE 1 Y EL LARGO DE LA LISTA
-        int numeroAleatorio = generarNumeroAleatorio(1,lista.size());
-        System.out.println("Numero aleatorio: "+numeroAleatorio);
-        int num = 0;
+        int numeroAleatorio = generarNumeroAleatorio(1,elementList.size());
+        // System.out.println("NÚMERO ALEATORIO GENERADO: "+numeroAleatorio);
+        int num = 1;
         /**
          * EN EL SIGUIENTE CICLO
          * SE BUSCA EL ELEMENTO UBICADO EN LA
@@ -164,45 +144,35 @@ public class MetodosGenericos {
          * LA POSICIÓN 0 EN MY AGENDA PARA CAMBIAR COLOR
          * ESTE VIENE POR DEFECTO EN BLANCO
          */
-        for (MobileElement elemento: lista){
+        for (MobileElement elemento: elementList){
             if (num == numeroAleatorio){
-                darClick(elemento);
+                darClick(elemento,10);
                 break;
             }
             num++;
         }
     }
 
-    protected void seleccionarMesJulio(List<MobileElement> lista, MobileElement btn, MobileElement fecha){
-        // esperaImplicita();
-        esperarSegundos(5);
+    protected void seleccionarMesJulio(List<MobileElement> elementList, MobileElement btn, MobileElement fecha){
         while (!fecha.getText().contains("jul")){
             btn.click();
-            seleccionarElemento(lista,"15");
+            seleccionarElemento(elementList, "CALENDARIO","15");
         }
     }
 
-    protected void seleccionarMesDia(List<MobileElement> mobileElementList, MobileElement btn, MobileElement fecha,String dia, String mes){
+    protected void seleccionarMesDia(List<MobileElement> elementList, MobileElement btn, MobileElement fecha,String dia, String mes){
         while (!retornarMesApkMyPersonalAgenda(fecha).contains(mes)){
-            System.out.println("Fecha Agenda: "+retornarMesApkMyPersonalAgenda(fecha)+" != "+mes);
+            // System.out.println("FECHA AGENDA: "+retornarMesApkMyPersonalAgenda(fecha)+" != "+mes);
             btn.click();
-            seleccionarElemento(mobileElementList,dia);
+            seleccionarElemento(elementList, "CALENDARIO",dia);
         }
     }
 
     protected void seleccionarPrimerElemento(List<MobileElement> lista){
-        // esperaImplicita();
-        esperarSegundos(5);
         for (MobileElement elemento: lista){
-            darClick(elemento);
+            darClick(elemento,10);
             break;
         }
-    }
-
-    protected int contarElementos(List<MobileElement> lista){
-        esperarSegundos(5);
-        addStep("Elementos de la lista", true, Status.PASSED,false);
-        return lista.size();
     }
 
     protected String encontrarContenido(List<MobileElement> lista, String palabra){
@@ -218,45 +188,13 @@ public class MetodosGenericos {
     }
 
     protected void recorrerLista(List<MobileElement> lista){
-        // esperaImplicita();
-        esperarSegundos(5);
         for (MobileElement elemento: lista){
-            System.out.println("texto: "+elemento.getText());
+            System.out.println("CONTENIDO: "+elemento.getText());
         }
     }
 
-    protected String esperarPagina(MobileElement elemento, String palabra){
-        // esperaImplicita();
-        esperarSegundos(5);
-        // POSIBLE MODIFICACIÓN PARA EVITAR UN CICLO INFINITO
-        /*
-        while (!elemento.getText().contains(palabra)){
-            System.out.println("pagina: "+ elemento.getText());
-            esperaImplicita();
-        }
-         */
-        // CAMBIAMOS POR UN CICLO FOR DE 5 CICLOS
-        String resultado = "No Encontrada";
-        for (int i=0;i<5;i++){
-            System.out.println("pagina: "+ elemento.getText());
-            // esperaImplicita();
-            esperarSegundos(5);
-            if (elemento.getText().contains(palabra)){
-                resultado = "Encontrada";
-                break;
-            }
-        }
-        return resultado;
-    }
-
-    protected void esperarPaginaAleatoria(MobileElement elemento){
-        // esperaImplicita();
-        esperarSegundos(5);
-        while (elemento.getText().contains("WikiDex")){
-            System.out.println("pagina: "+ elemento.getText());
-            // esperaImplicita();
-            esperarSegundos(5);
-        }
+    protected void volver(){
+        this.driver.navigate().back();
     }
 
     protected void quitarTeclado(){
@@ -264,27 +202,16 @@ public class MetodosGenericos {
     }
 
     protected String retornarDiaActual(){
-        esperarSegundos(5);
         Calendar calendario = Calendar.getInstance();
         String dia = Integer.toString(calendario.get(Calendar.DATE));
+        System.out.println("RETORNARMOS EL DIA ACTUAL: "+dia);
         return dia;
     }
 
-    private int generarNumeroAleatorio(int limMin, int limMax){
+    private static int generarNumeroAleatorio(int limMin, int limMax){
         int numero = (int)(Math.random()*(limMax-limMin+1)+limMin);
+        System.out.println("NUMERO GENERADO AL AZAR: "+numero);
         return numero;
-    }
-
-    public static boolean esperaPorElementoVisible(MobileElement mobileElement){
-        System.out.println("[esperaPorElementoVisible] " + segundos + "s - " + mobileElement.toString());
-        try {
-            esperarElemento(mobileElement);
-            System.out.println("[esperaPorElementoVisible] [success] Elemento encontrado: " + mobileElement.toString());
-            return true;
-        }catch (Exception e) {
-            System.err.println("[esperaPorElementoVisible] [" + e.getClass() +"] Elemento no encontrado: " + mobileElement.toString());
-            return false;
-        }
     }
 
     public String retornarMesApkMyPersonalAgenda(MobileElement mobileElement){
@@ -318,6 +245,23 @@ public class MetodosGenericos {
                 return "Diciembre";
             default:
                 return "Texto erroneo";
+        }
+    }
+
+    public int contarElementos(List<MobileElement> elementList){
+        System.out.println("RETORNAMOS LA CANTIDAD DE ELEMENTOS DE LA LISTA");
+        return elementList.size();
+    }
+
+    public boolean tituloPaginaActual(MobileElement element, String titulo){
+        esperarSegundos(5,"ESPERANDO PAGINA "+titulo);
+        if(inspeccionarAtributo(element,atributoVisible) && element.getText().contains(titulo)){
+            addStep("PÁGINA ACTUAL ES: "+element.getText(), true, Status.PASSED,false);
+            return true;
+        }
+        else{
+            addStep("LA PÁGINA ACTUAL NO ES: "+titulo+", ES: "+element.getText(),true, Status.FAILED,false);
+            return false;
         }
     }
 }

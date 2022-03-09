@@ -8,7 +8,8 @@
   Feature:  Pruebas APK Wikidex
 
     Background:
-      Given Inicio en aplicacion "Wikidex.apk" desde dispositivo nombre "emulator-5554", virtual "true" y wait activity "net.wikidex.www.wikidex.*"
+      Given Inicio en aplicacion "Wikidex.apk" desde dispositivo nombre "ZY327WFR7S", virtual "false" y wait activity "net.wikidex.www.wikidex.*"
+      # Given Inicio en aplicacion "Wikidex.apk" desde dispositivo nombre "emulator-5554", virtual "true" y wait activity "net.wikidex.www.wikidex.*"
       And Visualizo el mensaje de bienvenida text "Bienvenido a WikiDex"
       And Visualizo imagen de Wikidex
 

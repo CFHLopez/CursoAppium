@@ -8,7 +8,8 @@
   Feature:  Pruebas APK My personal agenda
 
     Background:
-      Given Inicio en aplicacion "My Personal Agenda_v6.4.1com.apk" desde dispositivo nombre "emulator-5554", virtual "true" y wait activity "com.tambucho.miagenda.*"
+      Given Inicio en aplicacion "My Personal Agenda_v6.4.1com.apk" desde dispositivo nombre "ZY327WFR7S", virtual "false" y wait activity "com.tambucho.miagenda.*"
+      # Given Inicio en aplicacion "My Personal Agenda_v6.4.1com.apk" desde dispositivo nombre "emulator-5554", virtual "true" y wait activity "com.tambucho.miagenda.*"
       And Visualizo el texto "Diario" en la parte superior
 
    # Prueba 01 en Apk My Personal Agenda, comprobar elementos visibles en la vista principal
@@ -37,7 +38,7 @@
       And Selecciono el registro visible
       Then Visualizo una ventana emergente con texto "Seleccione Fecha"
       # Modificar por la fecha actual
-      And Visualizo un calendario con fecha "3" de "Marzo" de "2022"
+      And Visualizo un calendario con fecha "9" de "Marzo" de "2022"
       When Seleciono el icono ok
       And Selecciono el icono de agregar texto
       Then Visualizo un nuevo cuadro con texto "<texto>"

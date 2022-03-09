@@ -18,6 +18,7 @@ public class MenuPageWikidex extends MetodosGenericos {
 
     private AppiumDriver driver;
     private String atributoChecked = "checked";
+    private String atributoVisible = "enabled";
 
     /**
      * Constructor
@@ -52,51 +53,51 @@ public class MenuPageWikidex extends MetodosGenericos {
      */
 
     public boolean ajustesVisible(){
-        return esperaPorElementoVisible(ajustes);
+        return inspeccionarAtributo(ajustes, atributoVisible);
     }
 
     public void clickAjustes(){
-        darClick(ajustes);
+        darClick(ajustes,5);
     }
 
     public boolean opcionModoNocturnoVisible(){
-        return esperaPorElementoVisible(modoNocturno);
+        return inspeccionarAtributo(modoNocturno, atributoVisible);
     }
 
     public boolean estadoModoNocturno(){
-        return inspeccionarAtributo(atributoChecked,modoNocturno);
+        return inspeccionarAtributo(modoNocturno, atributoChecked);
     }
 
     public void clickModoNocturno(){
-        darClick(modoNocturno);
+        darClick(modoNocturno,8);
     }
 
     public boolean menuVisible(){
-        return esperaPorElementoVisible(menu);
+        return inspeccionarAtributo(menu, atributoVisible);
     }
 
     public void clickMenu(){
-        darClick(menu);
+        darClick(menu,5);
     }
 
     public void clickEn(String opcion){
-        seleccionarElemento(opcionesMenu,opcion);
+        seleccionarElemento(opcionesMenu, "MENU OPCIONES",opcion);
     }
 
     public boolean masOpcionesVisible(){
-        return esperaPorElementoVisible(masOpciones);
+        return inspeccionarAtributo(masOpciones, atributoVisible);
     }
 
     public void clickMasOpciones(){
-        darClick(masOpciones);
+        darClick(masOpciones,5);
     }
 
     public void elegirOpcion(String opcion){
-        seleccionarElemento(opcionesMasOpciones,opcion);
+        seleccionarElemento(opcionesMasOpciones, "MAS OPCIONES",opcion);
     }
 
-    public String esperarPagina(String palabra){
-        return esperarPagina(pagina,palabra);
+    public boolean esperarPagina(String palabra){
+        return tituloPaginaActual(pagina, palabra);
     }
 
     public String nombrePaginaActual(){

@@ -17,7 +17,7 @@ public class CalendarioPageAgenda extends MetodosGenericos {
      */
 
     private AppiumDriver driver;
-    private String atributoEnabled = "enabled";
+    private String atributoVisible = "enabled";
     private String atributoClickable = "clickable";
 
     /**
@@ -63,15 +63,15 @@ public class CalendarioPageAgenda extends MetodosGenericos {
     }
 
     public boolean txtAnoVisible(){
-        return inspeccionarAtributo(atributoEnabled,txtAno);
+        return inspeccionarAtributo(txtAno, atributoVisible);
     }
 
     public boolean txtAnoClickeable(){
-        return inspeccionarAtributo(atributoClickable,txtAno);
+        return inspeccionarAtributo(txtAno, atributoClickable);
     }
 
     public void darClickTxtAno(){
-        darClick(txtAno);
+        darClick(txtAno, 5);
     }
 
     public void selecionarJulio(){
@@ -82,11 +82,11 @@ public class CalendarioPageAgenda extends MetodosGenericos {
         System.out.println("Cambio de dia y mes");
         seleccionarMesDia(listaDiasMes,btnPrev,txtFecha,dia,mes);
         System.out.println("Cambio de Año");
-        darClick(txtAno);
-        seleccionarElemento(listaAnos, ano);
+        darClick(txtAno, 5);
+        seleccionarElemento(listaAnos, "AÑOS CALENDARIO", ano);
     }
 
     public void seleccionarAno(String anoSelecionado){
-        seleccionarElemento(listaAnos, anoSelecionado);
+        seleccionarElemento(listaAnos,"AÑOS CALENDARIO",anoSelecionado);
     }
 }
